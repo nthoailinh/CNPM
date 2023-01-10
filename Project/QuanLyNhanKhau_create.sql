@@ -1,7 +1,3 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-12-25 06:05:29.971
-
--- tables
 -- Table: CCCD
 CREATE TABLE CCCD (
     cccd char(12) NOT NULL,
