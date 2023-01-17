@@ -215,7 +215,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0" visible="false">
+      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0">
          <top>
             <HBox prefHeight="45.0" prefWidth="786.0" BorderPane.alignment="CENTER">
                <children>
@@ -249,6 +249,12 @@
                </children>
             </VBox>
          </right>
+         <left>
+            <Pane prefHeight="585.0" prefWidth="13.0" BorderPane.alignment="CENTER" />
+         </left>
+         <bottom>
+            <Pane prefHeight="10.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
       <BorderPane fx:id="contentHoKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0" visible="false">
          <top>
@@ -281,6 +287,12 @@
                </children>
             </VBox>
          </right>
+         <left>
+            <Pane prefHeight="585.0" prefWidth="13.0" BorderPane.alignment="CENTER" />
+         </left>
+         <bottom>
+            <Pane prefHeight="10.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
       <BorderPane fx:id="contentThongKe" layoutX="243.0" layoutY="60.0" prefHeight="710.0" prefWidth="780.0" visible="false">
          <center>
@@ -290,18 +302,18 @@
                 <TableColumn prefWidth="195.0" text="Họ tên" />
                   <TableColumn prefWidth="123.0" text="Ngày sinh" />
                   <TableColumn minWidth="0.0" prefWidth="79.0" text="Giới tính" />
-                  <TableColumn prefWidth="271.0" text="Địa chỉ hiện nay" />
+                  <TableColumn prefWidth="284.0" text="Địa chỉ hiện nay" />
               </columns>
             </TableView>
          </center>
          <bottom>
-            <Pane prefHeight="14.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="10.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
          </bottom>
          <right>
-            <Pane prefHeight="496.0" prefWidth="36.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="585.0" prefWidth="10.0" BorderPane.alignment="CENTER" />
          </right>
          <left>
-            <Pane prefHeight="496.0" prefWidth="20.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="585.0" prefWidth="13.0" BorderPane.alignment="CENTER" />
          </left>
          <top>
             <GridPane prefHeight="111.0" prefWidth="780.0" BorderPane.alignment="CENTER">
@@ -347,7 +359,7 @@
                         <TextField prefHeight="6.0" prefWidth="34.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+                  <HBox prefHeight="55.0" prefWidth="109.0" GridPane.columnIndex="2">
                      <children>
                         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Show" />
                      </children>
