@@ -7,6 +7,8 @@ module models {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens models to javafx.fxml;
-    exports models;
+    opens QuanLyNhanKhau.UI to javafx.fxml;
+    opens QuanLyNhanKhau.controllers to javafx.fxml;
+    exports QuanLyNhanKhau;
+    exports QuanLyNhanKhau.controllers;
 }

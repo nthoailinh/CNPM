@@ -1,4 +1,4 @@
-package models;
+package QuanLyNhanKhau.models;
 
 import java.util.Date;
 

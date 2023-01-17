@@ -1,4 +1,4 @@
-package models;
+package QuanLyNhanKhau.models;
 
 public class HoKhau {
     private int id;

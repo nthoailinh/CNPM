@@ -54,6 +54,7 @@ public class LoginUI extends javax.swing.JFrame {
             }
         } catch (SQLException | ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra!! Vui lòng kiểm tra lại!", "Warning!!", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
     }
             

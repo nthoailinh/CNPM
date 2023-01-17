@@ -1,21 +1,19 @@
-package models;
+package QuanLyNhanKhau.models;
 
 import java.util.Date;
 
-public class TamVang {
+public class TamTru {
     private int id;
     private int idNhanKhau;
     private Date batDau;
     private Date ketThuc;
-    private String noiTamTru;
     private String lyDo;
 
-    public TamVang(int id, int idNhanKhau, Date batDau, Date ketThuc, String noiTamTru, String lyDo) {
+    public TamTru(int id, int idNhanKhau, Date batDau, Date ketThuc, String lyDo) {
         this.id = id;
         this.idNhanKhau = idNhanKhau;
         this.batDau = batDau;
         this.ketThuc = ketThuc;
-        this.noiTamTru = noiTamTru;
         this.lyDo = lyDo;
     }
 
@@ -27,11 +25,11 @@ public class TamVang {
         this.id = id;
     }
 
-    public int getidNhanKhau() {
+    public int getIdNhanKhau() {
         return idNhanKhau;
     }
 
-    public void setidNhanKhau(int idNhanKhau) {
+    public void setIdNhanKhau(int idNhanKhau) {
         this.idNhanKhau = idNhanKhau;
     }
 
@@ -49,14 +47,6 @@ public class TamVang {
 
     public void setKetThuc(Date ketThuc) {
         this.ketThuc = ketThuc;
-    }
-
-    public String getNoiTamTru() {
-        return noiTamTru;
-    }
-
-    public void setNoiTamTru(String noiTamTru) {
-        this.noiTamTru = noiTamTru;
     }
 
     public String getLyDo() {
