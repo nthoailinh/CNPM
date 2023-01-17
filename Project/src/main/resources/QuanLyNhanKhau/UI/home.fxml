@@ -221,7 +221,7 @@
                <children>
                   <Pane prefHeight="45.0" prefWidth="23.0" />
                   <TextField />
-                  <Button mnemonicParsing="false" text="Tìm kiếm" />
+                  <Button fx:id="btnTimKienNhanKhau" mnemonicParsing="false" text="Tìm kiếm" />
                </children>
             </HBox>
          </top>
@@ -239,13 +239,13 @@
          <right>
             <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="140.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Thêm mới" />
+                  <Button fx:id="btnThemMoiNhanKhau" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Thêm mới" />
                   <Pane prefHeight="24.0" prefWidth="140.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm vắng" />
+                  <Button fx:id="btnDKTamVangNhanKhau" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm vắng" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm trú" />
+                  <Button fx:id="btnDKTamTruNhanKhau" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm trú" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Khai tử" />
+                  <Button fx:id="btnKhaiTuNhanKhau" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Khai tử" />
                </children>
             </VBox>
          </right>
