@@ -1,4 +1,4 @@
-package QuanLyNhanKhau;
+package QuanLyNhanKhau.views;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +7,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Main extends Application{
+public class Home extends Application{
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UI/home.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("home.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1024, 768);
-        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
     }

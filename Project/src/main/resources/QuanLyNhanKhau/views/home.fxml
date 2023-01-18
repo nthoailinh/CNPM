@@ -19,23 +19,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.Controllers">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.HomeControllers">
    <children>
       <VBox prefHeight="768.0" prefWidth="244.0" style="-fx-background-color: #EBE8F9;">
          <children>
-            <Button fx:id="btnTrangChu" graphicTextGap="20.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="157.0" prefWidth="244.0" stylesheets="@style.css" text="Trang chủ">
+            <Button fx:id="TrangChu" graphicTextGap="20.0" mnemonicParsing="false" onAction="#handleClicksSidebar" prefHeight="157.0" prefWidth="244.0" stylesheets="@style.css" text="Trang chủ">
                <font>
                   <Font size="22.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="62.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/menu.png" />
+                        <Image url="@images/menu.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="btnThongKe" fx:id="btnNhanKhau" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="167.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="87.0" prefWidth="265.0" stylesheets="@style.css" text="Nhân khẩu">
+            <Button id="btnThongKe" fx:id="NhanKhau" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="167.0" mnemonicParsing="false" onAction="#handleClicksSidebar" prefHeight="87.0" prefWidth="265.0" stylesheets="@style.css" text="Nhân khẩu">
                <font>
                   <Font size="17.0" />
                </font>
@@ -45,25 +45,7 @@
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/people.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
-            <Button id="btnThongKe" fx:id="btnHoKhau" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="87.0" prefWidth="265.0" stylesheets="@style.css" text="Hộ khẩu">
-               <font>
-                  <Font size="17.0" />
-               </font>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/home.png" />
+                        <Image url="@images/people.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -71,7 +53,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button id="btnThongKe" fx:id="btnCOVID" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="87.0" prefWidth="265.0" stylesheets="@style.css" text="COVID">
+            <Button id="btnThongKe" fx:id="HoKhau" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="345.0" mnemonicParsing="false" onAction="#handleClicksSidebar" prefHeight="87.0" prefWidth="265.0" stylesheets="@style.css" text="Hộ khẩu">
                <font>
                   <Font size="17.0" />
                </font>
@@ -81,7 +63,7 @@
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/virus.png" />
+                        <Image url="@images/home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -89,7 +71,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button id="btnThongKe" fx:id="btnThongKe" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="87.0" prefWidth="265.0" stylesheets="@style.css" text="Thống kê">
+            <Button id="btnThongKe" fx:id="COVID" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleClicksSidebar" prefHeight="87.0" prefWidth="265.0" stylesheets="@style.css" text="COVID">
                <font>
                   <Font size="17.0" />
                </font>
@@ -99,7 +81,25 @@
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/statistics.png" />
+                        <Image url="@images/virus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button id="btnThongKe" fx:id="ThongKe" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleClicksSidebar" prefHeight="87.0" prefWidth="265.0" stylesheets="@style.css" text="Thống kê">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/statistics.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -108,7 +108,7 @@
                </opaqueInsets>
             </Button>
             <Pane prefHeight="171.0" prefWidth="244.0" />
-            <Button id="btnThongKe" fx:id="btnDangXuat" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="89.0" prefWidth="244.0" stylesheets="@style.css" text="Đăng xuất">
+            <Button id="btnThongKe" fx:id="DangXuat" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleClicksSidebar" prefHeight="89.0" prefWidth="244.0" stylesheets="@style.css" text="Đăng xuất">
                <font>
                   <Font size="17.0" />
                </font>
@@ -118,14 +118,14 @@
                <graphic>
                   <ImageView fitHeight="98.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/logout.png" />
+                        <Image url="@images/logout.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
          </children>
       </VBox>
-      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="766.0" stylesheets="@style.css" visible="false">
+      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="766.0" stylesheets="@style.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.0" minWidth="10.0" prefWidth="125.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="674.0" minWidth="10.0" prefWidth="639.0" />
@@ -139,7 +139,7 @@
          <children>
             <ImageView fitHeight="92.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/people.png" />
+                  <Image url="@images/people.png" />
                </image>
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -149,7 +149,7 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="101.0" prefWidth="207.0" text=" 100">
+                  <Label fx:id="SoLuongNhanKhau" prefHeight="101.0" prefWidth="207.0" text=" 100">
                      <font>
                         <Font size="60.0" />
                      </font>
@@ -163,7 +163,7 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="101.0" prefWidth="207.0" text=" 10">
+                  <Label fx:id="SoLuongHoKhau" prefHeight="101.0" prefWidth="207.0" text=" 10">
                      <font>
                         <Font size="60.0" />
                      </font>
@@ -172,12 +172,12 @@
             </VBox>
             <ImageView fitHeight="93.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                <image>
-                  <Image url="@../images/home.png" />
+                  <Image url="@images/home.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="108.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                <image>
-                  <Image url="@../images/check-in.png" />
+                  <Image url="@images/check-in.png" />
                </image>
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -187,7 +187,7 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="101.0" prefWidth="207.0" text=" 10">
+                  <Label fx:id="SoLuongTamTru" prefHeight="101.0" prefWidth="207.0" text=" 10">
                      <font>
                         <Font size="60.0" />
                      </font>
@@ -201,7 +201,7 @@
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="101.0" prefWidth="207.0" text=" 10">
+                  <Label fx:id="SoLuongTamVang" prefHeight="101.0" prefWidth="207.0" text=" 10">
                      <font>
                         <Font size="60.0" />
                      </font>
@@ -210,18 +210,18 @@
             </VBox>
             <ImageView fitHeight="108.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                <image>
-                  <Image url="@../images/passenger.png" />
+                  <Image url="@images/passenger.png" />
                </image>
             </ImageView>
          </children>
       </GridPane>
-      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0">
+      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0" visible="false">
          <top>
             <HBox prefHeight="45.0" prefWidth="786.0" BorderPane.alignment="CENTER">
                <children>
                   <Pane prefHeight="45.0" prefWidth="23.0" />
-                  <TextField />
-                  <Button fx:id="btnTimKienNhanKhau" mnemonicParsing="false" text="Tìm kiếm" />
+                  <TextField fx:id="NhanKhauInput" />
+                  <Button fx:id="NhanKhauTimKiem" mnemonicParsing="false" text="Tìm kiếm" />
                </children>
             </HBox>
          </top>
@@ -239,13 +239,13 @@
          <right>
             <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="140.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnThemMoiNhanKhau" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Thêm mới" />
+                  <Button fx:id="NhanKhauThemMoi" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="120.0" text="Thêm mới" />
                   <Pane prefHeight="24.0" prefWidth="140.0" />
-                  <Button fx:id="btnDKTamVangNhanKhau" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm vắng" />
+                  <Button fx:id="NhanKhauDKTamVang" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm vắng" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
-                  <Button fx:id="btnDKTamTruNhanKhau" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm trú" />
+                  <Button fx:id="NhanKhauDKTamTru" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm trú" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
-                  <Button fx:id="btnKhaiTuNhanKhau" mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Khai tử" />
+                  <Button fx:id="NhanKhauKhaiTu" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="120.0" text="Khai tử" />
                </children>
             </VBox>
          </right>
@@ -278,11 +278,11 @@
          <right>
             <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="140.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Thêm mới" />
+                  <Button fx:id="HoKhauThemMoi" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="120.0" text="Thêm mới" />
                   <Pane prefHeight="24.0" prefWidth="140.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Tách HK" />
+                  <Button fx:id="HoKhauTachHK" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="120.0" text="Tách HK" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="120.0" text="Chuyển đi" />
+                  <Button fx:id="HoKhauChuyenDi" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="120.0" text="Chuyển đi" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
                </children>
             </VBox>
