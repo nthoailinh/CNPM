@@ -1,14 +1,14 @@
 package QuanLyNhanKhau.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class MacCOVID {
     private int id;
     private int idNhanKhau;
-    private Date ngayMac;
-    private Date ngayKhoi;
+    private LocalDate ngayMac;
+    private LocalDate ngayKhoi;
 
-    public MacCOVID(int id, int idNhanKhau, Date ngayMac, Date ngayKhoi) {
+    public MacCOVID(int id, int idNhanKhau, LocalDate ngayMac, LocalDate ngayKhoi) {
         this.id = id;
         this.idNhanKhau = idNhanKhau;
         this.ngayMac = ngayMac;
@@ -31,19 +31,19 @@ public class MacCOVID {
         this.idNhanKhau = idNhanKhau;
     }
 
-    public Date getNgayMac() {
+    public LocalDate getNgayMac() {
         return ngayMac;
     }
 
-    public void setNgayMac(Date ngayMac) {
+    public void setNgayMac(LocalDate ngayMac) {
         this.ngayMac = ngayMac;
     }
 
-    public Date getNgayKhoi() {
+    public LocalDate getNgayKhoi() {
         return ngayKhoi;
     }
 
-    public void setNgayKhoi(Date ngayKhoi) {
+    public void setNgayKhoi(LocalDate ngayKhoi) {
         this.ngayKhoi = ngayKhoi;
     }
 }

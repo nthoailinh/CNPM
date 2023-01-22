@@ -1,15 +1,15 @@
 package QuanLyNhanKhau.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class TamTru {
     private int id;
     private int idNhanKhau;
-    private Date batDau;
-    private Date ketThuc;
+    private LocalDate batDau;
+    private LocalDate ketThuc;
     private String lyDo;
 
-    public TamTru(int id, int idNhanKhau, Date batDau, Date ketThuc, String lyDo) {
+    public TamTru(int id, int idNhanKhau, LocalDate batDau, LocalDate ketThuc, String lyDo) {
         this.id = id;
         this.idNhanKhau = idNhanKhau;
         this.batDau = batDau;
@@ -33,19 +33,19 @@ public class TamTru {
         this.idNhanKhau = idNhanKhau;
     }
 
-    public Date getBatDau() {
+    public LocalDate getBatDau() {
         return batDau;
     }
 
-    public void setBatDau(Date batDau) {
+    public void setBatDau(LocalDate batDau) {
         this.batDau = batDau;
     }
 
-    public Date getKetThuc() {
+    public LocalDate getKetThuc() {
         return ketThuc;
     }
 
-    public void setKetThuc(Date ketThuc) {
+    public void setKetThuc(LocalDate ketThuc) {
         this.ketThuc = ketThuc;
     }
 

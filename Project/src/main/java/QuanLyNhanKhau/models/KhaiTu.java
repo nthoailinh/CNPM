@@ -1,14 +1,14 @@
 package QuanLyNhanKhau.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class KhaiTu {
     private int idNhanKhau;
     private String nguyenNhan;
-    private Date ngayQuaDoi;
-    private Date ngayKhaiTu;
+    private LocalDate ngayQuaDoi;
+    private LocalDate ngayKhaiTu;
 
-    public KhaiTu(int idNhanKhau, String nguyenNhan, Date ngayQuaDoi, Date ngayKhaiTu) {
+    public KhaiTu(int idNhanKhau, String nguyenNhan, LocalDate ngayQuaDoi, LocalDate ngayKhaiTu) {
         this.idNhanKhau = idNhanKhau;
         this.nguyenNhan = nguyenNhan;
         this.ngayQuaDoi = ngayQuaDoi;
@@ -31,19 +31,19 @@ public class KhaiTu {
         this.nguyenNhan = nguyenNhan;
     }
 
-    public Date getNgayQuaDoi() {
+    public LocalDate getNgayQuaDoi() {
         return ngayQuaDoi;
     }
 
-    public void setNgayQuaDoi(Date ngayQuaDoi) {
+    public void setNgayQuaDoi(LocalDate ngayQuaDoi) {
         this.ngayQuaDoi = ngayQuaDoi;
     }
 
-    public Date getNgayKhaiTu() {
+    public LocalDate getNgayKhaiTu() {
         return ngayKhaiTu;
     }
 
-    public void setNgayKhaiTu(Date ngayKhaiTu) {
+    public void setNgayKhaiTu(LocalDate ngayKhaiTu) {
         this.ngayKhaiTu = ngayKhaiTu;
     }
 }

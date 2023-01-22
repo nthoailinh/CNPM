@@ -1,14 +1,14 @@
 package QuanLyNhanKhau.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class CCCD {
     private String cccd;
     private int idNhanKhau;
-    private Date ngayCap;
+    private LocalDate ngayCap;
     private String noiCap;
 
-    public CCCD(String cccd, int idNhanKhau, Date ngayCap, String noiCap) {
+    public CCCD(String cccd, int idNhanKhau, LocalDate ngayCap, String noiCap) {
         this.cccd = cccd;
         this.idNhanKhau = idNhanKhau;
         this.ngayCap = ngayCap;
@@ -31,11 +31,11 @@ public class CCCD {
         this.idNhanKhau = idNhanKhau;
     }
 
-    public Date getNgayCap() {
+    public LocalDate getNgayCap() {
         return ngayCap;
     }
 
-    public void setNgayCap(Date ngayCap) {
+    public void setNgayCap(LocalDate ngayCap) {
         this.ngayCap = ngayCap;
     }
 
