@@ -15,19 +15,10 @@ public class khaituController {
     private Button btnLuu;
 
     @FXML
-    private TextField cccd;
+    private TextField cccdNguoiKhai;
 
     @FXML
-    private ToggleGroup gender;
-
-    @FXML
-    private RadioButton gioitinhNam;
-
-    @FXML
-    private RadioButton gioitinhNu;
-
-    @FXML
-    private TextField hoTen;
+    private TextField cccdNguoiMat;
 
     @FXML
     private DatePicker ngayKhaiTu;
@@ -36,17 +27,14 @@ public class khaituController {
     private DatePicker ngayQuaDoi;
 
     @FXML
-    private TextField nguoiKhaiTu;
-
-    @FXML
     private TextField nguyenNhan;
 
     @FXML
     void handleClicks(ActionEvent event) {
         if (event.getSource() == btnLuu) {
-            if (hoTen.getText().isEmpty() || cccd.getText().isEmpty() ||
+            if (cccdNguoiKhai.getText().isEmpty() || cccdNguoiMat.getText().isEmpty() ||
                     ngayQuaDoi.getValue() == null || ngayKhaiTu.getValue() == null ||
-                    nguyenNhan.getText().isEmpty() || nguoiKhaiTu.getText().isEmpty()) {
+                    nguyenNhan.getText().isEmpty()) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Thiếu thông tin");
