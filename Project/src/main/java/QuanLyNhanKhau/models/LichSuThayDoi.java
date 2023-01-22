@@ -1,11 +1,11 @@
 package QuanLyNhanKhau.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class LichSuThayDoi {
     private int id;
     private int idHoKhau;
-    private Date ngayThayDoi;
+    private LocalDate ngayThayDoi;
     private String bangThayDoi;
     private int idBangThayDoi;
     private String thongTinThayDoi;
@@ -13,7 +13,7 @@ public class LichSuThayDoi {
     private String thayDoiThanh;
     private String nguoiThucHien;
 
-    public LichSuThayDoi(int id, int idHoKhau, Date ngayThayDoi, String bangThayDoi, int idBangThayDoi, String thongTinThayDoi, String thayDoiTu, String thayDoiThanh, String nguoiThucHien) {
+    public LichSuThayDoi(int id, int idHoKhau, LocalDate ngayThayDoi, String bangThayDoi, int idBangThayDoi, String thongTinThayDoi, String thayDoiTu, String thayDoiThanh, String nguoiThucHien) {
         this.id = id;
         this.idHoKhau = idHoKhau;
         this.ngayThayDoi = ngayThayDoi;
@@ -41,11 +41,11 @@ public class LichSuThayDoi {
         this.idHoKhau = idHoKhau;
     }
 
-    public Date getNgayThayDoi() {
+    public LocalDate getNgayThayDoi() {
         return ngayThayDoi;
     }
 
-    public void setNgayThayDoi(Date ngayThayDoi) {
+    public void setNgayThayDoi(LocalDate ngayThayDoi) {
         this.ngayThayDoi = ngayThayDoi;
     }
 

@@ -1,12 +1,12 @@
 package QuanLyNhanKhau.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class NhanKhau {
     private int id;
     private int idHoKhau;
     private String hoTen;
-    private Date ngaySinh;
+    private LocalDate ngaySinh;
     private char gioiTinh;
     private String noiSinh;
     private String nguyenQuan;
@@ -15,7 +15,7 @@ public class NhanKhau {
     private String noiLamViec;
     private String quanHeVoiChuHo;
 
-    public NhanKhau(int id, int idHoKhau, String hoTen, Date ngaySinh, char gioiTinh, String noiSinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, String quanHeVoiChuHo) {
+    public NhanKhau(int id, int idHoKhau, String hoTen, LocalDate ngaySinh, char gioiTinh, String noiSinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, String quanHeVoiChuHo) {
         this.id = id;
         this.idHoKhau = idHoKhau;
         this.hoTen = hoTen;
@@ -53,11 +53,11 @@ public class NhanKhau {
         this.hoTen = hoTen;
     }
 
-    public Date getNgaySinh() {
+    public LocalDate getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
+    public void setNgaySinh(LocalDate ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 

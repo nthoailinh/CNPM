@@ -1,17 +1,17 @@
 package QuanLyNhanKhau.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class KhaiBao {
     private int id;
     private int idMacCOVID;
-    private Date ngayKhaiBao;
-    private Date thoiDiemTest;
+    private LocalDate ngayKhaiBao;
+    private LocalDate thoiDiemTest;
     private String hinhThucTest;
     private char ketQuaTest;
     private String tinhTrangSucKhoe;
 
-    public KhaiBao(int id, int idMacCOVID, Date ngayKhaiBao, Date thoiDiemTest, String hinhThucTest, char ketQuaTest, String tinhTrangSucKhoe) {
+    public KhaiBao(int id, int idMacCOVID, LocalDate ngayKhaiBao, LocalDate thoiDiemTest, String hinhThucTest, char ketQuaTest, String tinhTrangSucKhoe) {
         this.id = id;
         this.idMacCOVID = idMacCOVID;
         this.ngayKhaiBao = ngayKhaiBao;
@@ -37,19 +37,19 @@ public class KhaiBao {
         this.idMacCOVID = idMacCOVID;
     }
 
-    public Date getNgayKhaiBao() {
+    public LocalDate getNgayKhaiBao() {
         return ngayKhaiBao;
     }
 
-    public void setNgayKhaiBao(Date ngayKhaiBao) {
+    public void setNgayKhaiBao(LocalDate ngayKhaiBao) {
         this.ngayKhaiBao = ngayKhaiBao;
     }
 
-    public Date getThoiDiemTest() {
+    public LocalDate getThoiDiemTest() {
         return thoiDiemTest;
     }
 
-    public void setThoiDiemTest(Date thoiDiemTest) {
+    public void setThoiDiemTest(LocalDate thoiDiemTest) {
         this.thoiDiemTest = thoiDiemTest;
     }
 
