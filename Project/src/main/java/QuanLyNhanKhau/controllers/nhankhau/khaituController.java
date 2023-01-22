@@ -12,6 +12,12 @@ public class khaituController {
     private Button btnHuy;
 
     @FXML
+    private Button btnKiemTraNguoiKhai;
+
+    @FXML
+    private Button btnKiemTraNguoiMat;
+
+    @FXML
     private Button btnLuu;
 
     @FXML

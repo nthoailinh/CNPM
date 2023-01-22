@@ -15,6 +15,9 @@ public class dangkytamtruController {
     private Button btnHuy;
 
     @FXML
+    private Button btnKiemTra;
+
+    @FXML
     private Button btnXacNhan;
 
     @FXML
