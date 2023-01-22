@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="512.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="512.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.nhankhau.khaituController">
     <center>
         <GridPane prefWidth="1024.0" vgap="4.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -37,7 +36,7 @@
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField prefHeight="30.0" prefWidth="781.0" GridPane.columnIndex="1" />
+                <TextField fx:id="hoTen" prefHeight="30.0" prefWidth="781.0" GridPane.columnIndex="1" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính (*)" GridPane.rowIndex="1">
                     <font>
                         <Font size="14.0" />
@@ -45,7 +44,7 @@
                 </Text>
                 <HBox prefHeight="100.0" prefWidth="200.0" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <RadioButton mnemonicParsing="false" prefWidth="66.0" text="Nam">
+                        <RadioButton fx:id="gioitinhNam" mnemonicParsing="false" prefWidth="66.0" text="Nam">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -53,7 +52,7 @@
                                 <ToggleGroup fx:id="gender" />
                             </toggleGroup>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Nữ" toggleGroup="$gender">
+                        <RadioButton fx:id="gioitinhNu" mnemonicParsing="false" text="Nữ" toggleGroup="$gender">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -68,19 +67,19 @@
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <TextField fx:id="nguyenNhan" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Người khai tử (*)" GridPane.rowIndex="6">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                <TextField fx:id="nguoiKhaiTu" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                 <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CMT/CCCD (*)" GridPane.rowIndex="2">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField layoutX="208.0" layoutY="332.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="cccd" layoutX="208.0" layoutY="332.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Text layoutX="26.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày khai tử (*)" GridPane.rowIndex="4">
                     <font>
                         <Font size="14.0" />
@@ -91,8 +90,8 @@
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <DatePicker layoutX="208.0" layoutY="84.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker layoutX="208.0" layoutY="320.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <DatePicker fx:id="ngayQuaDoi" layoutX="208.0" layoutY="84.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="ngayKhaiTu" layoutX="208.0" layoutY="320.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             </children>
             <padding>
                 <Insets bottom="12.0" left="16.0" right="24.0" top="12.0" />
@@ -102,12 +101,12 @@
     <bottom>
         <HBox alignment="CENTER" prefHeight="52.0" prefWidth="1024.0" spacing="40.0" BorderPane.alignment="CENTER">
             <children>
-                <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" text="Lưu">
+                <Button fx:id="btnLuu" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="81.0" text="Lưu">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="81.0" text="Hủy">
+                <Button fx:id="btnHuy" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="81.0" text="Hủy">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -118,14 +117,4 @@
             </padding>
         </HBox>
     </bottom>
-    <top>
-        <Label alignment="CENTER" prefHeight="36.0" prefWidth="1024.0" text="Khai tử" textAlignment="CENTER" BorderPane.alignment="CENTER">
-            <font>
-                <Font size="30.0" />
-            </font>
-            <padding>
-                <Insets bottom="16.0" top="16.0" />
-            </padding>
-        </Label>
-    </top>
 </BorderPane>

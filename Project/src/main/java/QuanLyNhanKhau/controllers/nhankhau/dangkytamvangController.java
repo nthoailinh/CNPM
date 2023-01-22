@@ -1,7 +1,6 @@
 package QuanLyNhanKhau.controllers.nhankhau;
 
-import QuanLyNhanKhau.models.CCCD;
-import QuanLyNhanKhau.models.NhanKhau;
+import QuanLyNhanKhau.models.TamVang;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -36,11 +35,9 @@ public class dangkytamvangController {
     @FXML
     void handleClicks(ActionEvent event) {
         if (event.getSource() == btnXacNhan) {
-            if (soHoKhau.getText().isEmpty() || hoTen.getText().isEmpty() ||
-                    ngaySinh.getValue() == null || noiSinh.getText().isEmpty() ||
-                    nguyenQuan.getText().isEmpty() || danToc.getText().isEmpty() ||
-                    ngheNghiep.getText().isEmpty() || noiLamViec.getText().isEmpty() ||
-                    quanHeVoiChuHo.getText().isEmpty()) {
+            if (cccd.getText().isEmpty() || tuNgay.getValue() == null ||
+                    denNgay.getValue() == null || lyDo.getText().isEmpty() ||
+                    noiTamTru.getText().isEmpty()) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Thiếu thông tin");
@@ -49,15 +46,11 @@ public class dangkytamvangController {
                 alert.showAndWait();
                 return;
             }
-            char gioiTinh = gioiTinhNam.isSelected() ? 'M' : (gioiTinhNu.isSelected() ? 'F' : 'N');
-            // ID chưa xử lý, ai kết nối vs db xử lý nhé
-            NhanKhau nhankhau = new NhanKhau(10, Integer.parseInt(soHoKhau.getText()), hoTen.getText(),
-                    ngaySinh.getValue(), gioiTinh, noiSinh.getText(), nguyenQuan.getText(), danToc.getText(),
-                    ngheNghiep.getText(), noiLamViec.getText(), quanHeVoiChuHo.getText());
-            CCCD cccd_nhankhau = new CCCD(cccd.getText(), 10, ngayCap.getValue(), noiCap.getText());
+            int idNhanKhau = 10; // cái này từ cccd người dùng nhập vào => idNhanKhau, người làm DB làm cái này nhé
+            TamVang tamvang = new TamVang(10, idNhanKhau, tuNgay.getValue(), denNgay.getValue(),
+                                            noiTamTru.getText(), lyDo.getText());
         }
         // Tắt cửa sổ
         ((Node) event.getSource()).getScene().getWindow().hide();
     }
-
 }

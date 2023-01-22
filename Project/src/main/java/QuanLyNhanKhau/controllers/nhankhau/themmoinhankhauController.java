@@ -10,10 +10,10 @@ import javafx.scene.control.*;
 public class themmoinhankhauController {
 
     @FXML
-    private Button btnCancel;
+    private Button btnHuy;
 
     @FXML
-    private Button btnSave;
+    private Button btnLuu;
 
     @FXML
     private TextField cccd;
@@ -62,7 +62,7 @@ public class themmoinhankhauController {
 
     @FXML
     void handleClicks(ActionEvent event) {
-        if (event.getSource() == btnSave) {
+        if (event.getSource() == btnLuu) {
             if (soHoKhau.getText().isEmpty() || hoTen.getText().isEmpty() ||
                     ngaySinh.getValue() == null || noiSinh.getText().isEmpty() ||
                     nguyenQuan.getText().isEmpty() || danToc.getText().isEmpty() ||
@@ -86,5 +86,4 @@ public class themmoinhankhauController {
         // Tắt cửa sổ
         ((Node) event.getSource()).getScene().getWindow().hide();
     }
-
 }
