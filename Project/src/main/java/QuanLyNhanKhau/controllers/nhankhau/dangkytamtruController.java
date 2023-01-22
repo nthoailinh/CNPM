@@ -27,23 +27,26 @@ public class dangkytamtruController {
     private TextField lyDo;
 
     @FXML
+    private TextField maGiayTamTru;
+
+    @FXML
     private DatePicker tuNgay;
 
     @FXML
     void handleClicks(ActionEvent event) {
         if (event.getSource() == btnXacNhan) {
-            if (cccd.getText().isEmpty() || tuNgay.getValue() == null ||
-                    denNgay.getValue() == null || lyDo.getText().isEmpty()) {
+            if (cccd.getText().isEmpty() || maGiayTamTru.getText().isEmpty() ||
+                    tuNgay.getValue() == null || denNgay.getValue() == null || lyDo.getText().isEmpty()) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Thiếu thông tin");
-                alert.setHeaderText("Không thể lưu");
-                alert.setContentText("Vui lòng điền tất cả các trường");
+                alert.setTitle("Không thể lưu");
+                alert.setHeaderText("Thiếu thông tin");
+                alert.setContentText("Vui lòng điền tất cả các trường bắt buộc.\nCác trường có dấu (*) là các trường bắt buộc.");
                 alert.showAndWait();
                 return;
             }
             int idNhanKhau = 10; // cái này từ cccd người dùng nhập vào => idNhanKhau, người làm DB làm cái này nhé
-            TamTru tamtru = new TamTru(10, idNhanKhau, tuNgay.getValue(),
+            TamTru tamtru = new TamTru(10, idNhanKhau, maGiayTamTru.getText(), tuNgay.getValue(),
                                     denNgay.getValue(), lyDo.getText());
         }
         // Tắt cửa sổ

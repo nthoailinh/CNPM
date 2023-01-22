@@ -4,12 +4,15 @@ import java.time.LocalDate;
 
 public class KhaiTu {
     private int idNhanKhau;
+
+    private String maGiayKhaiTu;
     private String nguyenNhan;
     private LocalDate ngayQuaDoi;
     private LocalDate ngayKhaiTu;
 
-    public KhaiTu(int idNhanKhau, String nguyenNhan, LocalDate ngayQuaDoi, LocalDate ngayKhaiTu) {
+    public KhaiTu(int idNhanKhau, String maGiayKhaiTu, String nguyenNhan, LocalDate ngayQuaDoi, LocalDate ngayKhaiTu) {
         this.idNhanKhau = idNhanKhau;
+        this.maGiayKhaiTu = maGiayKhaiTu;
         this.nguyenNhan = nguyenNhan;
         this.ngayQuaDoi = ngayQuaDoi;
         this.ngayKhaiTu = ngayKhaiTu;
@@ -21,6 +24,14 @@ public class KhaiTu {
 
     public void setIdNhanKhau(int idNhanKhau) {
         this.idNhanKhau = idNhanKhau;
+    }
+
+    public String getMaGiayKhaiTu() {
+        return maGiayKhaiTu;
+    }
+
+    public void setMaGiayKhaiTu(String maGiayKhaiTu) {
+        this.maGiayKhaiTu = maGiayKhaiTu;
     }
 
     public String getNguyenNhan() {
