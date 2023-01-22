@@ -28,19 +28,19 @@
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD người khai">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD người khai (*)">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
                 <TextField fx:id="cccdNguoiKhai" prefHeight="32.0" prefWidth="578.0" GridPane.columnIndex="1" />
-                <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD người mất" GridPane.rowIndex="1">
+                <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD người mất (*)" GridPane.rowIndex="1">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
                 <TextField fx:id="cccdNguoiMat" layoutX="208.0" layoutY="332.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày qua đời" GridPane.rowIndex="3">
+                <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày qua đời (*)" GridPane.rowIndex="3">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -52,13 +52,13 @@
                     </font>
                 </Text>
             <DatePicker fx:id="ngayKhaiTu" layoutX="208.0" layoutY="320.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên nhân" GridPane.rowIndex="5">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên nhân (*)" GridPane.rowIndex="5">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
                 <TextField fx:id="nguyenNhan" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Text layoutX="26.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã giấy khai tử" GridPane.rowIndex="2">
+            <Text layoutX="26.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã giấy khai tử (*)" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
