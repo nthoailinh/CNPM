@@ -22,39 +22,39 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="969.0" minWidth="10.0" prefWidth="585.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên (*)">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên (*)" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh (*)" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <DatePicker fx:id="ngaySinh" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="hoTen" prefHeight="30.0" prefWidth="657.0" GridPane.columnIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính (*)" GridPane.rowIndex="2">
+            <DatePicker fx:id="ngaySinh" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="hoTen" prefHeight="30.0" prefWidth="657.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính (*)" GridPane.rowIndex="3">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <RadioButton fx:id="gioiTinhNam" mnemonicParsing="false" prefWidth="66.0" text="Nam">
                      <font>
@@ -74,66 +74,66 @@
                   <Insets left="4.0" top="10.0" />
                </padding>
             </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh (*)" GridPane.rowIndex="3">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh (*)" GridPane.rowIndex="4">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="noiSinh" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên quán (*)" GridPane.rowIndex="4">
+            <TextField fx:id="noiSinh" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên quán (*)" GridPane.rowIndex="5">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="nguyenQuan" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc (*)" GridPane.rowIndex="5">
+            <TextField fx:id="nguyenQuan" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc (*)" GridPane.rowIndex="6">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="danToc" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" GridPane.rowIndex="9">
+            <TextField fx:id="danToc" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" GridPane.rowIndex="10">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="ngheNghiep" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi làm việc" GridPane.rowIndex="10">
+            <TextField fx:id="ngheNghiep" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi làm việc" GridPane.rowIndex="11">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="noiLamViec" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <TextField fx:id="noiLamViec" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quan hệ với chủ hộ (*)" GridPane.rowIndex="12">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
             <TextField fx:id="quanHeVoiChuHo" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CMT/CCCD" GridPane.rowIndex="6">
+            <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CMT/CCCD" GridPane.rowIndex="7">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="cccd" layoutX="208.0" layoutY="332.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Text layoutX="26.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi cấp" GridPane.rowIndex="8">
+            <TextField fx:id="cccd" layoutX="208.0" layoutY="332.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Text layoutX="26.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi cấp" GridPane.rowIndex="9">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="noiCap" layoutX="208.0" layoutY="386.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày cấp" GridPane.rowIndex="7">
+            <TextField fx:id="noiCap" layoutX="208.0" layoutY="386.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày cấp" GridPane.rowIndex="8">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <DatePicker fx:id="ngayCap" layoutX="208.0" layoutY="84.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số hộ khẩu" GridPane.rowIndex="11">
+            <DatePicker fx:id="ngayCap" layoutX="208.0" layoutY="84.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã số hộ khẩu (*)">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="soHoKhau" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextField fx:id="soHoKhau" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" />
          </children>
          <padding>
             <Insets bottom="12.0" left="16.0" right="24.0" top="12.0" />

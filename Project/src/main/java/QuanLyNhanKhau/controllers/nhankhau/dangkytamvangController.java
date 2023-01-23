@@ -15,6 +15,9 @@ public class dangkytamvangController {
     private Button btnHuy;
 
     @FXML
+    private Button btnKiemTra;
+
+    @FXML
     private Button btnXacNhan;
 
     @FXML
@@ -27,6 +30,9 @@ public class dangkytamvangController {
     private TextField lyDo;
 
     @FXML
+    private TextField maGiayTamVang;
+
+    @FXML
     private TextField noiTamTru;
 
     @FXML
@@ -35,20 +41,20 @@ public class dangkytamvangController {
     @FXML
     void handleClicks(ActionEvent event) {
         if (event.getSource() == btnXacNhan) {
-            if (cccd.getText().isEmpty() || tuNgay.getValue() == null ||
-                    denNgay.getValue() == null || lyDo.getText().isEmpty() ||
-                    noiTamTru.getText().isEmpty()) {
+            if (cccd.getText().isEmpty() || maGiayTamVang.getText().isEmpty() ||
+                    tuNgay.getValue() == null || denNgay.getValue() == null ||
+                    lyDo.getText().isEmpty() || noiTamTru.getText().isEmpty()) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Thiếu thông tin");
-                alert.setHeaderText("Không thể lưu");
-                alert.setContentText("Vui lòng điền tất cả các trường");
+                alert.setTitle("Không thể lưu");
+                alert.setHeaderText("Thiếu thông tin");
+                alert.setContentText("Vui lòng điền tất cả các trường bắt buộc.\nCác trường có dấu (*) là các trường bắt buộc.");
                 alert.showAndWait();
                 return;
             }
             int idNhanKhau = 10; // cái này từ cccd người dùng nhập vào => idNhanKhau, người làm DB làm cái này nhé
-            TamVang tamvang = new TamVang(10, idNhanKhau, tuNgay.getValue(), denNgay.getValue(),
-                                            noiTamTru.getText(), lyDo.getText());
+            TamVang tamvang = new TamVang(10, idNhanKhau, maGiayTamVang.getText(), tuNgay.getValue(),
+                                    denNgay.getValue(), noiTamTru.getText(), lyDo.getText());
         }
         // Tắt cửa sổ
         ((Node) event.getSource()).getScene().getWindow().hide();

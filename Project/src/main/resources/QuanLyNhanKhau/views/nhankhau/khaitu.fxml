@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -22,41 +23,66 @@
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên nhân" GridPane.rowIndex="4">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD người khai (*)">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="nguyenNhan" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD người khai">
+            <FlowPane alignment="CENTER" hgap="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                      <TextField fx:id="cccdNguoiKhai" prefHeight="32.0" prefWidth="489.0" />
+                  <Button fx:id="btnKiemTraNguoiKhai" mnemonicParsing="false" prefHeight="32.0" text="Kiểm tra">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </FlowPane>
+                <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD người mất (*)" GridPane.rowIndex="1">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="cccdNguoiKhai" prefHeight="32.0" prefWidth="578.0" GridPane.columnIndex="1" />
-                <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD người mất" GridPane.rowIndex="1">
+            <FlowPane alignment="CENTER" hgap="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                      <TextField fx:id="cccdNguoiMat" prefHeight="32.0" prefWidth="489.0" />
+                  <Button fx:id="btnKiemTraNguoiMat" mnemonicParsing="false" prefHeight="32.0" text="Kiểm tra">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </FlowPane>
+                <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày qua đời (*)" GridPane.rowIndex="3">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="cccdNguoiMat" layoutX="208.0" layoutY="332.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Text layoutX="26.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày khai tử (*)" GridPane.rowIndex="3">
+                <DatePicker fx:id="ngayQuaDoi" layoutX="208.0" layoutY="84.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Text layoutX="26.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày khai tử (*)" GridPane.rowIndex="4">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày qua đời" GridPane.rowIndex="2">
+            <DatePicker fx:id="ngayKhaiTu" layoutX="208.0" layoutY="320.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên nhân (*)" GridPane.rowIndex="5">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <DatePicker fx:id="ngayQuaDoi" layoutX="208.0" layoutY="84.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker fx:id="ngayKhaiTu" layoutX="208.0" layoutY="320.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="nguyenNhan" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Text layoutX="26.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã giấy khai tử (*)" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="maGiayKhaiTu" layoutX="195.0" layoutY="114.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             </children>
             <padding>
                 <Insets bottom="12.0" left="16.0" right="24.0" top="12.0" />

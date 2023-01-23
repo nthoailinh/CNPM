@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -21,6 +22,7 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
@@ -32,31 +34,46 @@
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <DatePicker fx:id="tuNgay" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Từ ngày (*)" GridPane.rowIndex="1">
+            <FlowPane alignment="CENTER" hgap="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                      <TextField fx:id="cccd" prefHeight="32.0" prefWidth="484.0" />
+                  <Button fx:id="btnKiemTra" mnemonicParsing="false" prefHeight="32.0" text="Kiểm tra">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </FlowPane>
+            <Text layoutX="26.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã giấy tạm vắng (*)" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="maGiayTamVang" layoutX="184.0" layoutY="40.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Từ ngày (*)" GridPane.rowIndex="2">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="cccd" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" />
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú (*)" GridPane.rowIndex="3">
+                <DatePicker fx:id="tuNgay" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến ngày (*)" GridPane.rowIndex="3">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="lyDo" prefHeight="108.0" prefWidth="802.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Text layoutX="26.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do (*)" GridPane.rowIndex="4">
+                <DatePicker fx:id="denNgay" layoutX="208.0" layoutY="84.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi tạm trú (*)" GridPane.rowIndex="4">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <TextField fx:id="noiTamTru" layoutX="208.0" layoutY="386.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đến ngày (*)" GridPane.rowIndex="2">
+                <TextField fx:id="noiTamTru" layoutX="208.0" layoutY="386.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Text layoutX="26.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lý do (*)" GridPane.rowIndex="5">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-                <DatePicker fx:id="denNgay" layoutX="208.0" layoutY="84.0" prefHeight="30.0" prefWidth="806.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="lyDo" prefHeight="108.0" prefWidth="802.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             </children>
             <padding>
                 <Insets bottom="12.0" left="16.0" right="24.0" top="12.0" />

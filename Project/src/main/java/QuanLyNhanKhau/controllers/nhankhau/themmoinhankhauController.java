@@ -65,14 +65,14 @@ public class themmoinhankhauController {
         if (event.getSource() == btnLuu) {
             if (soHoKhau.getText().isEmpty() || hoTen.getText().isEmpty() ||
                     ngaySinh.getValue() == null || noiSinh.getText().isEmpty() ||
+                    (!gioiTinhNam.isSelected() && !gioiTinhNu.isSelected()) ||
                     nguyenQuan.getText().isEmpty() || danToc.getText().isEmpty() ||
-                    ngheNghiep.getText().isEmpty() || noiLamViec.getText().isEmpty() ||
                     quanHeVoiChuHo.getText().isEmpty()) {
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Thiếu thông tin");
-                alert.setHeaderText("Không thể lưu");
-                alert.setContentText("Vui lòng điền tất cả các trường");
+                alert.setTitle("Không thể lưu");
+                alert.setHeaderText("Thiếu thông tin");
+                alert.setContentText("Vui lòng điền tất cả các trường bắt buộc.\nCác trường có dấu (*) là các trường bắt buộc.");
                 alert.showAndWait();
                 return;
             }

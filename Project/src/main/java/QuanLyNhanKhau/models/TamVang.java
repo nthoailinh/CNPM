@@ -5,14 +5,16 @@ import java.time.LocalDate;
 public class TamVang {
     private int id;
     private int idNhanKhau;
+    private String maGiayTamVang;
     private LocalDate batDau;
     private LocalDate ketThuc;
     private String noiTamTru;
     private String lyDo;
 
-    public TamVang(int id, int idNhanKhau, LocalDate batDau, LocalDate ketThuc, String noiTamTru, String lyDo) {
+    public TamVang(int id, int idNhanKhau, String maGiayTamVang, LocalDate batDau, LocalDate ketThuc, String noiTamTru, String lyDo) {
         this.id = id;
         this.idNhanKhau = idNhanKhau;
+        this.maGiayTamVang = maGiayTamVang;
         this.batDau = batDau;
         this.ketThuc = ketThuc;
         this.noiTamTru = noiTamTru;
@@ -33,6 +35,14 @@ public class TamVang {
 
     public void setidNhanKhau(int idNhanKhau) {
         this.idNhanKhau = idNhanKhau;
+    }
+
+    public String getMaGiayTamVang() {
+        return maGiayTamVang;
+    }
+
+    public void setMaGiayTamVang(String maGiayTamVang) {
+        this.maGiayTamVang = maGiayTamVang;
     }
 
     public LocalDate getBatDau() {
