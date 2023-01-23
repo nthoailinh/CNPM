@@ -2,6 +2,7 @@ package QuanLyNhanKhau.controllers.nhankhau;
 
 import QuanLyNhanKhau.models.TamVang;
 import QuanLyNhanKhau.views.ChildWindows;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -45,25 +46,25 @@ public class dangkytamvangController {
     void handleClicks(ActionEvent event) throws IOException {
         if (event.getSource() == btnKiemTra) {
             ChildWindows.show("nhankhau/kiemtrathongtinnhankhau.fxml");
-        }
+        } else {
+            if (event.getSource() == btnXacNhan) {
+                if (cccd.getText().isEmpty() || maGiayTamVang.getText().isEmpty() ||
+                        tuNgay.getValue() == null || denNgay.getValue() == null ||
+                        lyDo.getText().isEmpty() || noiTamTru.getText().isEmpty()) {
 
-        if (event.getSource() == btnXacNhan) {
-            if (cccd.getText().isEmpty() || maGiayTamVang.getText().isEmpty() ||
-                    tuNgay.getValue() == null || denNgay.getValue() == null ||
-                    lyDo.getText().isEmpty() || noiTamTru.getText().isEmpty()) {
-
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Không thể lưu");
-                alert.setHeaderText("Thiếu thông tin");
-                alert.setContentText("Vui lòng điền tất cả các trường bắt buộc.\nCác trường có dấu (*) là các trường bắt buộc.");
-                alert.showAndWait();
-                return;
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Không thể lưu");
+                    alert.setHeaderText("Thiếu thông tin");
+                    alert.setContentText("Vui lòng điền tất cả các trường bắt buộc.\nCác trường có dấu (*) là các trường bắt buộc.");
+                    alert.showAndWait();
+                    return;
+                }
+                int idNhanKhau = 10; // cái này từ cccd người dùng nhập vào => idNhanKhau, người làm DB làm cái này nhé
+                TamVang tamvang = new TamVang(10, idNhanKhau, maGiayTamVang.getText(), tuNgay.getValue(),
+                        denNgay.getValue(), noiTamTru.getText(), lyDo.getText());
             }
-            int idNhanKhau = 10; // cái này từ cccd người dùng nhập vào => idNhanKhau, người làm DB làm cái này nhé
-            TamVang tamvang = new TamVang(10, idNhanKhau, maGiayTamVang.getText(), tuNgay.getValue(),
-                                    denNgay.getValue(), noiTamTru.getText(), lyDo.getText());
+            // Tắt cửa sổ
+            ((Node) event.getSource()).getScene().getWindow().hide();
         }
-        // Tắt cửa sổ
-        ((Node) event.getSource()).getScene().getWindow().hide();
     }
 }
