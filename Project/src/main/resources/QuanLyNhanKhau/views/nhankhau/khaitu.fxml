@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -34,31 +33,21 @@
                         <Font size="14.0" />
                     </font>
                 </Text>
-            <FlowPane alignment="CENTER" hgap="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <HBox alignment="CENTER" prefHeight="100.0" spacing="8.0" GridPane.columnIndex="1">
                <children>
-                      <TextField fx:id="cccdNguoiKhai" prefHeight="32.0" prefWidth="489.0" />
-                  <Button fx:id="btnKiemTraNguoiKhai" mnemonicParsing="false" prefHeight="32.0" text="Kiểm tra">
+                      <TextField fx:id="cccdNguoiKhai" prefHeight="32.0" prefWidth="598.0" />
+                  <Button fx:id="btnKiemTraNguoiKhai" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" text="Kiểm tra">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
                </children>
-            </FlowPane>
+            </HBox>
                 <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CCCD người mất (*)" GridPane.rowIndex="1">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Text>
-            <FlowPane alignment="CENTER" hgap="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                      <TextField fx:id="cccdNguoiMat" prefHeight="32.0" prefWidth="489.0" />
-                  <Button fx:id="btnKiemTraNguoiMat" mnemonicParsing="false" prefHeight="32.0" text="Kiểm tra">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-               </children>
-            </FlowPane>
                 <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày qua đời (*)" GridPane.rowIndex="3">
                     <font>
                         <Font size="14.0" />
@@ -83,6 +72,16 @@
                </font>
             </Text>
             <TextField fx:id="maGiayKhaiTu" layoutX="195.0" layoutY="114.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <HBox alignment="CENTER" prefHeight="100.0" spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                      <TextField fx:id="cccdNguoiMat" prefHeight="32.0" prefWidth="598.0" />
+                  <Button fx:id="btnKiemTraNguoiMat" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" text="Kiểm tra">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
             </children>
             <padding>
                 <Insets bottom="12.0" left="16.0" right="24.0" top="12.0" />

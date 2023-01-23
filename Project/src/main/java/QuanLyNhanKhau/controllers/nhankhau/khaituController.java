@@ -1,10 +1,13 @@
 package QuanLyNhanKhau.controllers.nhankhau;
 
 import QuanLyNhanKhau.models.KhaiTu;
+import QuanLyNhanKhau.views.ChildWindows;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+
+import java.io.IOException;
 
 public class khaituController {
 
@@ -39,7 +42,14 @@ public class khaituController {
     private TextField nguyenNhan;
 
     @FXML
-    void handleClicks(ActionEvent event) {
+    void handleClicks(ActionEvent event) throws IOException {
+        if (event.getSource() == btnKiemTraNguoiKhai) {
+            ChildWindows.show("nhankhau/kiemtrathongtinnhankhau.fxml");
+        }
+        if (event.getSource() == btnKiemTraNguoiMat) {
+            ChildWindows.show("nhankhau/kiemtrathongtinnhankhau.fxml");
+        }
+
         if (event.getSource() == btnLuu) {
             if (cccdNguoiKhai.getText().isEmpty() || cccdNguoiMat.getText().isEmpty() ||
                     maGiayKhaiTu.getText().isEmpty() || ngayQuaDoi.getValue() == null ||

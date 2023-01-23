@@ -1,6 +1,7 @@
 package QuanLyNhanKhau.controllers.nhankhau;
 
 import QuanLyNhanKhau.models.TamVang;
+import QuanLyNhanKhau.views.ChildWindows;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -8,6 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class dangkytamvangController {
 
@@ -39,7 +42,11 @@ public class dangkytamvangController {
     private DatePicker tuNgay;
 
     @FXML
-    void handleClicks(ActionEvent event) {
+    void handleClicks(ActionEvent event) throws IOException {
+        if (event.getSource() == btnKiemTra) {
+            ChildWindows.show("nhankhau/kiemtrathongtinnhankhau.fxml");
+        }
+
         if (event.getSource() == btnXacNhan) {
             if (cccd.getText().isEmpty() || maGiayTamVang.getText().isEmpty() ||
                     tuNgay.getValue() == null || denNgay.getValue() == null ||
