@@ -3,15 +3,15 @@ package QuanLyNhanKhau.models;
 public class HoKhau {
     private int id;
     private int soHoKhau;
-    private String tenChuHo;
+    private int idChuHo;
     private int soNha;
     private String ngo;
     private String duong;
 
-    public HoKhau(int id, int soHoKhau, String tenChuHo, int soNha, String ngo, String duong) {
+    public HoKhau(int id, int soHoKhau, int idChuHo, int soNha, String ngo, String duong) {
         this.id = id;
         this.soHoKhau = soHoKhau;
-        this.tenChuHo = tenChuHo;
+        this.idChuHo = idChuHo;
         this.soNha = soNha;
         this.ngo = ngo;
         this.duong = duong;
@@ -33,12 +33,12 @@ public class HoKhau {
         this.soHoKhau = soHoKhau;
     }
 
-    public String getTenChuHo() {
-        return tenChuHo;
+    public int getIdChuHo() {
+        return idChuHo;
     }
 
-    public void setTenChuHo(String tenChuHo) {
-        this.tenChuHo = tenChuHo;
+    public void setIdChuHo(int idChuHo) {
+        this.idChuHo = idChuHo;
     }
 
     public int getSoNha() {
