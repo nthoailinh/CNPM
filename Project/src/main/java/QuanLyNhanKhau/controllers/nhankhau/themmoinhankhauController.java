@@ -76,7 +76,7 @@ public class themmoinhankhauController {
                 alert.showAndWait();
                 return;
             }
-            char gioiTinh = gioiTinhNam.isSelected() ? 'M' : (gioiTinhNu.isSelected() ? 'F' : 'N');
+            String gioiTinh = gioiTinhNam.isSelected() ? "Nam" : (gioiTinhNu.isSelected() ? "Nữ" : "Không rõ");
             // ID chưa xử lý, ai kết nối vs db xử lý nhé
             NhanKhau nhankhau = new NhanKhau(10, Integer.parseInt(soHoKhau.getText()), hoTen.getText(),
                     ngaySinh.getValue(), gioiTinh, noiSinh.getText(), nguyenQuan.getText(), danToc.getText(),

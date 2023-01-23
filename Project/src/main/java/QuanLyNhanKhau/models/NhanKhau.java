@@ -7,7 +7,7 @@ public class NhanKhau {
     private int idHoKhau;
     private String hoTen;
     private LocalDate ngaySinh;
-    private char gioiTinh;
+    private String gioiTinh;
     private String noiSinh;
     private String nguyenQuan;
     private String danToc;
@@ -15,7 +15,7 @@ public class NhanKhau {
     private String noiLamViec;
     private String quanHeVoiChuHo;
 
-    public NhanKhau(int id, int idHoKhau, String hoTen, LocalDate ngaySinh, char gioiTinh, String noiSinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, String quanHeVoiChuHo) {
+    public NhanKhau(int id, int idHoKhau, String hoTen, LocalDate ngaySinh, String gioiTinh, String noiSinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, String quanHeVoiChuHo) {
         this.id = id;
         this.idHoKhau = idHoKhau;
         this.hoTen = hoTen;
@@ -61,11 +61,11 @@ public class NhanKhau {
         this.ngaySinh = ngaySinh;
     }
 
-    public char getGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(char gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 

@@ -126,7 +126,7 @@
             </Button>
          </children>
       </VBox>
-      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="766.0" stylesheets="@style.css">
+      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="766.0" stylesheets="@style.css" visible="false">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.0" minWidth="10.0" prefWidth="125.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="674.0" minWidth="10.0" prefWidth="639.0" />
@@ -216,7 +216,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0" visible="false">
+      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0">
          <top>
             <HBox prefHeight="45.0" prefWidth="786.0" BorderPane.alignment="CENTER">
                <children>
@@ -227,13 +227,13 @@
             </HBox>
          </top>
          <center>
-            <TableView prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="tableNhanKhau" prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="64.0" text="ID" />
-                <TableColumn prefWidth="176.0" text="Họ tên" />
-                  <TableColumn prefWidth="118.0" text="Ngày sinh" />
-                  <TableColumn prefWidth="88.0" text="Giới tính" />
-                  <TableColumn prefWidth="200.0" text="Địa chỉ" />
+                <TableColumn fx:id="colID" prefWidth="64.0" text="ID" />
+                <TableColumn fx:id="colHoTen" prefWidth="176.0" text="Họ tên" />
+                  <TableColumn fx:id="colNgaySinh" prefWidth="118.0" text="Ngày sinh" />
+                  <TableColumn fx:id="colGioiTinh" prefWidth="88.0" text="Giới tính" />
+                  <TableColumn fx:id="colDiaChi" prefWidth="200.0" text="Địa chỉ" />
               </columns>
             </TableView>
          </center>
