@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -34,16 +33,16 @@
                         <Font size="14.0" />
                     </font>
                 </Text>
-            <FlowPane alignment="CENTER" hgap="8.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <HBox alignment="CENTER" prefHeight="100.0" spacing="8.0" GridPane.columnIndex="1">
                <children>
-                      <TextField fx:id="cccd" prefHeight="32.0" prefWidth="484.0" />
-                  <Button fx:id="btnKiemTra" mnemonicParsing="false" prefHeight="32.0" text="Kiểm tra">
+                      <TextField fx:id="cccd" prefHeight="32.0" prefWidth="600.0" />
+                  <Button fx:id="btnKiemTra" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" text="Kiểm tra">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
                </children>
-            </FlowPane>
+            </HBox>
             <Text layoutX="26.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã giấy tạm vắng (*)" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
