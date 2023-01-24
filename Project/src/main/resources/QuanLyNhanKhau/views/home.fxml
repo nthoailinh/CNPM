@@ -126,7 +126,7 @@
             </Button>
          </children>
       </VBox>
-      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="766.0" stylesheets="@style.css" visible="false">
+      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="766.0" stylesheets="@style.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.0" minWidth="10.0" prefWidth="125.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="674.0" minWidth="10.0" prefWidth="639.0" />
@@ -145,31 +145,37 @@
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
-                  <Label prefHeight="57.0" prefWidth="638.0" text="     Nhân khẩu có trên địa bàn:">
+                  <Label prefHeight="57.0" prefWidth="638.0" text="Nhân khẩu có trên địa bàn:">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="SoLuongNhanKhau" prefHeight="101.0" prefWidth="207.0" text=" 100">
+                  <Label fx:id="SoLuongNhanKhau" prefHeight="101.0" prefWidth="207.0" text="100">
                      <font>
                         <Font size="60.0" />
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets left="32.0" />
+               </padding>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label prefHeight="57.0" prefWidth="638.0" text="     Hộ khẩu có trên địa bàn:">
+                  <Label prefHeight="57.0" prefWidth="638.0" text="Hộ khẩu có trên địa bàn:">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="SoLuongHoKhau" prefHeight="101.0" prefWidth="207.0" text=" 10">
+                  <Label fx:id="SoLuongHoKhau" prefHeight="101.0" prefWidth="207.0" text="10">
                      <font>
                         <Font size="60.0" />
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets left="32.0" />
+               </padding>
             </VBox>
             <ImageView fitHeight="93.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                <image>
@@ -183,31 +189,37 @@
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Label prefHeight="57.0" prefWidth="638.0" text="     Nhân khẩu tạm trú:">
+                  <Label prefHeight="57.0" prefWidth="638.0" text="Nhân khẩu tạm trú:">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="SoLuongTamTru" prefHeight="101.0" prefWidth="207.0" text=" 10">
+                  <Label fx:id="SoLuongTamTru" prefHeight="101.0" prefWidth="207.0" text="10">
                      <font>
                         <Font size="60.0" />
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets left="32.0" />
+               </padding>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <Label prefHeight="57.0" prefWidth="638.0" text="     Nhân khẩu tạm vắng:">
+                  <Label prefHeight="57.0" prefWidth="638.0" text="Nhân khẩu tạm vắng:">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="SoLuongTamVang" prefHeight="101.0" prefWidth="207.0" text=" 10">
+                  <Label fx:id="SoLuongTamVang" prefHeight="101.0" prefWidth="207.0" text="10">
                      <font>
                         <Font size="60.0" />
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets left="32.0" />
+               </padding>
             </VBox>
             <ImageView fitHeight="108.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                <image>
@@ -216,7 +228,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0">
+      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0" visible="false">
          <top>
             <HBox prefHeight="45.0" prefWidth="786.0" BorderPane.alignment="CENTER">
                <children>

@@ -1,5 +1,6 @@
 package QuanLyNhanKhau.controllers;
 
+import QuanLyNhanKhau.services.trangchuDB;
 import QuanLyNhanKhau.views.ChildWindows;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +15,9 @@ import QuanLyNhanKhau.models.NhanKhau;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable{
@@ -115,6 +118,15 @@ public class HomeController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBunle) {
+        try {
+            Map<String, Integer> map = trangchuDB.getQuantity();
+            SoLuongNhanKhau.setText(map.get("NhanKhau").toString());
+            SoLuongHoKhau.setText(map.get("HoKhau").toString());
+            SoLuongTamTru.setText(map.get("TamTru").toString());
+            SoLuongTamVang.setText(map.get("TamVang").toString());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         ObservableList<NhanKhau> listNK = FXCollections.observableArrayList(
                 new NhanKhau(0, 1, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ"),
                 new NhanKhau(1, 2, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ"),
