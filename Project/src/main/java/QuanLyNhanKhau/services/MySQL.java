@@ -2,7 +2,7 @@ package QuanLyNhanKhau.services;
 
 import java.sql.*;
 
-public class MySQLConnection {
+public class MySQL {
     public static Connection getConnection() {
         try {
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/quan_ly_nhan_khau_1",
