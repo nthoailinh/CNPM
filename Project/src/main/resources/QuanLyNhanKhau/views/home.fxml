@@ -241,11 +241,11 @@
          <center>
             <TableView fx:id="tableNhanKhau" prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="colID" prefWidth="64.0" text="ID" />
-                <TableColumn fx:id="colHoTen" prefWidth="176.0" text="Họ tên" />
-                  <TableColumn fx:id="colNgaySinh" prefWidth="118.0" text="Ngày sinh" />
-                  <TableColumn fx:id="colGioiTinh" prefWidth="88.0" text="Giới tính" />
-                  <TableColumn fx:id="colDiaChi" prefWidth="200.0" text="Địa chỉ" />
+                <TableColumn fx:id="IDNK" prefWidth="64.0" text="ID" />
+                <TableColumn fx:id="hoTenNK" prefWidth="176.0" text="Họ tên" />
+                  <TableColumn fx:id="ngaySinhNK" prefWidth="118.0" text="Ngày sinh" />
+                  <TableColumn fx:id="gioiTinhNK" prefWidth="88.0" text="Giới tính" />
+                  <TableColumn fx:id="diaChiNK" prefWidth="200.0" text="Địa chỉ" />
               </columns>
             </TableView>
          </center>
@@ -280,11 +280,11 @@
             </HBox>
          </top>
          <center>
-            <TableView prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="tableHoKhau" prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
                <columns>
-                  <TableColumn prefWidth="144.0" text="Mã hộ khẩu" />
-                  <TableColumn prefWidth="206.0" text="Họ tên chủ hộ" />
-                  <TableColumn prefWidth="295.0" text="Địa chỉ" />
+                  <TableColumn fx:id="maHK" prefWidth="144.0" text="Mã hộ khẩu" />
+                  <TableColumn fx:id="hoTenChuHK" prefWidth="206.0" text="Họ tên chủ hộ" />
+                  <TableColumn fx:id="diaChiHK" prefWidth="295.0" text="Địa chỉ" />
                </columns>
             </TableView>
          </center>
