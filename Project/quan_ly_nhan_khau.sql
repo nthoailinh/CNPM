@@ -230,3 +230,6 @@ ALTER TABLE TamVang ADD CONSTRAINT TamVang_NhanKhau FOREIGN KEY TamVang_NhanKhau
     REFERENCES NhanKhau (id);
 
 -- End of file.
+
+
+show tables
