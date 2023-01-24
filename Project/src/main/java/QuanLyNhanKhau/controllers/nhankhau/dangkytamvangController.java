@@ -1,7 +1,7 @@
 package QuanLyNhanKhau.controllers.nhankhau;
 
-import QuanLyNhanKhau.models.TamVang;
-import QuanLyNhanKhau.views.ChildWindows;
+import QuanLyNhanKhau.services.MySQL;
+import QuanLyNhanKhau.services.Update;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +11,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class dangkytamvangController {
 
@@ -43,9 +46,10 @@ public class dangkytamvangController {
     private DatePicker tuNgay;
 
     @FXML
-    void handleClicks(ActionEvent event) throws IOException {
+    void handleClicks(ActionEvent event) throws SQLException {
+        int idNhanKhau = -2;
         if (event.getSource() == btnKiemTra) {
-            ChildWindows.show("nhankhau/kiemtrathongtinnhankhau.fxml");
+            idNhanKhau = checkCCCD();
         } else {
             if (event.getSource() == btnXacNhan) {
                 if (cccd.getText().isEmpty() || maGiayTamVang.getText().isEmpty() ||
@@ -59,12 +63,50 @@ public class dangkytamvangController {
                     alert.showAndWait();
                     return;
                 }
-                int idNhanKhau = 10; // cái này từ cccd người dùng nhập vào => idNhanKhau, người làm DB làm cái này nhé
-                TamVang tamvang = new TamVang(10, idNhanKhau, maGiayTamVang.getText(), tuNgay.getValue(),
-                        denNgay.getValue(), noiTamTru.getText(), lyDo.getText());
+                if (idNhanKhau == -2) {
+                    idNhanKhau = checkCCCD();
+                }
+                if (idNhanKhau != -1) {
+                    Update update = new Update();
+                    update.TamVang(idNhanKhau, maGiayTamVang.getText(), tuNgay.getValue(),
+                            denNgay.getValue(), noiTamTru.getText(), lyDo.getText());
+                    // Tắt cửa sổ
+                    ((Node) event.getSource()).getScene().getWindow().hide();
+                }
             }
-            // Tắt cửa sổ
-            ((Node) event.getSource()).getScene().getWindow().hide();
+            else if (event.getSource() == btnHuy) {
+                // Tắt cửa sổ
+                ((Node) event.getSource()).getScene().getWindow().hide();
+            }
+        }
+    }
+
+    public int checkCCCD() throws SQLException {
+        Connection connection = MySQL.getConnection();
+        // Tìm id nhân khẩu đăng ký tạm vắng
+        PreparedStatement pstmt_nhankhau = null;
+        pstmt_nhankhau = connection.prepareStatement("SELECT * FROM NhanKhau JOIN CCCD ON NhanKhau.id = CCCD.idNhanKhau WHERE cccd = ?");
+        pstmt_nhankhau.setString(1, cccd.getText());
+        ResultSet rs = pstmt_nhankhau.executeQuery();
+        int idNhanKhau = -1;
+        if (rs.next()) {
+            idNhanKhau = rs.getInt("idNhanKhau");
+            System.out.println(idNhanKhau);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Số CMT/CCCD hợp lệ");
+            alert.setHeaderText(null);
+            String hoTen = rs.getString("hoTen");
+            alert.setContentText("Tìm thấy nhân khẩu " + hoTen + " có số CMT/CCCD " + cccd.getText());
+            alert.showAndWait();
+            return idNhanKhau;
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Số CMT/CCCD không hợp lệ");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng kiểm tra và nhập lại số CMT/CCCD.");
+            alert.showAndWait();
+            return idNhanKhau;
         }
     }
 }
