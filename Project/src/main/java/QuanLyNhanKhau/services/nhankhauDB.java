@@ -16,22 +16,23 @@ public class nhankhauDB {
         ObservableList<NhanKhau> list = FXCollections.observableArrayList();
         Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from NhanKhau");
-        while(rs.next()) {
+        ResultSet rsNhanKhau = stmt.executeQuery("SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id");
+        while(rsNhanKhau.next()) {
             NhanKhau nhanKhau = new NhanKhau();
-            nhanKhau.setId(rs.getInt("id"));
-            nhanKhau.setHoTen(rs.getString("hoTen"));
-            nhanKhau.setNgaySinh(LocalDate.parse(rs.getString("ngaySinh")));
-            nhanKhau.setGioiTinh(rs.getString("gioiTinh"));
-            nhanKhau.setNoiSinh(rs.getString("noiSinh"));
-            nhanKhau.setNguyenQuan(rs.getString("nguyenQuan"));
-            nhanKhau.setDanToc(rs.getString("danToc"));
-            nhanKhau.setNgheNghiep(rs.getString("ngheNghiep"));
-            nhanKhau.setNoiLamViec(rs.getString("noiLamViec"));
-            nhanKhau.setQuanHeVoiChuHo(rs.getString("quanHeVoiChuHo"));
+            nhanKhau.setId(rsNhanKhau.getInt("id"));
+            nhanKhau.setHoTen(rsNhanKhau.getString("hoTen"));
+            nhanKhau.setNgaySinh(LocalDate.parse(rsNhanKhau.getString("ngaySinh")));
+            nhanKhau.setGioiTinh(rsNhanKhau.getString("gioiTinh"));
+            nhanKhau.setNoiSinh(rsNhanKhau.getString("noiSinh"));
+            nhanKhau.setNguyenQuan(rsNhanKhau.getString("nguyenQuan"));
+            nhanKhau.setDanToc(rsNhanKhau.getString("danToc"));
+            nhanKhau.setNgheNghiep(rsNhanKhau.getString("ngheNghiep"));
+            nhanKhau.setNoiLamViec(rsNhanKhau.getString("noiLamViec"));
+            nhanKhau.setQuanHeVoiChuHo(rsNhanKhau.getString("quanHeVoiChuHo"));
+
             list.add(nhanKhau);
         }
-        rs.close();
+        rsNhanKhau.close();
         stmt.close();
         connection.close();
         return list;
