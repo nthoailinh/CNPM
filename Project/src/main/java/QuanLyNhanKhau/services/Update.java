@@ -26,8 +26,19 @@ public class Update {
 
     }
 
-    public void KhaiTu() throws SQLException {
-
+    public PreparedStatement KhaiTu(int idNhanKhau, String maGiayKhaiTu, String nguyenNhan, Object ngayQuaDoi, Object ngayKhaiTu,
+                                    int idNguoiKhai) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO KhaiTu (`idNhanKhau`, `maGiayKhaiTu`, "
+                        + "`nguyenNhan`, `ngayQuaDoi`, `ngayKhaiTu`, `idNguoiKhai`) VALUES (?, ?, ?, ?, ?, ?)",
+                    Statement.RETURN_GENERATED_KEYS);
+            pstmt.setInt(1, idNhanKhau);
+            pstmt.setString(2, maGiayKhaiTu);
+            pstmt.setObject(3, nguyenNhan);
+            pstmt.setObject(4, ngayQuaDoi);
+            pstmt.setObject(5, ngayKhaiTu);
+            pstmt.setInt(6, idNguoiKhai);
+            pstmt.executeUpdate();
+            return pstmt;
     }
 
     public void LichSuThayDoi() throws SQLException {
