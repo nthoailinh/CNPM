@@ -62,7 +62,7 @@ public class khaituController {
                     return;
                 }
                 int idNhanKhau = 10; // cái này từ cccd người dùng nhập vào => idNhanKhau, người làm DB làm cái này nhé
-                KhaiTu khaitu = new KhaiTu(idNhanKhau, maGiayKhaiTu.getText(), nguyenNhan.getText(), ngayQuaDoi.getValue(), ngayKhaiTu.getValue());
+//                KhaiTu khaitu = new KhaiTu(idNhanKhau, maGiayKhaiTu.getText(), nguyenNhan.getText(), ngayQuaDoi.getValue(), ngayKhaiTu.getValue());
             }
             // Tắt cửa sổ
             ((Node) event.getSource()).getScene().getWindow().hide();
