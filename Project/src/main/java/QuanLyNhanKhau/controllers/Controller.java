@@ -118,15 +118,6 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBunle) {
-<<<<<<< HEAD:Project/src/main/java/QuanLyNhanKhau/controllers/Controller.java
-        TrangChuController trangchuController = new TrangChuController(SoLuongHoKhau, SoLuongNhanKhau, SoLuongTamTru, SoLuongTamVang);
-        trangchuController.initializeTrangChu();
-        ObservableList<NhanKhau> listNK = FXCollections.observableArrayList(
-                new NhanKhau(0, 1, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ"),
-                new NhanKhau(1, 2, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ"),
-                new NhanKhau(2, 3, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ")
-        );
-=======
         try {
             Map<String, Integer> map = trangchuDB.getQuantity();
             SoLuongNhanKhau.setText(map.get("NhanKhau").toString());
@@ -144,7 +135,6 @@ public class Controller implements Initializable{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
->>>>>>> origin/main:Project/src/main/java/QuanLyNhanKhau/controllers/HomeController.java
         colID.setCellValueFactory(new PropertyValueFactory<NhanKhau, Integer>("id"));
         colHoTen.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("hoTen"));
         colNgaySinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, LocalDate>("ngaySinh"));

@@ -91,7 +91,7 @@ public class themmoinhankhauController {
             PreparedStatement pstmt = connection.prepareStatement("INSERT INTO CCCD (cccd, idNhanKhau, ngayCap, noiCap) VALUES (?, ?, ?, ?)");
             // Set the values from variables
             pstmt.setString(1, cccd.getText());
-            pstmt.setInt(2, idNhanKhau);
+//            pstmt.setInt(2, idNhanKhau);
             pstmt.setObject(3, ngayCap.getValue());
             pstmt.setString(4, noiCap.getText());
 
