@@ -15,6 +15,7 @@ public class NhanKhau {
     private String noiLamViec;
     private String quanHeVoiChuHo;
 
+    public NhanKhau() {}
     public NhanKhau(int id, int idHoKhau, String hoTen, LocalDate ngaySinh, String gioiTinh, String noiSinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, String quanHeVoiChuHo) {
         this.id = id;
         this.idHoKhau = idHoKhau;
