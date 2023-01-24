@@ -60,7 +60,18 @@ public class Update {
 
     }
 
-    public void TamVang() throws SQLException {
-
+    public PreparedStatement TamVang(int idNhanKhau, String maGiayTamVang, Object batDau, Object ketThuc,
+                                     String noiTamTru, String lyDo) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO TamVang (`idNhanKhau`, `maGiayTamVang`, "
+                + "`batDau`, `ketThuc`, `noiTamTru`, `lyDo`) VALUES (?, ?, ?, ?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, idNhanKhau);
+        pstmt.setString(2, maGiayTamVang);
+        pstmt.setObject(3, batDau);
+        pstmt.setObject(4, ketThuc);
+        pstmt.setString(5, noiTamTru);
+        pstmt.setString(6, lyDo);
+        pstmt.executeUpdate();
+        return pstmt;
     }
 }
