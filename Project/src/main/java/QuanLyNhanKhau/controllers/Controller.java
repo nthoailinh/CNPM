@@ -1,6 +1,7 @@
 package QuanLyNhanKhau.controllers;
 
 import QuanLyNhanKhau.services.nhankhauDB;
+import QuanLyNhanKhau.services.hokhauDB;
 import QuanLyNhanKhau.services.trangchuDB;
 import QuanLyNhanKhau.views.ChildWindows;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
 import QuanLyNhanKhau.models.NhanKhau;
+import QuanLyNhanKhau.models.HoKhau;
 
 import java.io.IOException;
 import java.net.URL;
@@ -95,19 +97,31 @@ public class Controller implements Initializable{
     private TableView<NhanKhau> tableNhanKhau;
 
     @FXML
-    private TableColumn<NhanKhau, String> colDiaChi;
+    private TableColumn<NhanKhau, String> diaChiNK;
 
     @FXML
-    private TableColumn<NhanKhau, String> colGioiTinh;
+    private TableColumn<NhanKhau, String> gioiTinhNK;
 
     @FXML
-    private TableColumn<NhanKhau, String> colHoTen;
+    private TableColumn<NhanKhau, String> hoTenNK;
 
     @FXML
-    private TableColumn<NhanKhau, Integer> colID;
+    private TableColumn<NhanKhau, Integer> IDNK;
 
     @FXML
-    private TableColumn<NhanKhau, LocalDate> colNgaySinh;
+    private TableColumn<NhanKhau, LocalDate> ngaySinhNK;
+
+    @FXML
+    private TableView<HoKhau> tableHoKhau;
+
+    @FXML
+    private TableColumn<HoKhau, String> maHK;
+
+    @FXML
+    private TableColumn<HoKhau, String> hoTenChuHK;
+
+    @FXML
+    private TableColumn<HoKhau, String> diaChiHK;
 
     void resetVisible(){
         contentTrangChu.setVisible(false);
@@ -135,12 +149,24 @@ public class Controller implements Initializable{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        colID.setCellValueFactory(new PropertyValueFactory<NhanKhau, Integer>("id"));
-        colHoTen.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("hoTen"));
-        colNgaySinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, LocalDate>("ngaySinh"));
-        colGioiTinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("gioiTinh"));
-        colDiaChi.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("idHoKhau"));
+        IDNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, Integer>("id"));
+        hoTenNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("hoTen"));
+        ngaySinhNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, LocalDate>("ngaySinh"));
+        gioiTinhNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("gioiTinh"));
+        diaChiNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("idHoKhau"));
         tableNhanKhau.setItems(listNK);
+
+        hokhauDB hokhauinDB = new hokhauDB();
+        ObservableList<HoKhau> listHK = null;
+        try {
+            listHK = hokhauinDB.getListHoKhau();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        maHK.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("id"));
+        hoTenChuHK.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("soHoKhau"));
+        diaChiHK.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("duong"));
+        tableHoKhau.setItems(listHK);
     }
     @FXML
     void handleClicksSidebar(ActionEvent event) {
