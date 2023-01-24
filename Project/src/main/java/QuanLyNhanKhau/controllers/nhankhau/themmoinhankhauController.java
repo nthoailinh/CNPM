@@ -2,6 +2,7 @@ package QuanLyNhanKhau.controllers.nhankhau;
 
 import QuanLyNhanKhau.models.CCCD;
 import QuanLyNhanKhau.models.NhanKhau;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
