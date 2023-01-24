@@ -27,7 +27,7 @@ public class TrangChuController {
         this.SoLuongTamVang = SoLuongTamVang;
     }
 
-    public void initializeTrangChu(){
+    public void initialize(){
         try {
             Map<String, Integer> map = trangchuDB.getQuantity();
             SoLuongNhanKhau.setText(map.get("NhanKhau").toString());

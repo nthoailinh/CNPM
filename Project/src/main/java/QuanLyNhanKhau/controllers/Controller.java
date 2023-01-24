@@ -1,5 +1,7 @@
 package QuanLyNhanKhau.controllers;
 
+import QuanLyNhanKhau.controllers.tables.HoKhauTable;
+import QuanLyNhanKhau.controllers.tables.NhanKhauTable;
 import QuanLyNhanKhau.services.nhankhauDB;
 import QuanLyNhanKhau.services.hokhauDB;
 import QuanLyNhanKhau.services.trangchuDB;
@@ -94,34 +96,34 @@ public class Controller implements Initializable{
     private GridPane contentTrangChu;
 
     @FXML
-    private TableView<NhanKhau> tableNhanKhau;
+    private TableView<NhanKhauTable> tableNhanKhau;
 
     @FXML
-    private TableColumn<NhanKhau, String> diaChiNK;
+    private TableColumn<NhanKhauTable, String> diaChiNK;
 
     @FXML
-    private TableColumn<NhanKhau, String> gioiTinhNK;
+    private TableColumn<NhanKhauTable, String> gioiTinhNK;
 
     @FXML
-    private TableColumn<NhanKhau, String> hoTenNK;
+    private TableColumn<NhanKhauTable, String> hoTenNK;
 
     @FXML
-    private TableColumn<NhanKhau, Integer> IDNK;
+    private TableColumn<NhanKhauTable, Integer> IDNK;
 
     @FXML
-    private TableColumn<NhanKhau, LocalDate> ngaySinhNK;
+    private TableColumn<NhanKhauTable, LocalDate> ngaySinhNK;
 
     @FXML
-    private TableView<HoKhau> tableHoKhau;
+    private TableView<HoKhauTable> tableHoKhau;
 
     @FXML
-    private TableColumn<HoKhau, String> maHK;
+    private TableColumn<HoKhauTable, String> maHK;
 
     @FXML
-    private TableColumn<HoKhau, String> hoTenChuHK;
+    private TableColumn<HoKhauTable, String> hoTenChuHK;
 
     @FXML
-    private TableColumn<HoKhau, String> diaChiHK;
+    private TableColumn<HoKhauTable, String> diaChiHK;
 
     void resetVisible(){
         contentTrangChu.setVisible(false);
@@ -132,41 +134,19 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBunle) {
+        TrangChuController trangchuController = new TrangChuController(SoLuongHoKhau, SoLuongNhanKhau,
+                SoLuongTamTru, SoLuongTamVang);
+        trangchuController.initialize();
+
+        NhanKhauController nhanKhauController = new NhanKhauController(IDNK, hoTenNK, ngaySinhNK, gioiTinhNK, diaChiNK, tableNhanKhau);
         try {
-            Map<String, Integer> map = trangchuDB.getQuantity();
-            SoLuongNhanKhau.setText(map.get("NhanKhau").toString());
-            SoLuongHoKhau.setText(map.get("HoKhau").toString());
-            SoLuongTamTru.setText(map.get("TamTru").toString());
-            SoLuongTamVang.setText(map.get("TamVang").toString());
+            nhanKhauController.initialize();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        nhankhauDB nhankhauinDB = new nhankhauDB();
-        ObservableList<NhanKhau> listNK = null;
-        try {
-            listNK = nhankhauinDB.getListNhanKhau();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        IDNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, Integer>("id"));
-        hoTenNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("hoTen"));
-        ngaySinhNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, LocalDate>("ngaySinh"));
-        gioiTinhNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("gioiTinh"));
-        diaChiNK.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("idHoKhau"));
-        tableNhanKhau.setItems(listNK);
-
-        hokhauDB hokhauinDB = new hokhauDB();
-        ObservableList<HoKhau> listHK = null;
-        try {
-            listHK = hokhauinDB.getListHoKhau();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        maHK.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("id"));
-        hoTenChuHK.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("soHoKhau"));
-        diaChiHK.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("duong"));
-        tableHoKhau.setItems(listHK);
+        HoKhauController hokhauController = new HoKhauController(maHK, hoTenChuHK, diaChiHK, tableHoKhau);
+        hokhauController.initialize();
     }
     @FXML
     void handleClicksSidebar(ActionEvent event) {
