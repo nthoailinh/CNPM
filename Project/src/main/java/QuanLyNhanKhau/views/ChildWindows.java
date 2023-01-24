@@ -9,7 +9,7 @@ import java.io.IOException;
 public class ChildWindows {
     public static void show(String link) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(QuanLyNhanKhau.views.ChildWindows.class.getResource(link));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+        Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();
