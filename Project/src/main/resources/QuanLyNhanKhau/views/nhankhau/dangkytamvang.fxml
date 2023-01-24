@@ -35,7 +35,7 @@
                 </Text>
             <HBox alignment="CENTER" prefHeight="100.0" spacing="8.0" GridPane.columnIndex="1">
                <children>
-                      <TextField fx:id="cccd" prefHeight="32.0" prefWidth="600.0" />
+                      <TextField fx:id="cccd" prefHeight="32.0" prefWidth="482.0" />
                   <Button fx:id="btnKiemTra" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" text="Kiểm tra">
                      <font>
                         <Font size="14.0" />
