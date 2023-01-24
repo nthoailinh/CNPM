@@ -148,7 +148,7 @@ CREATE TABLE NhanKhau (
 
 INSERT INTO `NhanKhau` (`id`, `idHoKhau`, `hoTen`, `ngaySinh`, `gioiTinh`, `noiSinh`, `nguyenQuan`, `danToc`, `ngheNghiep`, `noiLamViec`, `quanHeVoiChuHo`) VALUES
 (1, 1, 'Trinh Văn An', '1990-12-07', 'Nam', 'Thái Bình', 'Hà Nội', 'Kinh', 'Giáo Viên', 'Trường THCS Chu Văn An', 'Chủ hộ'),
-(2, 2, 'Trần Thanh Duyên', '1997-12-23', 'Nữ', 'Hưng Yên', 'Hải Phòng', 'Kinh', 'Nhân viên văn phòng', 'Công ty ABC', 'Vợ'),
+(2, 2, 'Trần Thanh Duyên', '1997-12-23', 'Nữ', 'Hưng Yên', 'Hải Phòng', 'Kinh', 'Nhân viên văn phòng', 'Công ty ABC', 'Chủ hộ'),
 (3, 5, 'Nguyễn Minh Quân', '1995-05-31', 'Nam', 'Hải Phòng', 'Hà Nội', 'Kinh', 'Kỹ sư', 'Viettel', 'Chủ hộ'),
 (4, 3, 'Nguyễn Tiến Dũng', '1964-06-03', 'Nam', 'Thái Bình', 'Hải Dương', 'Kinh', 'Phó giám đốc', 'Công ty EXE', 'Chủ hộ'),
 (5, 3, 'Vũ Mỹ Linh', '1965-12-06', 'Nữ', 'Hà Nội', 'Hà Nội', 'Kinh', 'Nội trợ', 'Tại nhà', 'Vợ'),

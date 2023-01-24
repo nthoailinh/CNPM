@@ -1,5 +1,6 @@
 package QuanLyNhanKhau.services;
 
+import QuanLyNhanKhau.controllers.tables.NhanKhauTable;
 import QuanLyNhanKhau.models.NhanKhau;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
@@ -12,24 +13,14 @@ import java.util.*;
 
 public class nhankhauDB {
 
-    public ObservableList<NhanKhau> getListNhanKhau() throws SQLException {
-        ObservableList<NhanKhau> list = FXCollections.observableArrayList();
+    public ObservableList<NhanKhauTable> getListNhanKhau() throws SQLException {
+        ObservableList<NhanKhauTable> list = FXCollections.observableArrayList();
         Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
         ResultSet rsNhanKhau = stmt.executeQuery("SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id");
         while(rsNhanKhau.next()) {
-            NhanKhau nhanKhau = new NhanKhau();
-            nhanKhau.setId(rsNhanKhau.getInt("id"));
-            nhanKhau.setHoTen(rsNhanKhau.getString("hoTen"));
-            nhanKhau.setNgaySinh(LocalDate.parse(rsNhanKhau.getString("ngaySinh")));
-            nhanKhau.setGioiTinh(rsNhanKhau.getString("gioiTinh"));
-            nhanKhau.setNoiSinh(rsNhanKhau.getString("noiSinh"));
-            nhanKhau.setNguyenQuan(rsNhanKhau.getString("nguyenQuan"));
-            nhanKhau.setDanToc(rsNhanKhau.getString("danToc"));
-            nhanKhau.setNgheNghiep(rsNhanKhau.getString("ngheNghiep"));
-            nhanKhau.setNoiLamViec(rsNhanKhau.getString("noiLamViec"));
-            nhanKhau.setQuanHeVoiChuHo(rsNhanKhau.getString("quanHeVoiChuHo"));
-
+            NhanKhauTable nhanKhau = new NhanKhauTable(rsNhanKhau.getInt("id"), rsNhanKhau.getString("hoTen"), rsNhanKhau.getString("ngaySinh"),
+                    rsNhanKhau.getString("gioiTinh"),"Số " + rsNhanKhau.getString("soNha") + ", ngõ " + rsNhanKhau.getString("ngo") + ", đường " + rsNhanKhau.getString("duong"));
             list.add(nhanKhau);
         }
         rsNhanKhau.close();

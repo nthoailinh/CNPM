@@ -1,5 +1,6 @@
 package QuanLyNhanKhau.services;
 
+import QuanLyNhanKhau.controllers.tables.HoKhauTable;
 import QuanLyNhanKhau.models.HoKhau;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,18 +12,14 @@ import java.sql.Statement;
 import java.time.LocalDate;
 
 public class hokhauDB {
-    public ObservableList<HoKhau> getListHoKhau() throws SQLException {
-        ObservableList<HoKhau> list = FXCollections.observableArrayList();
+    public ObservableList<HoKhauTable> getListHoKhau() throws SQLException {
+        ObservableList<HoKhauTable> list = FXCollections.observableArrayList();
         Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from HoKhau");
+        ResultSet rs = stmt.executeQuery("select * from HoKhau JOIN NhanKhau ON NhanKhau.idHoKhau = HoKhau.id WHERE NhanKhau.quanHeVoiChuHo = 'Chủ hộ' ");
         while(rs.next()) {
-            HoKhau hoKhau = new HoKhau(rs.getInt("id"),
-                    rs.getString("soHoKhau"),
-                    rs.getInt("idChuHo"),
-                    rs.getInt("soNha"),
-                    rs.getString("ngo"),
-                    rs.getString("duong"));
+            HoKhauTable hoKhau = new HoKhauTable(rs.getString("soHoKhau"), rs.getString("hoTen"),
+                    "Số " + rs.getString("soNha") + ", ngõ " + rs.getString("ngo") + ", đường " + rs.getString("duong"));
             list.add(hoKhau);
         }
         rs.close();
