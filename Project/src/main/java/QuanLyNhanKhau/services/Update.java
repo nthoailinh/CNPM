@@ -56,8 +56,18 @@ public class Update {
         return pstmt;
     }
 
-    public void TamTru() throws SQLException {
-
+    public PreparedStatement TamTru(int idNhanKhau, String maGiayTamTru, Object batDau, Object ketThuc, String lyDo)
+            throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO TamTru (`idNhanKhau`, `maGiayTamTru`, "
+                        + "`batDau`, `ketThuc`, `lyDo`) VALUES (?, ?, ?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, idNhanKhau);
+        pstmt.setString(2, maGiayTamTru);
+        pstmt.setObject(3, batDau);
+        pstmt.setObject(4, ketThuc);
+        pstmt.setString(5, lyDo);
+        pstmt.executeUpdate();
+        return pstmt;
     }
 
     public PreparedStatement TamVang(int idNhanKhau, String maGiayTamVang, Object batDau, Object ketThuc,
