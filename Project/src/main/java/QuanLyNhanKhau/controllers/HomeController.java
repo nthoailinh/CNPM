@@ -1,5 +1,6 @@
 package QuanLyNhanKhau.controllers;
 
+import QuanLyNhanKhau.services.nhankhauDB;
 import QuanLyNhanKhau.services.trangchuDB;
 import QuanLyNhanKhau.views.ChildWindows;
 import javafx.collections.FXCollections;
@@ -127,11 +128,14 @@ public class HomeController implements Initializable{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        ObservableList<NhanKhau> listNK = FXCollections.observableArrayList(
-                new NhanKhau(0, 1, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ"),
-                new NhanKhau(1, 2, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ"),
-                new NhanKhau(2, 3, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ")
-        );
+
+        nhankhauDB nhankhauinDB = new nhankhauDB();
+        ObservableList<NhanKhau> listNK = null;
+        try {
+            listNK = nhankhauinDB.getListNhanKhau();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         colID.setCellValueFactory(new PropertyValueFactory<NhanKhau, Integer>("id"));
         colHoTen.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("hoTen"));
         colNgaySinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, LocalDate>("ngaySinh"));
