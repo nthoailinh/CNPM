@@ -11,9 +11,9 @@ public class LichSuThayDoi {
     private String thongTinThayDoi;
     private String thayDoiTu;
     private String thayDoiThanh;
-    private String nguoiThucHien;
+    private int idNguoiThucHien;
 
-    public LichSuThayDoi(int id, int idHoKhau, LocalDate ngayThayDoi, String bangThayDoi, int idBangThayDoi, String thongTinThayDoi, String thayDoiTu, String thayDoiThanh, String nguoiThucHien) {
+    public LichSuThayDoi(int id, int idHoKhau, LocalDate ngayThayDoi, String bangThayDoi, int idBangThayDoi, String thongTinThayDoi, String thayDoiTu, String thayDoiThanh, int idNguoiThucHien) {
         this.id = id;
         this.idHoKhau = idHoKhau;
         this.ngayThayDoi = ngayThayDoi;
@@ -22,7 +22,7 @@ public class LichSuThayDoi {
         this.thongTinThayDoi = thongTinThayDoi;
         this.thayDoiTu = thayDoiTu;
         this.thayDoiThanh = thayDoiThanh;
-        this.nguoiThucHien = nguoiThucHien;
+        this.idNguoiThucHien = idNguoiThucHien;
     }
 
     public int getId() {
@@ -89,11 +89,11 @@ public class LichSuThayDoi {
         this.thayDoiThanh = thayDoiThanh;
     }
 
-    public String getNguoiThucHien() {
-        return nguoiThucHien;
+    public int getIDNguoiThucHien() {
+        return idNguoiThucHien;
     }
 
-    public void setNguoiThucHien(String nguoiThucHien) {
-        this.nguoiThucHien = nguoiThucHien;
+    public void setIDNguoiThucHien(int idNguoiThucHien) {
+        this.idNguoiThucHien = idNguoiThucHien;
     }
 }

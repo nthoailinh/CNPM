@@ -23,8 +23,7 @@ import java.time.LocalDate;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable{
-
+public class Controller implements Initializable{
     @FXML
     private Button COVID;
 

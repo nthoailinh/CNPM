@@ -4,18 +4,19 @@ import java.time.LocalDate;
 
 public class KhaiTu {
     private int idNhanKhau;
-
     private String maGiayKhaiTu;
     private String nguyenNhan;
     private LocalDate ngayQuaDoi;
     private LocalDate ngayKhaiTu;
+    private int idNguoiKhai;
 
-    public KhaiTu(int idNhanKhau, String maGiayKhaiTu, String nguyenNhan, LocalDate ngayQuaDoi, LocalDate ngayKhaiTu) {
+    public KhaiTu(int idNhanKhau, String maGiayKhaiTu, String nguyenNhan, LocalDate ngayQuaDoi, LocalDate ngayKhaiTu, int idNguoiKhai) {
         this.idNhanKhau = idNhanKhau;
         this.maGiayKhaiTu = maGiayKhaiTu;
         this.nguyenNhan = nguyenNhan;
         this.ngayQuaDoi = ngayQuaDoi;
         this.ngayKhaiTu = ngayKhaiTu;
+        this.idNguoiKhai = idNguoiKhai;
     }
 
     public int getIdNhanKhau() {
@@ -56,6 +57,14 @@ public class KhaiTu {
 
     public void setNgayKhaiTu(LocalDate ngayKhaiTu) {
         this.ngayKhaiTu = ngayKhaiTu;
+    }
+
+    public int getIdNguoiKhai() {
+        return idNguoiKhai;
+    }
+
+    public void setIdNguoiKhai(int idNguoiKhai) {
+        this.idNguoiKhai = idNguoiKhai;
     }
 }
 
