@@ -95,7 +95,7 @@ public class khaituController {
         Connection connection = MySQL.getConnection();
         // Tìm id nhân khẩu đăng ký tạm vắng
         PreparedStatement pstmt_nhankhau = null;
-        pstmt_nhankhau = connection.prepareStatement("SELECT * FROM NhanKhau JOIN CCCD ON NhanKhau.id = CCCD.idNhanKhau WHERE cccd = ?");
+        pstmt_nhankhau = connection.prepareStatement("SELECT * FROM NhanKhau JOIN CCCD ON NhanKhau.id = CCCD.idNhanKhau  WHERE cccd = ?");
         pstmt_nhankhau.setString(1, cccd.getText());
         ResultSet rs = pstmt_nhankhau.executeQuery();
         int idNhanKhau = -1;
