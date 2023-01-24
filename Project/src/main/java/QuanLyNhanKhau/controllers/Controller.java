@@ -20,8 +20,7 @@ import java.time.LocalDate;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable{
-
+public class Controller implements Initializable{
     @FXML
     private Button COVID;
 
@@ -118,15 +117,8 @@ public class HomeController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBunle) {
-        try {
-            Map<String, Integer> map = trangchuDB.getQuantity();
-            SoLuongNhanKhau.setText(map.get("NhanKhau").toString());
-            SoLuongHoKhau.setText(map.get("HoKhau").toString());
-            SoLuongTamTru.setText(map.get("TamTru").toString());
-            SoLuongTamVang.setText(map.get("TamVang").toString());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        TrangChuController trangchuController = new TrangChuController(SoLuongHoKhau, SoLuongNhanKhau, SoLuongTamTru, SoLuongTamVang);
+        trangchuController.initializeTrangChu();
         ObservableList<NhanKhau> listNK = FXCollections.observableArrayList(
                 new NhanKhau(0, 1, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ"),
                 new NhanKhau(1, 2, "Nguyễn Văn A", LocalDate.of(1989, 1, 1), "Nam", "Hà Nội", "Hà Nội", "Kinh", "Bác sĩ", "Bệnh viện Bạch Mai", "Chủ hộ"),

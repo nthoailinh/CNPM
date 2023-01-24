@@ -3,10 +3,13 @@ package QuanLyNhanKhau.controllers.nhankhau;
 import QuanLyNhanKhau.models.CCCD;
 import QuanLyNhanKhau.models.NhanKhau;
 
+import QuanLyNhanKhau.services.MySQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+
+import java.sql.*;
 
 public class themmoinhankhauController {
 
@@ -62,7 +65,7 @@ public class themmoinhankhauController {
     private TextField soHoKhau;
 
     @FXML
-    void handleClicks(ActionEvent event) {
+    void handleClicks(ActionEvent event) throws SQLException {
         if (event.getSource() == btnLuu) {
             if (soHoKhau.getText().isEmpty() || hoTen.getText().isEmpty() ||
                     ngaySinh.getValue() == null || noiSinh.getText().isEmpty() ||
@@ -78,11 +81,22 @@ public class themmoinhankhauController {
                 return;
             }
             String gioiTinh = gioiTinhNam.isSelected() ? "Nam" : (gioiTinhNu.isSelected() ? "Nữ" : "Không rõ");
-            // ID chưa xử lý, ai kết nối vs db xử lý nhé
-            NhanKhau nhankhau = new NhanKhau(10, Integer.parseInt(soHoKhau.getText()), hoTen.getText(),
-                    ngaySinh.getValue(), gioiTinh, noiSinh.getText(), nguyenQuan.getText(), danToc.getText(),
-                    ngheNghiep.getText(), noiLamViec.getText(), quanHeVoiChuHo.getText());
-            CCCD cccd_nhankhau = new CCCD(cccd.getText(), 10, ngayCap.getValue(), noiCap.getText());
+//            // ID chưa xử lý, ai kết nối vs db xử lý nhé
+//            NhanKhau nhankhau = new NhanKhau(10, Integer.parseInt(soHoKhau.getText()), hoTen.getText(),
+//                    ngaySinh.getValue(), gioiTinh, noiSinh.getText(), nguyenQuan.getText(), danToc.getText(),
+//                    ngheNghiep.getText(), noiLamViec.getText(), quanHeVoiChuHo.getText());
+//            CCCD cccd_nhankhau = new CCCD(cccd.getText(), 10, ngayCap.getValue(), noiCap.getText());
+
+            Connection connection = MySQL.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("INSERT INTO CCCD (cccd, idNhanKhau, ngayCap, noiCap) VALUES (?, ?, ?, ?)");
+            // Set the values from variables
+            pstmt.setString(1, cccd.getText());
+            pstmt.setInt(2, idNhanKhau);
+            pstmt.setObject(3, ngayCap.getValue());
+            pstmt.setString(4, noiCap.getText());
+
+            // Execute the insert statement
+            pstmt.executeUpdate();
         }
         // Tắt cửa sổ
         ((Node) event.getSource()).getScene().getWindow().hide();
