@@ -1,5 +1,6 @@
 package QuanLyNhanKhau.controllers.hokhau;
 
+import QuanLyNhanKhau.controllers.tables.ThanhVienTable;
 import QuanLyNhanKhau.services.MySQL;
 import QuanLyNhanKhau.services.Update;
 import QuanLyNhanKhau.views.ChildWindows;
@@ -46,22 +47,22 @@ public class themmoihokhauController {
     private TextField duong;
 
     @FXML
-    private TableView<?> tableThanhVien;
+    private TableView<ThanhVienTable> tableThanhVien;
 
     @FXML
-    private TableColumn<?, ?> idTV;
+    private TableColumn<ThanhVienTable, Integer> idTV;
 
     @FXML
-    private TableColumn<?, ?> hoTenTV;
+    private TableColumn<ThanhVienTable, String> hoTenTV;
 
     @FXML
-    private TableColumn<?, ?> ngaySinhTV;
+    private TableColumn<ThanhVienTable, String> ngaySinhTV;
 
     @FXML
-    private TableColumn<?, ?> gioiTinhTV;
+    private TableColumn<ThanhVienTable, String> gioiTinhTV;
 
     @FXML
-    private TableColumn<?, ?> quanHeVoiChuHo;
+    private TableColumn<ThanhVienTable, String> quanHeVoiChuHo;
 
     @FXML
     void handleClicks(ActionEvent event) throws SQLException, IOException {
@@ -70,7 +71,7 @@ public class themmoihokhauController {
         }
         if (event.getSource() == btnLuu) {
             if (maHoKhau.getText().isEmpty() || cccdChuHo.getText().isEmpty() || chuHo.getText().isEmpty() ||
-                    soNha.getText().isEmpty() || duong.getText().isEmpty() || quanHeVoiChuHo.getText().isEmpty()) {
+                    soNha.getText().isEmpty() || duong.getText().isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Không thể lưu");
                 alert.setHeaderText("Thiếu thông tin");

@@ -13,13 +13,13 @@
 
 <BorderPane prefHeight="648.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.hokhau.chonnhankhauController">
    <center>
-      <TableView prefHeight="569.0" prefWidth="724.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tableNhanKhau" prefHeight="569.0" prefWidth="724.0" BorderPane.alignment="CENTER">
          <columns>
-            <TableColumn prefWidth="75.0" text="ID" />
-            <TableColumn prefWidth="195.0" text="Họ tên" />
-            <TableColumn prefWidth="123.0" text="Ngày sinh" />
-            <TableColumn minWidth="0.0" prefWidth="79.0" text="Giới tính" />
-            <TableColumn prefWidth="284.0" text="Địa chỉ" />
+            <TableColumn fx:id="idNK" prefWidth="46.0" text="ID" />
+            <TableColumn fx:id="hotenNK" prefWidth="211.0" text="Họ tên" />
+            <TableColumn fx:id="ngaySinhNK" prefWidth="111.0" text="Ngày sinh" />
+            <TableColumn fx:id="gioiTinhNK" minWidth="0.0" prefWidth="94.0" text="Giới tính" />
+            <TableColumn fx:id="diaChiNK" prefWidth="294.0" text="Địa chỉ" />
          </columns>
       </TableView>
    </center>
@@ -52,8 +52,8 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="56.0" prefWidth="768.0" spacing="16.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="32.0" text="Chọn" />
-            <Button mnemonicParsing="false" prefHeight="32.0" text="Hủy" />
+            <Button fx:id="btnChon" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" text="Chọn" />
+            <Button fx:id="btnHuy" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" text="Hủy" />
          </children>
       </HBox>
    </bottom>
