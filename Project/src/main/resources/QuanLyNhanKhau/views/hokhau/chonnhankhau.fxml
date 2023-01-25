@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="648.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.nhankhau.chonnhankhauController">
+<BorderPane prefHeight="648.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.hokhau.chonnhankhauController">
    <center>
       <TableView prefHeight="569.0" prefWidth="724.0" BorderPane.alignment="CENTER">
          <columns>
@@ -19,7 +19,7 @@
             <TableColumn prefWidth="195.0" text="Họ tên" />
             <TableColumn prefWidth="123.0" text="Ngày sinh" />
             <TableColumn minWidth="0.0" prefWidth="79.0" text="Giới tính" />
-            <TableColumn prefWidth="284.0" text="Địa chỉ hiện nay" />
+            <TableColumn prefWidth="284.0" text="Địa chỉ" />
          </columns>
       </TableView>
    </center>

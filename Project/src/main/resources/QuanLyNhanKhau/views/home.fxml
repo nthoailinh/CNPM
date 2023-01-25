@@ -126,7 +126,7 @@
             </Button>
          </children>
       </VBox>
-      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="766.0" stylesheets="@style.css">
+      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="748.0" stylesheets="@style.css">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.0" minWidth="10.0" prefWidth="125.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="674.0" minWidth="10.0" prefWidth="639.0" />
@@ -228,7 +228,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0" visible="false">
+      <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="780.0" visible="false">
          <top>
             <HBox prefHeight="45.0" prefWidth="786.0" BorderPane.alignment="CENTER">
                <children>
@@ -241,24 +241,24 @@
          <center>
             <TableView fx:id="tableNhanKhau" prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="IDNK" prefWidth="64.0" text="ID" />
-                <TableColumn fx:id="hoTenNK" prefWidth="176.0" text="Họ tên" />
-                  <TableColumn fx:id="ngaySinhNK" prefWidth="118.0" text="Ngày sinh" />
-                  <TableColumn fx:id="gioiTinhNK" prefWidth="88.0" text="Giới tính" />
-                  <TableColumn fx:id="diaChiNK" prefWidth="200.0" text="Địa chỉ" />
+                <TableColumn fx:id="IDNK" prefWidth="35.0" text="ID" />
+                <TableColumn fx:id="hoTenNK" prefWidth="174.0" text="Họ tên" />
+                  <TableColumn fx:id="ngaySinhNK" prefWidth="99.0" text="Ngày sinh" />
+                  <TableColumn fx:id="gioiTinhNK" prefWidth="73.0" text="Giới tính" />
+                  <TableColumn fx:id="diaChiNK" prefWidth="257.0" text="Địa chỉ" />
               </columns>
             </TableView>
          </center>
          <right>
-            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="140.0" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="128.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="NhanKhauThemMoi" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="120.0" text="Thêm mới" />
+                  <Button fx:id="NhanKhauThemMoi" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="108.0" text="Thêm mới" />
                   <Pane prefHeight="24.0" prefWidth="140.0" />
-                  <Button fx:id="NhanKhauDKTamVang" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm vắng" />
+                  <Button fx:id="NhanKhauDKTamVang" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="108.0" text="ĐK tạm vắng" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
-                  <Button fx:id="NhanKhauDKTamTru" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="120.0" text="ĐK tạm trú" />
+                  <Button fx:id="NhanKhauDKTamTru" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="108.0" text="ĐK tạm trú" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
-                  <Button fx:id="NhanKhauKhaiTu" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="120.0" text="Khai tử" />
+                  <Button fx:id="NhanKhauKhaiTu" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="108.0" text="Khai tử" />
                </children>
             </VBox>
          </right>
@@ -269,7 +269,7 @@
             <Pane prefHeight="10.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
-      <BorderPane fx:id="contentHoKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="786.0" visible="false">
+      <BorderPane fx:id="contentHoKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="780.0" visible="false">
          <top>
             <HBox prefHeight="45.0" prefWidth="786.0" BorderPane.alignment="CENTER">
                <children>
@@ -284,18 +284,18 @@
                <columns>
                   <TableColumn fx:id="maHK" prefWidth="144.0" text="Mã hộ khẩu" />
                   <TableColumn fx:id="hoTenChuHK" prefWidth="206.0" text="Họ tên chủ hộ" />
-                  <TableColumn fx:id="diaChiHK" prefWidth="295.0" text="Địa chỉ" />
+                  <TableColumn fx:id="diaChiHK" prefWidth="288.0" text="Địa chỉ" />
                </columns>
             </TableView>
          </center>
          <right>
-            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="140.0" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="128.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="HoKhauThemMoi" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="120.0" text="Thêm mới" />
+                  <Button fx:id="HoKhauThemMoi" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="108.0" text="Thêm mới" />
                   <Pane prefHeight="24.0" prefWidth="140.0" />
-                  <Button fx:id="HoKhauTachHK" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="120.0" text="Tách HK" />
+                  <Button fx:id="HoKhauTachHK" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="108.0" text="Tách hộ khẩu" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
-                  <Button fx:id="HoKhauChuyenDi" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="120.0" text="Chuyển đi" />
+                  <Button fx:id="HoKhauChuyenDi" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="108.0" text="Chuyển đi" />
                   <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
                </children>
             </VBox>
