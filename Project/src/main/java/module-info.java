@@ -18,6 +18,7 @@ module models {
     opens QuanLyNhanKhau.controllers.tables to javafx.base;
     exports QuanLyNhanKhau.controllers.nhankhau;
     exports QuanLyNhanKhau.controllers.hokhau;
+    exports QuanLyNhanKhau.controllers.tables;
     exports QuanLyNhanKhau.controllers;
     exports QuanLyNhanKhau.views;
 }
