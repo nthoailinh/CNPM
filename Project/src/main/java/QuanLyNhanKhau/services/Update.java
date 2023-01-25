@@ -18,8 +18,16 @@ public class Update {
         return pstmt;
     }
 
-    public void HoKhau() throws SQLException {
-
+    public PreparedStatement HoKhau(String soHoKhau, int idChuHo, int soNha, String ngo, String duong) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO HoKhau (`soHoKhau`, `idChuHo`,  "
+                + "`soNha`, `ngo`, `duong`) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+        pstmt.setString(1, soHoKhau);
+        pstmt.setInt(2, idChuHo);
+        pstmt.setInt(3, soNha);
+        pstmt.setString(4, ngo);
+        pstmt.setString(5, duong);
+        pstmt.executeUpdate();
+        return pstmt;
     }
 
     public void KhaiBao() throws SQLException {
