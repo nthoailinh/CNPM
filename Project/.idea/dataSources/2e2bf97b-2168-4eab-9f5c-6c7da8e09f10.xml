@@ -1069,525 +1069,726 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <schema id="290" parent="1" name="performance_schema">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="291" parent="1" name="quan_ly_nhan_khau_1">
+    <schema id="291" parent="1" name="quan_ly_nhan_khau">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="292" parent="1" name="sys">
+    <schema id="292" parent="1" name="quan_ly_nhan_khau_1">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <user id="293" parent="1" name="mysql.infoschema">
+    <schema id="293" parent="1" name="sys">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <user id="294" parent="1" name="mysql.infoschema">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="294" parent="1" name="mysql.session">
+    <user id="295" parent="1" name="mysql.session">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="295" parent="1" name="mysql.sys">
+    <user id="296" parent="1" name="mysql.sys">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="296" parent="1" name="root"/>
-    <user id="297" parent="1" name="root">
+    <user id="297" parent="1" name="root"/>
+    <user id="298" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="298" parent="291" name="CCCD">
+    <table id="299" parent="291" name="chung_minh_thu">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
     </table>
-    <table id="299" parent="291" name="HoKhau">
+    <table id="300" parent="291" name="dinh_chinh">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
     </table>
-    <table id="300" parent="291" name="KhaiBao">
+    <table id="301" parent="291" name="gia_dinh">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
     </table>
-    <table id="301" parent="291" name="KhaiTu">
+    <table id="302" parent="291" name="ho_khau">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
     </table>
-    <table id="302" parent="291" name="LichSuThayDoi">
+    <table id="303" parent="291" name="khai_tu">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
     </table>
-    <table id="303" parent="291" name="MacCOVID">
+    <table id="304" parent="291" name="nhan_khau">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
     </table>
-    <table id="304" parent="291" name="NhanKhau">
+    <table id="305" parent="291" name="tam_tru">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
     </table>
-    <table id="305" parent="291" name="TamTru">
+    <table id="306" parent="291" name="tam_vang">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
     </table>
-    <table id="306" parent="291" name="TamVang">
+    <table id="307" parent="291" name="thanh_vien_cua_ho">
       <Engine>InnoDB</Engine>
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
     </table>
-    <column id="307" parent="298" name="cccd">
-      <DasType>char(12)|0s</DasType>
+    <table id="308" parent="291" name="tieu_su">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
+    </table>
+    <table id="309" parent="291" name="users">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb3_unicode_ci</CollationName>
+    </table>
+    <column id="310" parent="299" name="ID">
+      <AutoIncrement>26</AutoIncrement>
+      <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="308" parent="298" name="idNhanKhau">
+    <column id="311" parent="299" name="idNhanKhau">
       <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="309" parent="298" name="ngayCap">
+    <column id="312" parent="299" name="soCMT">
+      <DasType>varchar(12)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="313" parent="299" name="ngayCap">
       <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="310" parent="298" name="noiCap">
-      <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <foreign-key id="311" parent="298" name="CCCD_NhanKhau">
-      <ColNames>idNhanKhau</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>NhanKhau</RefTableName>
-    </foreign-key>
-    <index id="312" parent="298" name="PRIMARY">
-      <ColNames>cccd</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="313" parent="298" name="CCCD_NhanKhau">
-      <ColNames>idNhanKhau</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="314" parent="298" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="315" parent="299" name="id">
-      <AutoIncrement>9</AutoIncrement>
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="316" parent="299" name="soHoKhau">
-      <DasType>char(9)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="317" parent="299" name="idChuHo">
-      <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="318" parent="299" name="soNha">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-    </column>
-    <column id="319" parent="299" name="ngo">
+    <column id="314" parent="299" name="noiCap">
       <DasType>varchar(100)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="320" parent="299" name="duong">
-      <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-    </column>
-    <index id="321" parent="299" name="PRIMARY">
-      <ColNames>id</ColNames>
+    <foreign-key id="315" parent="299" name="chung_minh_thu_ibfk_1">
+      <ColNames>idNhanKhau</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>nhan_khau</RefTableName>
+    </foreign-key>
+    <index id="316" parent="299" name="PRIMARY">
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="322" parent="299" name="PRIMARY">
+    <index id="317" parent="299" name="idNhanKhau">
+      <ColNames>idNhanKhau</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="318" parent="299" name="soCMT">
+      <ColNames>soCMT</ColNames>
+      <Type>fulltext</Type>
+    </index>
+    <key id="319" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="323" parent="300" name="id">
+    <column id="320" parent="300" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="324" parent="300" name="idMacCOVID">
+    <column id="321" parent="300" name="idHoKhau">
       <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="325" parent="300" name="ngayKhaiBao">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="322" parent="300" name="thongTinThayDoi">
+      <DasType>varchar(100)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="326" parent="300" name="thoiDiemTest">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="323" parent="300" name="thayDoiTu">
+      <DasType>varchar(100)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="327" parent="300" name="hinhThucTest">
-      <DasType>varchar(200)|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="324" parent="300" name="thayDoiThanh">
+      <DasType>varchar(100)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="328" parent="300" name="ketQuaTest">
-      <DasType>char(10)|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="325" parent="300" name="ngayThayDoi">
+      <DasType>date|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="329" parent="300" name="tinhTrangSucKhoe">
-      <DasType>varchar(400)|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="326" parent="300" name="nguoiThayDoi">
+      <DasType>int|0s</DasType>
       <Position>7</Position>
     </column>
-    <foreign-key id="330" parent="300" name="KhaiBaoMacCOVID_MacCOVID">
-      <ColNames>idMacCOVID</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>MacCOVID</RefTableName>
+    <foreign-key id="327" parent="300" name="dinh_chinh_ibfk_1">
+      <ColNames>idHoKhau</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>ho_khau</RefTableName>
     </foreign-key>
-    <index id="331" parent="300" name="PRIMARY">
-      <ColNames>id</ColNames>
+    <foreign-key id="328" parent="300" name="dinh_chinh_ibfk_2">
+      <ColNames>nguoiThayDoi</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <index id="329" parent="300" name="PRIMARY">
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="332" parent="300" name="KhaiBaoMacCOVID_MacCOVID">
-      <ColNames>idMacCOVID</ColNames>
+    <index id="330" parent="300" name="idHoKhau">
+      <ColNames>idHoKhau</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="333" parent="300" name="PRIMARY">
+    <index id="331" parent="300" name="nguoiThayDoi">
+      <ColNames>nguoiThayDoi</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="332" parent="300" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
+    <column id="333" parent="301" name="ID">
+      <AutoIncrement>34</AutoIncrement>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
     <column id="334" parent="301" name="idNhanKhau">
-      <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="335" parent="301" name="maGiayKhaiTu">
-      <DasType>char(12)|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="336" parent="301" name="nguyenNhan">
-      <DasType>varchar(300)|0s</DasType>
+    <column id="335" parent="301" name="hoTen">
+      <DasType>varchar(100)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="337" parent="301" name="ngayQuaDoi">
+    <column id="336" parent="301" name="namSinh">
       <DasType>date|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="338" parent="301" name="ngayKhaiTu">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="337" parent="301" name="gioiTinh">
+      <DasType>varchar(100)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="339" parent="301" name="idNguoiKhai">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="338" parent="301" name="quanHeVoiNhanKhau">
+      <DasType>varchar(100)|0s</DasType>
       <Position>6</Position>
     </column>
-    <foreign-key id="340" parent="301" name="KhaiTu_NhanKhau">
-      <ColNames>idNhanKhau</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>NhanKhau</RefTableName>
-    </foreign-key>
-    <index id="341" parent="301" name="PRIMARY">
-      <ColNames>idNhanKhau</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="342" parent="301" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="343" parent="302" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="344" parent="302" name="idHoKhau">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="345" parent="302" name="ngayThayDoi">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="346" parent="302" name="bangThayDoi">
-      <DasType>varchar(30)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-    </column>
-    <column id="347" parent="302" name="idBangThayDoi">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-    </column>
-    <column id="348" parent="302" name="thongTinThayDoi">
-      <DasType>varchar(200)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-    </column>
-    <column id="349" parent="302" name="thayDoiTu">
-      <DasType>varchar(200)|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="339" parent="301" name="ngheNghiep">
+      <DasType>varchar(100)|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="350" parent="302" name="thayDoiThanh">
-      <DasType>varchar(200)|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="340" parent="301" name="diaChiHienTai">
+      <DasType>varchar(100)|0s</DasType>
       <Position>8</Position>
     </column>
-    <column id="351" parent="302" name="idNguoiThucHien">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>9</Position>
-    </column>
-    <foreign-key id="352" parent="302" name="LichSuThayDoi_HoKhau">
-      <ColNames>idHoKhau</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>HoKhau</RefTableName>
+    <foreign-key id="341" parent="301" name="gia_dinh_ibfk_1">
+      <ColNames>idNhanKhau</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>nhan_khau</RefTableName>
     </foreign-key>
-    <index id="353" parent="302" name="PRIMARY">
-      <ColNames>id</ColNames>
+    <index id="342" parent="301" name="PRIMARY">
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="354" parent="302" name="LichSuThayDoi_HoKhau">
-      <ColNames>idHoKhau</ColNames>
+    <index id="343" parent="301" name="idNhanKhau">
+      <ColNames>idNhanKhau</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="355" parent="302" name="PRIMARY">
+    <key id="344" parent="301" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="356" parent="303" name="id">
+    <column id="345" parent="302" name="ID">
+      <AutoIncrement>17</AutoIncrement>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="346" parent="302" name="maHoKhau">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="347" parent="302" name="idChuHo">
+      <DasType>int|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="348" parent="302" name="maKhuVuc">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="349" parent="302" name="diaChi">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="350" parent="302" name="ngayLap">
+      <DasType>date|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="351" parent="302" name="ngayChuyenDi">
+      <DasType>date|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <column id="352" parent="302" name="lyDoChuyen">
+      <DasType>text|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <column id="353" parent="302" name="nguoiThucHien">
+      <DasType>int|0s</DasType>
+      <Position>9</Position>
+    </column>
+    <foreign-key id="354" parent="302" name="ho_khau_ibfk_1">
+      <ColNames>idChuHo</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>nhan_khau</RefTableName>
+    </foreign-key>
+    <index id="355" parent="302" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="356" parent="302" name="maHoKhau">
+      <ColNames>maHoKhau</ColNames>
+      <Type>fulltext</Type>
+    </index>
+    <index id="357" parent="302" name="idChuHo">
+      <ColNames>idChuHo</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="358" parent="302" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="359" parent="303" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="357" parent="303" name="idNhanKhau">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="360" parent="303" name="soGiayKhaiTu">
+      <DasType>varchar(100)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="358" parent="303" name="ngayMac">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="361" parent="303" name="idNguoiKhai">
+      <DasType>int|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="359" parent="303" name="ngayKhoi">
-      <DasType>date|0s</DasType>
+    <column id="362" parent="303" name="idNguoiChet">
+      <DasType>int|0s</DasType>
       <Position>4</Position>
     </column>
-    <foreign-key id="360" parent="303" name="MacCOVID_NhanKhau">
-      <ColNames>idNhanKhau</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>NhanKhau</RefTableName>
+    <column id="363" parent="303" name="ngayKhai">
+      <DasType>date|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="364" parent="303" name="ngayChet">
+      <DasType>date|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="365" parent="303" name="lyDoChet">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="366" parent="303" name="khai_tu_ibfk_1">
+      <ColNames>idNguoiKhai</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>nhan_khau</RefTableName>
     </foreign-key>
-    <index id="361" parent="303" name="PRIMARY">
-      <ColNames>id</ColNames>
+    <foreign-key id="367" parent="303" name="khai_tu_ibfk_2">
+      <ColNames>idNguoiChet</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>nhan_khau</RefTableName>
+    </foreign-key>
+    <index id="368" parent="303" name="PRIMARY">
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="362" parent="303" name="MacCOVID_NhanKhau">
-      <ColNames>idNhanKhau</ColNames>
+    <index id="369" parent="303" name="idNguoiKhai">
+      <ColNames>idNguoiKhai</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="363" parent="303" name="PRIMARY">
+    <index id="370" parent="303" name="idNguoiChet">
+      <ColNames>idNguoiChet</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="371" parent="303" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="364" parent="304" name="id">
-      <AutoIncrement>25</AutoIncrement>
+    <column id="372" parent="304" name="ID">
+      <AutoIncrement>39</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="365" parent="304" name="idHoKhau">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="373" parent="304" name="maNhanKhau">
+      <DasType>varchar(100)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="366" parent="304" name="hoTen">
+    <column id="374" parent="304" name="hoTen">
       <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="367" parent="304" name="ngaySinh">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="375" parent="304" name="bietDanh">
+      <DasType>varchar(100)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="368" parent="304" name="gioiTinh">
-      <DasType>char(3)|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="376" parent="304" name="namSinh">
+      <DasType>date|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="369" parent="304" name="noiSinh">
+    <column id="377" parent="304" name="gioiTinh">
       <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="370" parent="304" name="nguyenQuan">
+    <column id="378" parent="304" name="noiSinh">
       <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="371" parent="304" name="danToc">
+    <column id="379" parent="304" name="nguyenQuan">
       <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <column id="372" parent="304" name="ngheNghiep">
+    <column id="380" parent="304" name="danToc">
       <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
-    <column id="373" parent="304" name="noiLamViec">
-      <DasType>varchar(200)|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="381" parent="304" name="tonGiao">
+      <DasType>varchar(100)|0s</DasType>
       <Position>10</Position>
     </column>
-    <column id="374" parent="304" name="quanHeVoiChuHo">
+    <column id="382" parent="304" name="quocTich">
       <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
       <Position>11</Position>
     </column>
-    <foreign-key id="375" parent="304" name="NhanKhau_HoKhau">
-      <ColNames>idHoKhau</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>HoKhau</RefTableName>
-    </foreign-key>
-    <index id="376" parent="304" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="377" parent="304" name="NhanKhau_HoKhau">
-      <ColNames>idHoKhau</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="378" parent="304" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="379" parent="305" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="380" parent="305" name="idNhanKhau">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="381" parent="305" name="maGiayTamTru">
-      <DasType>char(12)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="382" parent="305" name="batDau">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-    </column>
-    <column id="383" parent="305" name="ketThuc">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-    </column>
-    <column id="384" parent="305" name="lyDo">
-      <DasType>varchar(200)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>6</Position>
-    </column>
-    <foreign-key id="385" parent="305" name="TamTru_NhanKhau">
-      <ColNames>idNhanKhau</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>NhanKhau</RefTableName>
-    </foreign-key>
-    <index id="386" parent="305" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="387" parent="305" name="TamTru_NhanKhau">
-      <ColNames>idNhanKhau</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="388" parent="305" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="389" parent="306" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="390" parent="306" name="idNhanKhau">
-      <DasType>int|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <column id="391" parent="306" name="maGiayTamVang">
-      <DasType>char(12)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-    </column>
-    <column id="392" parent="306" name="batDau">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-    </column>
-    <column id="393" parent="306" name="ketThuc">
-      <DasType>date|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-    </column>
-    <column id="394" parent="306" name="noiTamTru">
+    <column id="383" parent="304" name="soHoChieu">
       <DasType>varchar(100)|0s</DasType>
+      <Position>12</Position>
+    </column>
+    <column id="384" parent="304" name="noiThuongTru">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>13</Position>
+    </column>
+    <column id="385" parent="304" name="diaChiHienNay">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>14</Position>
+    </column>
+    <column id="386" parent="304" name="trinhDoHocVan">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>15</Position>
+    </column>
+    <column id="387" parent="304" name="TrinhDoChuyenMon">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>16</Position>
+    </column>
+    <column id="388" parent="304" name="bietTiengDanToc">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>17</Position>
+    </column>
+    <column id="389" parent="304" name="trinhDoNgoaiNgu">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>18</Position>
+    </column>
+    <column id="390" parent="304" name="ngheNghiep">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>19</Position>
+    </column>
+    <column id="391" parent="304" name="noiLamViec">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>20</Position>
+    </column>
+    <column id="392" parent="304" name="tienAn">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>21</Position>
+    </column>
+    <column id="393" parent="304" name="ngayChuyenDen">
+      <DasType>date|0s</DasType>
+      <Position>22</Position>
+    </column>
+    <column id="394" parent="304" name="lyDoChuyenDen">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>23</Position>
+    </column>
+    <column id="395" parent="304" name="ngayChuyenDi">
+      <DasType>date|0s</DasType>
+      <Position>24</Position>
+    </column>
+    <column id="396" parent="304" name="lyDoChuyenDi">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>25</Position>
+    </column>
+    <column id="397" parent="304" name="diaChiMoi">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>26</Position>
+    </column>
+    <column id="398" parent="304" name="ngayTao">
+      <DasType>date|0s</DasType>
+      <Position>27</Position>
+    </column>
+    <column id="399" parent="304" name="idNguoiTao">
+      <DasType>int|0s</DasType>
+      <Position>28</Position>
+    </column>
+    <column id="400" parent="304" name="ngayXoa">
+      <DasType>date|0s</DasType>
+      <Position>29</Position>
+    </column>
+    <column id="401" parent="304" name="idNguoiXoa">
+      <DasType>int|0s</DasType>
+      <Position>30</Position>
+    </column>
+    <column id="402" parent="304" name="lyDoXoa">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>31</Position>
+    </column>
+    <column id="403" parent="304" name="ghiChu">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>32</Position>
+    </column>
+    <foreign-key id="404" parent="304" name="nhan_khau_ibfk_1">
+      <ColNames>idNguoiTao</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <foreign-key id="405" parent="304" name="nhan_khau_ibfk_2">
+      <ColNames>idNguoiXoa</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>users</RefTableName>
+    </foreign-key>
+    <index id="406" parent="304" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="407" parent="304" name="hoTen">
+      <ColNames>hoTen
+bietDanh</ColNames>
+      <Type>fulltext</Type>
+    </index>
+    <index id="408" parent="304" name="idNguoiTao">
+      <ColNames>idNguoiTao</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="409" parent="304" name="idNguoiXoa">
+      <ColNames>idNguoiXoa</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="410" parent="304" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="411" parent="305" name="ID">
+      <AutoIncrement>2</AutoIncrement>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="412" parent="305" name="idNhanKhau">
+      <DasType>int|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="413" parent="305" name="maGiayTamtru">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="414" parent="305" name="soDienThoaiNguoiDangKy">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="415" parent="305" name="tuNgay">
+      <DasType>date|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="416" parent="305" name="denNgay">
+      <DasType>date|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="395" parent="306" name="lyDo">
-      <DasType>varchar(200)|0s</DasType>
+    <column id="417" parent="305" name="lyDo">
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <foreign-key id="396" parent="306" name="TamVang_NhanKhau">
+    <foreign-key id="418" parent="305" name="tam_tru_ibfk_1">
       <ColNames>idNhanKhau</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>NhanKhau</RefTableName>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>nhan_khau</RefTableName>
     </foreign-key>
-    <index id="397" parent="306" name="PRIMARY">
-      <ColNames>id</ColNames>
+    <index id="419" parent="305" name="PRIMARY">
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="398" parent="306" name="TamVang_NhanKhau">
+    <index id="420" parent="305" name="idNhanKhau">
       <ColNames>idNhanKhau</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="399" parent="306" name="PRIMARY">
+    <key id="421" parent="305" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="422" parent="306" name="ID">
+      <AutoIncrement>3</AutoIncrement>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="423" parent="306" name="idNhanKhau">
+      <DasType>int|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="424" parent="306" name="maGiayTamVang">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="425" parent="306" name="noiTamtru">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="426" parent="306" name="tuNgay">
+      <DasType>date|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="427" parent="306" name="denNgay">
+      <DasType>date|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="428" parent="306" name="lyDo">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="429" parent="306" name="tam_vang_ibfk_1">
+      <ColNames>idNhanKhau</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>nhan_khau</RefTableName>
+    </foreign-key>
+    <index id="430" parent="306" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="431" parent="306" name="idNhanKhau">
+      <ColNames>idNhanKhau</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="432" parent="306" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="433" parent="307" name="idNhanKhau">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="434" parent="307" name="idHoKhau">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="435" parent="307" name="quanHeVoiChuHo">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <foreign-key id="436" parent="307" name="thanh_vien_cua_ho_ibfk_1">
+      <ColNames>idNhanKhau</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>nhan_khau</RefTableName>
+    </foreign-key>
+    <foreign-key id="437" parent="307" name="thanh_vien_cua_ho_ibfk_2">
+      <ColNames>idHoKhau</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>ho_khau</RefTableName>
+    </foreign-key>
+    <index id="438" parent="307" name="PRIMARY">
+      <ColNames>idNhanKhau
+idHoKhau</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="439" parent="307" name="idHoKhau">
+      <ColNames>idHoKhau</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="440" parent="307" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="441" parent="308" name="ID">
+      <AutoIncrement>13</AutoIncrement>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="442" parent="308" name="idNhanKhau">
+      <DasType>int|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="443" parent="308" name="tuNgay">
+      <DasType>date|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="444" parent="308" name="denNgay">
+      <DasType>date|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="445" parent="308" name="diaChi">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="446" parent="308" name="ngheNghiep">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="447" parent="308" name="noiLamViec">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="448" parent="308" name="tieu_su_ibfk_1">
+      <ColNames>idNhanKhau</ColNames>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>nhan_khau</RefTableName>
+    </foreign-key>
+    <index id="449" parent="308" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="450" parent="308" name="idNhanKhau">
+      <ColNames>idNhanKhau</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="451" parent="308" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="452" parent="309" name="ID">
+      <AutoIncrement>3</AutoIncrement>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="453" parent="309" name="userName">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="454" parent="309" name="passwd">
+      <DasType>varchar(100)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <index id="455" parent="309" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="456" parent="309" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
