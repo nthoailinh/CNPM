@@ -40,7 +40,7 @@ public class NhanKhauController {
         nhankhauDB nhankhauinDB = new nhankhauDB();
         ObservableList<NhanKhauTable> listNK = null;
         try {
-            listNK = nhankhauinDB.getListNhanKhau();
+            listNK = nhankhauinDB.getListNhanKhauTable();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

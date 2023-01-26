@@ -1304,7 +1304,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="346" parent="302" name="maHoKhau">
+    <column id="346" parent="302" name="soHoKhau">
       <DasType>varchar(100)|0s</DasType>
       <Position>2</Position>
     </column>
@@ -1346,8 +1346,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="356" parent="302" name="maHoKhau">
-      <ColNames>maHoKhau</ColNames>
+    <index id="356" parent="302" name="soHoKhau">
+      <ColNames>soHoKhau</ColNames>
       <Type>fulltext</Type>
     </index>
     <index id="357" parent="302" name="idChuHo">

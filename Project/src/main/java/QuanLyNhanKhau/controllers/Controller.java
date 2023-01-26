@@ -117,7 +117,7 @@ public class Controller implements Initializable{
     private TableView<HoKhauTable> tableHoKhau;
 
     @FXML
-    private TableColumn<HoKhauTable, String> maHK;
+    private TableColumn<HoKhauTable, String> soHK;
 
     @FXML
     private TableColumn<HoKhauTable, String> hoTenChuHK;
@@ -145,7 +145,7 @@ public class Controller implements Initializable{
             throw new RuntimeException(e);
         }
 
-        HoKhauController hokhauController = new HoKhauController(maHK, hoTenChuHK, diaChiHK, tableHoKhau);
+        HoKhauController hokhauController = new HoKhauController(soHK, hoTenChuHK, diaChiHK, tableHoKhau);
         hokhauController.initialize();
     }
     @FXML

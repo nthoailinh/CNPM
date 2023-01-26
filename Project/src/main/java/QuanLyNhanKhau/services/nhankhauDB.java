@@ -12,8 +12,25 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class nhankhauDB {
+    public ObservableList<NhanKhau> getListNhanKhauWithSoHoKhau(String soHoKhau) throws SQLException {
+        ObservableList<NhanKhau> list = FXCollections.observableArrayList();
+        Connection connection = MySQL.getConnection();
+        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id WHERE HoKhau.soHoKhau = ?");
+        stmt.setString(1, soHoKhau);
+        ResultSet rsNhanKhau = stmt.executeQuery();
 
-    public ObservableList<NhanKhauTable> getListNhanKhau() throws SQLException {
+        while(rsNhanKhau.next()) {
+            NhanKhau nhanKhau = new NhanKhau(rsNhanKhau.getString("hoTen"), rsNhanKhau.getDate("ngaySinh").toLocalDate(),
+                    rsNhanKhau.getString("quanHeVoiChuHo"));
+            list.add(nhanKhau);
+        }
+        rsNhanKhau.close();
+        stmt.close();
+        connection.close();
+        return list;
+    }
+
+    public ObservableList<NhanKhauTable> getListNhanKhauTable() throws SQLException {
         ObservableList<NhanKhauTable> list = FXCollections.observableArrayList();
         Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();

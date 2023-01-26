@@ -28,7 +28,7 @@ public class themmoihokhauController {
     private Button btnThemThanhVien;
 
     @FXML
-    private TextField maHoKhau;
+    private TextField soHoKhau;
 
     @FXML
     private TextField cccdChuHo;
@@ -69,7 +69,7 @@ public class themmoihokhauController {
             ChildWindows.show("hokhau/chonnhankhau.fxml");
         }
         if (event.getSource() == btnLuu) {
-            if (maHoKhau.getText().isEmpty() || cccdChuHo.getText().isEmpty() || chuHo.getText().isEmpty() ||
+            if (soHoKhau.getText().isEmpty() || cccdChuHo.getText().isEmpty() || chuHo.getText().isEmpty() ||
                     soNha.getText().isEmpty() || duong.getText().isEmpty() || quanHeVoiChuHo.getText().isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Không thể lưu");
@@ -88,7 +88,7 @@ public class themmoihokhauController {
             if (rs.next()) {
                 idChuHo = rs.getInt(1);
             }
-            update.HoKhau(maHoKhau.getText(), idChuHo, Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
+            update.HoKhau(soHoKhau.getText(), idChuHo, Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
         } else if (event.getSource() == btnHuy) {
             // Tắt cửa sổ
             ((Node) event.getSource()).getScene().getWindow().hide();
