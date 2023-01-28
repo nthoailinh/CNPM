@@ -282,7 +282,7 @@
          <center>
             <TableView fx:id="tableHoKhau" prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
                <columns>
-                  <TableColumn fx:id="maHK" prefWidth="144.0" text="Mã hộ khẩu" />
+                  <TableColumn fx:id="soHK" prefWidth="144.0" text="Số hộ khẩu" />
                   <TableColumn fx:id="hoTenChuHK" prefWidth="206.0" text="Họ tên chủ hộ" />
                   <TableColumn fx:id="diaChiHK" prefWidth="288.0" text="Địa chỉ" />
                </columns>

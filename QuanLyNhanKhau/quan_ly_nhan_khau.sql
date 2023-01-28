@@ -568,3 +568,5 @@ COMMIT;
 
 
 SELECT * FROM ho_khau;
+
+show tables

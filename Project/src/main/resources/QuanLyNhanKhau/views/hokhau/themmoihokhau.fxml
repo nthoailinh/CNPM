@@ -63,12 +63,12 @@
                       <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                   </rowConstraints>
                   <children>
-                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu (*)">
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="số hộ khẩu (*)">
                           <font>
                               <Font size="14.0" />
                           </font>
                       </Text>
-                      <TextField fx:id="maHoKhau" prefHeight="30.0" prefWidth="781.0" GridPane.columnIndex="1" />
+                      <TextField fx:id="soHoKhau" prefHeight="30.0" prefWidth="781.0" GridPane.columnIndex="1" />
                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số nhà (*)" GridPane.rowIndex="3">
                           <font>
                               <Font size="14.0" />

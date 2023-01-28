@@ -16,6 +16,12 @@ public class NhanKhau {
     private String quanHeVoiChuHo;
 
     public NhanKhau() {}
+    public NhanKhau(int id, String hoTen, LocalDate ngaySinh, String quanHeVoiChuHo){
+        this.id = id;
+        this.hoTen = hoTen;
+        this.ngaySinh = ngaySinh;
+        this.quanHeVoiChuHo = quanHeVoiChuHo;
+    }
     public NhanKhau(int id, int idHoKhau, String hoTen, LocalDate ngaySinh, String gioiTinh, String noiSinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, String quanHeVoiChuHo) {
         this.id = id;
         this.idHoKhau = idHoKhau;

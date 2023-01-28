@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class HoKhauController {
     @FXML
-    private TableColumn<HoKhauTable, String> maHK;
+    private TableColumn<HoKhauTable, String> soHK;
     @FXML
     private TableColumn<HoKhauTable, String> hoTenChuHK;
     @FXML
@@ -21,8 +21,8 @@ public class HoKhauController {
     @FXML
     private TableView<HoKhauTable> tableHoKhau;
 
-    public HoKhauController(TableColumn<HoKhauTable, String> maHK, TableColumn<HoKhauTable, String> hoTenChuHK, TableColumn<HoKhauTable, String> diaChiHK, TableView<HoKhauTable> tableHoKhau) {
-        this.maHK = maHK;
+    public HoKhauController(TableColumn<HoKhauTable, String> soHK, TableColumn<HoKhauTable, String> hoTenChuHK, TableColumn<HoKhauTable, String> diaChiHK, TableView<HoKhauTable> tableHoKhau) {
+        this.soHK = soHK;
         this.hoTenChuHK = hoTenChuHK;
         this.diaChiHK = diaChiHK;
         this.tableHoKhau = tableHoKhau;
@@ -32,11 +32,11 @@ public class HoKhauController {
         hokhauDB hokhauinDB = new hokhauDB();
         ObservableList<HoKhauTable> listHK = null;
         try {
-            listHK = hokhauinDB.getListHoKhau();
+            listHK = hokhauinDB.getListHoKhauTable();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        maHK.setCellValueFactory(new PropertyValueFactory<HoKhauTable, String>("soHoKhau"));
+        soHK.setCellValueFactory(new PropertyValueFactory<HoKhauTable, String>("soHoKhau"));
         hoTenChuHK.setCellValueFactory(new PropertyValueFactory<HoKhauTable, String>("hoTen"));
         diaChiHK.setCellValueFactory(new PropertyValueFactory<HoKhauTable, String>("diaChi"));
         tableHoKhau.setItems(listHK);

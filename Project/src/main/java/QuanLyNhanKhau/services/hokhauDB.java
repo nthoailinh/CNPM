@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 
 public class hokhauDB {
-    public ObservableList<HoKhauTable> getListHoKhau() throws SQLException {
+    public ObservableList<HoKhauTable> getListHoKhauTable() throws SQLException {
         ObservableList<HoKhauTable> list = FXCollections.observableArrayList();
         Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
