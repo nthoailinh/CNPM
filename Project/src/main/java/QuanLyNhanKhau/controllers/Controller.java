@@ -134,6 +134,8 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBunle) {
+        TrangChu.setStyle("-fx-background-color: #ebe8f9");
+        
         TrangChuController trangchuController = new TrangChuController(SoLuongHoKhau, SoLuongNhanKhau,
                 SoLuongTamTru, SoLuongTamVang);
         trangchuController.initialize();
