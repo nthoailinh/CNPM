@@ -20,7 +20,7 @@ public class nhankhauDB {
         ResultSet rsNhanKhau = stmt.executeQuery();
 
         while(rsNhanKhau.next()) {
-            NhanKhau nhanKhau = new NhanKhau(rsNhanKhau.getString("hoTen"), rsNhanKhau.getDate("ngaySinh").toLocalDate(),
+            NhanKhau nhanKhau = new NhanKhau(rsNhanKhau.getInt("id"), rsNhanKhau.getString("hoTen"), rsNhanKhau.getDate("ngaySinh").toLocalDate(),
                     rsNhanKhau.getString("quanHeVoiChuHo"));
             list.add(nhanKhau);
         }

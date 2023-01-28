@@ -198,7 +198,6 @@
                   <VBox prefHeight="240.0" prefWidth="56.0" spacing="20.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button fx:id="btnChuyenSang" mnemonicParsing="false" text="&gt;&gt;" />
-                        <Button fx:id="btnQuayLai" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="&lt;&lt;" />
                      </children>
                      <padding>
                         <Insets left="8.0" right="8.0" top="32.0" />

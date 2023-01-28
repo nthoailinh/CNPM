@@ -16,7 +16,8 @@ public class NhanKhau {
     private String quanHeVoiChuHo;
 
     public NhanKhau() {}
-    public NhanKhau(String hoTen, LocalDate ngaySinh, String quanHeVoiChuHo){
+    public NhanKhau(int id, String hoTen, LocalDate ngaySinh, String quanHeVoiChuHo){
+        this.id = id;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.quanHeVoiChuHo = quanHeVoiChuHo;
