@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
@@ -105,7 +106,9 @@ public class ThemNguoiMacController implements Initializable {
                                 } catch (SQLException e) {
                                     throw new RuntimeException(e);
                                 }
+
                             }
+                            ((Node) mouseEvent1.getSource()).getScene().getWindow().hide();
                         }
                     });
                 }

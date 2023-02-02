@@ -102,8 +102,8 @@ public class Update {
         return pstmt;
     }
     public PreparedStatement MacCovid(int idNhanKhau, String tinhTrangSK, String ketQuaTest, Object ngayMac
-    , Object ngayKhoi) throws SQLException {
-        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO maccovid ( `idNhanKhau`,`tinhTrangSK`, `ketQuaTest, `ngayMac`, `ngayKhoi`) VALUES ( ?, ?, ?, ?, ?)",
+            , Object ngayKhoi) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO maccovid (`idNhanKhau`,`tinhTrangSK`, `ketQuaTest`, `ngayMac`, `ngayKhoi`) VALUES ( ?, ?, ?, ?, ?)",
                 Statement.RETURN_GENERATED_KEYS);
         pstmt.setInt(1, idNhanKhau);
         pstmt.setString(2, tinhTrangSK);
