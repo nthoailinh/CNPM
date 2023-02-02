@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="updateTTNguoiMac" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.covid.UpdateTTNguoiMacController">
+   <top>
+      <Label maxHeight="-Infinity" prefHeight="50.0" text="Cập nhật thông tin người mắc" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="50.0" prefWidth="200.0" />
+            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="700.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên" />
+                  <Label fx:id="hoTenUpdate" GridPane.columnIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày mắc" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày khỏi" GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tình trạng sức khỏe" GridPane.rowIndex="3" />
+                  <TextField fx:id="UpdateTinhTrangSK" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kết quả test" GridPane.rowIndex="4" />
+                  <TextField fx:id="updateKQTest" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <DatePicker fx:id="updateNgayMac" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="updateNgayKhoi" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <Pane prefHeight="200.0" prefWidth="70.0" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
