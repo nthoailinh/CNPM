@@ -50,7 +50,7 @@ public class nhankhauDB {
         ObservableList<NhanKhauTable> list = FXCollections.observableArrayList();
         Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
-        ResultSet rsNhanKhau = stmt.executeQuery("SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id WHERE nhankhau.id not in (SELECT idNhanKhau from maccovid)");
+        ResultSet rsNhanKhau = stmt.executeQuery("SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id WHERE nhankhau.id not in (SELECT idNhanKhau from maccovid where ngayKhoi is null)");
         while(rsNhanKhau.next()) {
             NhanKhauTable nhanKhau = new NhanKhauTable(rsNhanKhau.getInt("id"), rsNhanKhau.getString("hoTen"), rsNhanKhau.getString("ngaySinh"),
                     rsNhanKhau.getString("gioiTinh"),"Số " + rsNhanKhau.getString("soNha") + ", ngõ " + rsNhanKhau.getString("ngo") + ", đường " + rsNhanKhau.getString("duong"));
