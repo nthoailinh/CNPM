@@ -4,9 +4,7 @@ import QuanLyNhanKhau.controllers.covid.UpdateTTNguoiMacController;
 import QuanLyNhanKhau.controllers.tables.CovidTable;
 import QuanLyNhanKhau.controllers.tables.HoKhauTable;
 import QuanLyNhanKhau.controllers.tables.NhanKhauTable;
-import QuanLyNhanKhau.services.nhankhauDB;
-import QuanLyNhanKhau.services.hokhauDB;
-import QuanLyNhanKhau.services.trangchuDB;
+import QuanLyNhanKhau.services.*;
 import QuanLyNhanKhau.views.ChildWindows;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -240,16 +238,21 @@ public class Controller implements Initializable{
         }
     }
     @FXML
-    void handleClicksCovid(ActionEvent event) throws IOException {
+    void handleClicksCovid(ActionEvent event) throws IOException, SQLException {
         if(event.getSource() == ThemNguoiMac) {
             ChildWindows.show("covid/themnguoimac1.fxml");
+            CovidController covidController = new CovidController(IDNguoiMac, hoTenNguoiMac,ngayMac,ngayKhoi, tinhTrangSucKhoe, ketQuaTest, tableNguoiMac);
+            covidController.initialize();
+
         }
         else if (event.getSource() == XoaNguoiMac) {
             CovidTable tmp = tableNguoiMac.getSelectionModel().getSelectedItem();
+            Update update = new Update();
+            update.deleteMacCovid(tmp.getId());
             tableNguoiMac.getItems().remove(tmp);
         }
         else if (event.getSource() == capNhatTT) {
-            CovidTable tmp = tableNguoiMac.getSelectionModel().getSelectedItem();
+            ChildWindows.show("covid/capnhatnguoimac1.fxml");
         }
     }
 }

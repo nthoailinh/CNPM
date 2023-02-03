@@ -56,4 +56,8 @@ public class CovidController {
         ketQuaTest.setCellValueFactory(new PropertyValueFactory<CovidTable, String>("ketQuaTest"));
         tableNguoiMac.setItems(listCovid);
     }
+
+    public TableView<CovidTable> getTableNguoiMac() {
+        return tableNguoiMac;
+    }
 }

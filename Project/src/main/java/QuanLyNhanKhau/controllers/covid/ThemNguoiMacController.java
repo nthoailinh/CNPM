@@ -102,7 +102,7 @@ public class ThemNguoiMacController implements Initializable {
                                 //UPdate database
                                     Update update = new Update();
                                 try {
-                                    update.MacCovid( tmp.getId(), themTinhTrangSK.getText(),"Dương tính", themNgayMac.getValue(),null );
+                                    update.addMacCovid( tmp.getId(), themTinhTrangSK.getText(),"Dương tính", themNgayMac.getValue(),null );
                                 } catch (SQLException e) {
                                     throw new RuntimeException(e);
                                 }
