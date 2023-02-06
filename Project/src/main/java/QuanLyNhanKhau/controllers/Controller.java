@@ -243,9 +243,6 @@ public class Controller implements Initializable{
     void handleClicksCovid(ActionEvent event) throws IOException, SQLException {
         if(event.getSource() == ThemNguoiMac) {
             ChildWindows.show("covid/themnguoimac1.fxml");
-            CovidController covidController = new CovidController(IDNguoiMac, hoTenNguoiMac,ngayMac,ngayKhoi, tinhTrangSucKhoe, ketQuaTest, tableNguoiMac);
-            covidController.initialize();
-
         }
         else if (event.getSource() == XoaNguoiMac) {
             CovidTable tmp = tableNguoiMac.getSelectionModel().getSelectedItem();
