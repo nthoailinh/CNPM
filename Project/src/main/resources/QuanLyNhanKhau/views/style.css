@@ -8,9 +8,9 @@
   -fx-background-color: #73a3ef;
 }
 
-.button:focused {
-	-fx-background-color: #73a3ef;
-}
+/*.button:focused {*/
+/*	-fx-background-color: #73a3ef;*/
+/*}*/
 
 .table-view .column-header,
 .table-view .column-header-background .filler {
@@ -79,3 +79,4 @@
   -fx-border-color: derive(-fx-pie-color, 1%);
   -fx-border-width: 0px;
 }
+
