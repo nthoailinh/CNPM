@@ -17,7 +17,7 @@ public class CovidDB {
         ObservableList<CovidTable> list = FXCollections.observableArrayList();
         Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from maccovid INNER JOIN nhankhau ON nhankhau.id = maccovid.idNhanKhau");
+        ResultSet rs = stmt.executeQuery("select * from MacCOVID INNER JOIN NhanKhau ON NhanKhau.id = MacCOVID.idNhanKhau");
         while(rs.next()) {
             if(rs.getDate("ngayKhoi") != null) {
                 CovidTable covid = new CovidTable(rs.getInt("id"), rs.getString("hoTen"), rs.getDate("ngayMac").toString(), rs.getDate("ngayKhoi").toString(), rs.getString("tinhTrangSK"),

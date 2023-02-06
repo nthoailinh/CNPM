@@ -249,9 +249,11 @@ public class Controller implements Initializable{
         }
         else if (event.getSource() == XoaNguoiMac) {
             CovidTable tmp = tableNguoiMac.getSelectionModel().getSelectedItem();
-            Update update = new Update();
-            update.deleteMacCovid(tmp.getId());
-            tableNguoiMac.getItems().remove(tmp);
+            if (tmp != null) {
+                Update update = new Update();
+                update.deleteMacCovid(tmp.getId());
+                tableNguoiMac.getItems().remove(tmp);
+            }
         }
         else if (event.getSource() == capNhatTT) {
             ChildWindows.show("covid/capnhatnguoimac1.fxml");
