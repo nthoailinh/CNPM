@@ -14,6 +14,7 @@ module models {
     opens QuanLyNhanKhau.controllers to javafx.fxml;
     opens QuanLyNhanKhau.controllers.nhankhau to javafx.fxml;
     opens QuanLyNhanKhau.controllers.hokhau to javafx.fxml;
+    opens QuanLyNhanKhau.controllers.covid to javafx.fxml;
     opens QuanLyNhanKhau.models to javafx.base;
     opens QuanLyNhanKhau.controllers.tables to javafx.base;
     exports QuanLyNhanKhau.controllers.nhankhau;

@@ -51,4 +51,5 @@ public class NhanKhauController {
         diaChiNK.setCellValueFactory(new PropertyValueFactory<NhanKhauTable, String>("diaChi"));
         tableNhanKhau.setItems(listNK);
     }
+
 }

@@ -5,14 +5,25 @@ import java.time.LocalDate;
 public class MacCOVID {
     private int id;
     private int idNhanKhau;
-    private LocalDate ngayMac;
-    private LocalDate ngayKhoi;
+    private String hoTen;
+    private String tinhTrangSK;
+    private String ketQuaTest;
+    private String ngayMac;
+    private String ngayKhoi;
 
-    public MacCOVID(int id, int idNhanKhau, LocalDate ngayMac, LocalDate ngayKhoi) {
+    public MacCOVID(int id, int idNhanKhau, String ngayMac, String ngayKhoi) {
         this.id = id;
         this.idNhanKhau = idNhanKhau;
         this.ngayMac = ngayMac;
         this.ngayKhoi = ngayKhoi;
+    }
+
+    public MacCOVID(int id, String hoTen, String ngayMac, String tinhTrangSK, String ketQuaTest) {
+        this.id = id;
+        this.hoTen = hoTen;
+        this.tinhTrangSK = tinhTrangSK;
+        this.ketQuaTest = ketQuaTest;
+        this.ngayMac = ngayMac;
     }
 
     public int getId() {
@@ -31,19 +42,19 @@ public class MacCOVID {
         this.idNhanKhau = idNhanKhau;
     }
 
-    public LocalDate getNgayMac() {
+    public String getNgayMac() {
         return ngayMac;
     }
 
-    public void setNgayMac(LocalDate ngayMac) {
+    public void setNgayMac(String ngayMac) {
         this.ngayMac = ngayMac;
     }
 
-    public LocalDate getNgayKhoi() {
+    public String getNgayKhoi() {
         return ngayKhoi;
     }
 
-    public void setNgayKhoi(LocalDate ngayKhoi) {
+    public void setNgayKhoi(String ngayKhoi) {
         this.ngayKhoi = ngayKhoi;
     }
 }

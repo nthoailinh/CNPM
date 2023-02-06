@@ -1,9 +1,7 @@
 package QuanLyNhanKhau.services;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
 
 public class Update {
     Connection connection = MySQL.getConnection();
@@ -100,6 +98,38 @@ public class Update {
         pstmt.setObject(4, ketThuc);
         pstmt.setString(5, noiTamTru);
         pstmt.setString(6, lyDo);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+    public PreparedStatement addMacCovid(int idNhanKhau, String tinhTrangSK, String ketQuaTest, Object ngayMac
+            , Object ngayKhoi) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO maccovid (`idNhanKhau`,`tinhTrangSK`, `ketQuaTest`, `ngayMac`, `ngayKhoi`) VALUES ( ?, ?, ?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, idNhanKhau);
+        pstmt.setString(2, tinhTrangSK);
+        pstmt.setString(3, ketQuaTest);
+        pstmt.setObject(4, ngayMac);
+        pstmt.setObject(5, ngayKhoi);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+
+    public PreparedStatement deleteMacCovid(int id) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("DELETE FROM maccovid where id = ?",
+                Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, id);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+
+    public PreparedStatement updateInfoMacCovid(int id, Object ngayMac,Object ngayKhoi, String tinhTrangSK, String ketQuaTest) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("Update maccovid set ngayMac =?, ngayKhoi = ?,  tinhTrangSK = ?, ketQuaTest = ?    where id = ?",
+                Statement.RETURN_GENERATED_KEYS);
+        pstmt.setObject(1, ngayMac);
+        pstmt.setObject(2, ngayKhoi);
+        pstmt.setString(3, tinhTrangSK);
+        pstmt.setString(4, ketQuaTest);
+        pstmt.setInt(5, id);
         pstmt.executeUpdate();
         return pstmt;
     }
