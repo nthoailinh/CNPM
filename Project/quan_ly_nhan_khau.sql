@@ -79,18 +79,6 @@ INSERT INTO `HoKhau` (`id`, `soHoKhau`, `idChuHo`, `soNha`, `ngo`, `duong`) VALU
 (7, 'TQB000007', 33, 10, 15, 'Tạ Quang Bửu'),
 (8, 'TQB000008', 33, 14, 15, 'Tạ Quang Bửu');
 
--- Table: KhaiBao
-CREATE TABLE KhaiBao (
-    id int AUTO_INCREMENT NOT NULL,
-    idMacCOVID int  NOT NULL,
-    ngayKhaiBao date  NOT NULL,
-    thoiDiemTest date  NOT NULL,
-    hinhThucTest varchar(200)  NOT NULL,
-    ketQuaTest char(10)  NOT NULL,
-    tinhTrangSucKhoe varchar(400)  NOT NULL,
-    CONSTRAINT KhaiBao_pk PRIMARY KEY (id)
-);
-
 -- Table: KhaiTu
 CREATE TABLE KhaiTu (
     idNhanKhau int AUTO_INCREMENT NOT NULL,
@@ -122,7 +110,12 @@ CREATE TABLE MacCOVID (
     idNhanKhau int  NOT NULL,
     ngayMac date  NOT NULL,
     ngayKhoi date  NULL,
-    CONSTRAINT MacCOVID_pk PRIMARY KEY (id)
+    tinhTrangSucKhoe varchar(200) NULL,
+    ketQuaTest varchar(20) NULL,
+    ngayTest varchar(20) NULL,
+    hinhThucTest varchar(20) NULL,
+    ngayKhaiBao date NOT NULL,
+	CONSTRAINT MacCOVID_pk PRIMARY KEY (id)
 );
 
 --
@@ -202,8 +195,7 @@ ALTER TABLE CCCD ADD CONSTRAINT CCCD_NhanKhau FOREIGN KEY CCCD_NhanKhau (idNhanK
     REFERENCES NhanKhau (id);
 
 -- Reference: KhaiBaoMacCOVID_MacCOVID (table: KhaiBao)
-ALTER TABLE KhaiBao ADD CONSTRAINT KhaiBaoMacCOVID_MacCOVID FOREIGN KEY KhaiBaoMacCOVID_MacCOVID (idMacCOVID)
-    REFERENCES MacCOVID (id);
+
 
 -- Reference: KhaiTu_NhanKhau (table: KhaiTu)
 ALTER TABLE KhaiTu ADD CONSTRAINT KhaiTu_NhanKhau FOREIGN KEY KhaiTu_NhanKhau (idNhanKhau)

@@ -49,6 +49,8 @@ public class ThemNguoiMacController implements Initializable {
 
     @FXML
     private TextField themTinhTrangSK;
+    @FXML
+    private TextField themHinhThucTest;
 
     @FXML
     private DatePicker themNgayMac;
@@ -58,6 +60,8 @@ public class ThemNguoiMacController implements Initializable {
     private Label hoTenNguoiMac;
     @FXML
     private Label gioiTinhNguoiMac;
+    @FXML
+    private DatePicker themNgayKhaiBao;
     @FXML
     private TableView<NhanKhauTable> tableNhanKhau;
 
@@ -102,7 +106,7 @@ public class ThemNguoiMacController implements Initializable {
                                 //UPdate database
                                     Update update = new Update();
                                 try {
-                                    update.addMacCovid( tmp.getId(), themTinhTrangSK.getText(),"Dương tính", themNgayMac.getValue(),null );
+                                    update.addMacCovid( tmp.getId(), themTinhTrangSK.getText(),"Dương tính", themNgayMac.getValue(),null, themHinhThucTest.getText(), themNgayMac.getValue(), themNgayKhaiBao.getValue() );
                                 } catch (SQLException e) {
                                     throw new RuntimeException(e);
                                 }
