@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.covid.UpdateTTNguoiMacController">
+   <top>
+      <Label maxHeight="-Infinity" prefHeight="100.0" text="Cập nhật thông tin người mắc" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <VBox maxWidth="-Infinity" prefHeight="210.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập tên cần tìm :  " />
+                  <TextField />
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="20.0" />
+                  <Button fx:id="timKiemnguoiCapNhat" mnemonicParsing="false" text="Tìm kiếm" />
+               </children>
+            </HBox>
+            <Label text="Chọn người cần cập nhật thông tin">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableNguoiMac" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="1000.0">
+              <columns>
+                <TableColumn fx:id="IDNguoiMac" prefWidth="51.0" text="ID" />
+                <TableColumn fx:id="hoTen" prefWidth="153.0" text="Họ tên" />
+                  <TableColumn fx:id="ngayMac" text="Ngày mắc" />
+                  <TableColumn fx:id="ngayKhoi" prefWidth="81.0" text="Ngày khỏi" />
+                  <TableColumn fx:id="tinhTrangSK" prefWidth="245.0" text="Tình Trạng Sức Khỏe" />
+                  <TableColumn fx:id="ketQuaTest" prefWidth="95.0" text="Kết quả test" />
+                  <TableColumn fx:id="hinhThucTest" prefWidth="110.0" text="Hình thức test" />
+                  <TableColumn fx:id="ngayTest" prefWidth="75.0" text="Ngày test" />
+                  <TableColumn fx:id="ngayKhaiBao" prefWidth="109.0" text="Ngày khai báo" />
+              </columns>
+            </TableView>
+            <Pane maxHeight="-Infinity" prefHeight="10.0" prefWidth="200.0" />
+            <GridPane focusTraversable="true" prefHeight="300.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="189.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="613.0" minWidth="10.0" prefWidth="611.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày mắc" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tình trạng sức khỏe" GridPane.rowIndex="3" />
+                  <TextField fx:id="updateTinhTrangSK" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <DatePicker fx:id="updateNgayMac" prefHeight="31.0" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên" />
+                  <Label fx:id="hoTenNguoiMac" GridPane.columnIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày khỏi" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="updateNgayKhoi" prefHeight="31.0" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kết quả test" GridPane.rowIndex="4" />
+                  <TextField fx:id="updateKetQuaTest" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hình thức test" GridPane.rowIndex="5" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày test" GridPane.rowIndex="6" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày khai báo" GridPane.rowIndex="7" />
+                  <DatePicker fx:id="updateNgayTest" prefHeight="31.0" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <DatePicker fx:id="updateNgayKhaiBao" prefHeight="31.0" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="updateHinhThucTest" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Button fx:id="btnCapNhat" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="90.0" text="Cập nhật" visible="false" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

@@ -242,7 +242,7 @@ public class Controller implements Initializable{
     @FXML
     void handleClicksCovid(ActionEvent event) throws IOException, SQLException {
         if(event.getSource() == ThemNguoiMac) {
-            ChildWindows.show("covid/themnguoimac.fxml");
+            ChildWindows.show("covid/themnguoimac1.fxml");
         }
         else if (event.getSource() == XoaNguoiMac) {
             CovidTable tmp = tableNguoiMac.getSelectionModel().getSelectedItem();
@@ -253,7 +253,7 @@ public class Controller implements Initializable{
             }
         }
         else if (event.getSource() == capNhatTT) {
-            ChildWindows.show("covid/capnhatnguoimac.fxml");
+            ChildWindows.show("covid/capnhatnguoimac1.fxml");
         }
     }
 }
