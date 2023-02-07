@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.Controller">
    <children>
       <VBox prefHeight="768.0" prefWidth="244.0" style="-fx-background-color: #EBE8F9;">
          <children>
@@ -126,7 +126,7 @@
             </Button>
          </children>
       </VBox>
-      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="748.0" stylesheets="@style.css">
+      <GridPane fx:id="contentTrangChu" layoutX="277.0" layoutY="61.0" prefHeight="612.0" prefWidth="748.0" visible="false">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="376.0" minWidth="10.0" prefWidth="125.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="674.0" minWidth="10.0" prefWidth="639.0" />
@@ -141,6 +141,21 @@
             <ImageView fitHeight="92.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/people.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="93.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@images/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="108.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@images/check-in.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="108.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@images/passenger.png" />
                </image>
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -177,16 +192,6 @@
                   <Insets left="32.0" />
                </padding>
             </VBox>
-            <ImageView fitHeight="93.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@images/home.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="108.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@images/check-in.png" />
-               </image>
-            </ImageView>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Label prefHeight="57.0" prefWidth="638.0" text="Nhân khẩu tạm trú:">
@@ -221,11 +226,6 @@
                   <Insets left="32.0" />
                </padding>
             </VBox>
-            <ImageView fitHeight="108.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
-               <image>
-                  <Image url="@images/passenger.png" />
-               </image>
-            </ImageView>
          </children>
       </GridPane>
       <BorderPane fx:id="contentNhanKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="780.0" visible="false">
@@ -250,14 +250,11 @@
             </TableView>
          </center>
          <right>
-            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="128.0" spacing="24.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="NhanKhauThemMoi" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="108.0" text="Thêm mới" />
-                  <Pane prefHeight="24.0" prefWidth="140.0" />
                   <Button fx:id="NhanKhauDKTamVang" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="108.0" text="ĐK tạm vắng" />
-                  <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
                   <Button fx:id="NhanKhauDKTamTru" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="108.0" text="ĐK tạm trú" />
-                  <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
                   <Button fx:id="NhanKhauKhaiTu" mnemonicParsing="false" onAction="#handleClicksNhanKhau" prefHeight="50.0" prefWidth="108.0" text="Khai tử" />
                </children>
             </VBox>
@@ -269,34 +266,33 @@
             <Pane prefHeight="10.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
-      <BorderPane fx:id="contentHoKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="780.0" visible="false">
+      <BorderPane fx:id="contentHoKhau" layoutX="243.0" layoutY="68.0" prefHeight="701.0" prefWidth="780.0">
          <top>
-            <HBox prefHeight="45.0" prefWidth="786.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="786.0" spacing="16.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="45.0" prefWidth="23.0" />
-                  <TextField />
-                  <Button mnemonicParsing="false" text="Tìm kiếm" />
+                  <TextField prefHeight="28.0" prefWidth="543.0" />
+                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="79.0" text="Tìm kiếm" />
                </children>
+               <padding>
+                  <Insets left="14.0" />
+               </padding>
             </HBox>
          </top>
          <center>
             <TableView fx:id="tableHoKhau" prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
                <columns>
-                  <TableColumn fx:id="maHK" prefWidth="144.0" text="Mã hộ khẩu" />
+                  <TableColumn fx:id="soHK" prefWidth="144.0" text="Số hộ khẩu" />
                   <TableColumn fx:id="hoTenChuHK" prefWidth="206.0" text="Họ tên chủ hộ" />
                   <TableColumn fx:id="diaChiHK" prefWidth="288.0" text="Địa chỉ" />
                </columns>
             </TableView>
          </center>
          <right>
-            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="128.0" spacing="24.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="HoKhauThemMoi" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="108.0" text="Thêm mới" />
-                  <Pane prefHeight="24.0" prefWidth="140.0" />
                   <Button fx:id="HoKhauTachHK" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="108.0" text="Tách hộ khẩu" />
-                  <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
                   <Button fx:id="HoKhauChuyenDi" mnemonicParsing="false" onAction="#handleClicksHoKhau" prefHeight="50.0" prefWidth="108.0" text="Chuyển đi" />
-                  <Pane layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="140.0" />
                </children>
             </VBox>
          </right>
@@ -328,58 +324,71 @@
          <top>
             <GridPane prefHeight="111.0" prefWidth="780.0" BorderPane.alignment="CENTER">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="329.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.0" minWidth="10.0" prefWidth="327.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="124.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="324.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.0" minWidth="10.0" prefWidth="324.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="133.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
                      <children>
-                        <Pane prefHeight="56.0" prefWidth="24.0" />
-                        <Label text="Giới tính:  " />
-                        <ChoiceBox prefWidth="150.0" />
+                        <Label text="Giới tính:" />
+                        <ChoiceBox prefHeight="24.0" prefWidth="160.0" />
                      </children>
+                     <padding>
+                        <Insets left="24.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" GridPane.rowIndex="1">
                      <children>
-                        <Pane prefHeight="56.0" prefWidth="24.0" />
-                        <Label text="Độ tuổi:    " />
-                        <Label text="Từ:  " />
-                        <TextField prefHeight="22.0" prefWidth="37.0" />
-                        <Label text="  đến  " />
-                        <TextField prefHeight="6.0" prefWidth="34.0" />
+                        <Label text="Độ tuổi:" />
+                        <Label text="Từ:" />
+                        <TextField prefHeight="22.0" prefWidth="48.0" />
+                        <Label text="đến" />
+                        <TextField prefHeight="6.0" prefWidth="48.0" />
                      </children>
+                     <padding>
+                        <Insets left="24.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="56.0" prefWidth="295.0" GridPane.columnIndex="1">
+                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="295.0" spacing="8.0" GridPane.columnIndex="1">
                      <children>
-                        <Label text="Tình trạng:  " />
-                        <ChoiceBox prefWidth="150.0" />
+                        <Label text="Tình trạng:" />
+                        <ChoiceBox prefHeight="24.0" prefWidth="160.0" />
                      </children>
+                     <padding>
+                        <Insets left="24.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="54.0" prefWidth="233.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="233.0" spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Label text="Năm:    " />
-                        <Label text="Từ:  " />
-                        <TextField prefHeight="22.0" prefWidth="37.0" />
-                        <Label text="  đến  " />
-                        <TextField prefHeight="6.0" prefWidth="34.0" />
+                        <Label text="Năm sinh:" />
+                        <Label text="Từ:" />
+                        <TextField prefHeight="24.0" prefWidth="48.0" />
+                        <Label text="đến" />
+                        <TextField prefHeight="6.0" prefWidth="48.0" />
                      </children>
+                     <padding>
+                        <Insets left="24.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="55.0" prefWidth="109.0" GridPane.columnIndex="2">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="109.0" GridPane.columnIndex="2">
                      <children>
                         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Show" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
                         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Xuất file" />
                      </children>
                   </HBox>
                </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
             </GridPane>
          </top>
          <bottom>
@@ -410,6 +419,47 @@
                </padding>
             </FlowPane>
          </bottom>
+      </BorderPane>
+      <BorderPane fx:id="contentCovid" focusTraversable="true" layoutX="243.0" layoutY="60.0" prefHeight="710.0" prefWidth="780.0" visible="false">
+         <top>
+            <HBox prefHeight="45.0" prefWidth="786.0" visible="false" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="45.0" prefWidth="23.0" />
+                  <TextField fx:id="nguoiMacInput" />
+                  <Button fx:id="NguoiMacTimKiem" mnemonicParsing="false" text="Tìm kiếm" />
+               </children>
+            </HBox>
+         </top>
+         <bottom>
+            <Pane prefHeight="10.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <TableView fx:id="tableNguoiMac" prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="IDNguoiMac" prefWidth="35.0" text="ID" />
+                  <TableColumn fx:id="hoTenNguoiMac" prefWidth="146.0" text="Họ tên" />
+                  <TableColumn fx:id="ngayMac" prefWidth="79.0" text="Ngày Mắc" />
+                  <TableColumn fx:id="ngayKhoi" prefWidth="85.0" text="Ngày Khỏi" />
+                  <TableColumn fx:id="tinhTrangSucKhoe" prefWidth="198.0" text="Tình trạng sức khỏe" />
+                  <TableColumn fx:id="ketQuaTest" minWidth="0.0" prefWidth="95.0" text="Kết quả test" />
+               </columns>
+            </TableView>
+         </center>
+         <left>
+            <Pane prefHeight="585.0" prefWidth="13.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="ThemNguoiMac" mnemonicParsing="false" onAction="#handleClicksCovid" prefHeight="50.0" prefWidth="108.0" text="Thêm mới" />
+                  <Pane prefHeight="24.0" prefWidth="140.0" />
+                  <Button fx:id="XoaNguoiMac" mnemonicParsing="false" onAction="#handleClicksCovid" prefHeight="50.0" prefWidth="108.0" text="Xóa " />
+                  <Pane prefHeight="24.0" prefWidth="140.0" />
+                  <Button fx:id="capNhatTT" mnemonicParsing="false" onAction="#handleClicksCovid" prefHeight="50.0" prefWidth="108.0" text="Cập nhật" />
+                  <Pane prefHeight="24.0" prefWidth="140.0" />
+               </children>
+            </VBox>
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>

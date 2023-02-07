@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.hokhau.themmoihokhauController">
+<BorderPane prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.hokhau.themmoihokhauController">
     <bottom>
         <HBox alignment="CENTER" prefHeight="52.0" prefWidth="960.0" spacing="40.0" BorderPane.alignment="CENTER">
             <children>
@@ -49,104 +49,104 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-              <GridPane maxHeight="-Infinity" prefHeight="229.0" prefWidth="960.0" vgap="4.0">
+              <GridPane maxHeight="-Infinity" prefHeight="372.0" prefWidth="960.0" vgap="4.0">
                   <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="505.0" minWidth="10.0" prefWidth="178.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="969.0" minWidth="10.0" prefWidth="742.0" />
                   </columnConstraints>
                   <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
                   </rowConstraints>
                   <children>
-                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu (*)">
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="số hộ khẩu (*)">
                           <font>
                               <Font size="14.0" />
                           </font>
                       </Text>
-                      <TextField fx:id="maHoKhau" prefHeight="30.0" prefWidth="781.0" GridPane.columnIndex="1" />
-                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số nhà (*)" GridPane.rowIndex="1">
+                      <TextField fx:id="soHoKhau" prefHeight="30.0" prefWidth="781.0" GridPane.columnIndex="1" />
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số nhà (*)" GridPane.rowIndex="3">
                           <font>
                               <Font size="14.0" />
                           </font>
                       </Text>
-                      <TextField fx:id="soNha" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngõ" GridPane.rowIndex="2">
+                      <TextField fx:id="soNha" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngõ" GridPane.rowIndex="4">
                           <font>
                               <Font size="14.0" />
                           </font>
                       </Text>
-                      <TextField fx:id="ngo" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đường (*)" GridPane.rowIndex="3">
+                      <TextField fx:id="ngo" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đường (*)" GridPane.rowIndex="5">
                           <font>
                               <Font size="14.0" />
                           </font>
                       </Text>
-                      <TextField fx:id="duong" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                      <TextField fx:id="duong" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                      <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chủ hộ (*)" GridPane.rowIndex="1">
+                          <font>
+                              <Font size="14.0" />
+                          </font>
+                      </Text>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <TextField fx:id="chuHo" prefHeight="32.0" prefWidth="672.0" />
+                        <Button fx:id="btnChon" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="64.0" text="Chọn" />
+                     </children>
+                  </HBox>
+                      <Text layoutX="26.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CMT/CCCD chủ hộ (*)" GridPane.rowIndex="2">
+                          <font>
+                              <Font size="14.0" />
+                          </font>
+                      </Text>
+                      <TextField fx:id="cccdChuHo" layoutX="208.0" layoutY="386.0" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   </children>
                   <padding>
                       <Insets bottom="12.0" left="16.0" right="24.0" top="12.0" />
                   </padding>
               </GridPane>
-            <BorderPane prefHeight="375.0" prefWidth="960.0">
+            <BorderPane prefHeight="228.0" prefWidth="960.0">
+               <top>
+                  <Label prefHeight="32.0" prefWidth="1031.0" text="Thành viên của hộ" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets left="16.0" />
+                     </padding>
+                  </Label>
+               </top>
                <center>
-                  <TableView fx:id="tableThanhVien" prefHeight="266.0" prefWidth="936.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="tableThanhVien" prefHeight="188.0" prefWidth="805.0" BorderPane.alignment="CENTER">
                     <columns>
-                        <TableColumn fx:id="idTV" prefWidth="53.0" text="ID" />
-                      <TableColumn fx:id="hoTenTV" prefWidth="306.0" text="Họ tên" />
-                      <TableColumn fx:id="ngaySinhTV" prefWidth="171.0" text="Ngày sinh" />
-                        <TableColumn fx:id="gioiTinhTV" prefWidth="127.0" text="Giới tính" />
-                        <TableColumn fx:id="quanHeVoiChuHo" prefWidth="278.0" text="Quan hệ với chủ hộ" />
+                        <TableColumn fx:id="idTV" prefWidth="41.0" text="ID" />
+                      <TableColumn fx:id="hoTenTV" prefWidth="242.0" text="Họ tên" />
+                      <TableColumn fx:id="ngaySinhTV" prefWidth="150.0" text="Ngày sinh" />
+                        <TableColumn fx:id="gioiTinhTV" prefWidth="116.0" text="Giới tính" />
+                        <TableColumn fx:id="quanHeVoiChuHo" prefWidth="255.0" text="Quan hệ với chủ hộ" />
                     </columns>
                   </TableView>
                </center>
                <right>
-                  <VBox alignment="CENTER" prefHeight="182.0" prefWidth="16.0" BorderPane.alignment="CENTER">
+                  <VBox alignment="CENTER" prefHeight="182.0" prefWidth="143.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="btnThemThanhVien" mnemonicParsing="false" onAction="#handleClicks" text="Thêm thành viên" />
+                     </children>
                      <padding>
                         <Insets left="6.0" right="6.0" />
                      </padding>
                   </VBox>
                </right>
                <left>
-                  <Pane prefHeight="168.0" prefWidth="16.0" BorderPane.alignment="CENTER" />
+                  <Pane prefHeight="168.0" prefWidth="12.0" BorderPane.alignment="CENTER" />
                </left>
-               <top>
-                  <VBox prefHeight="80.0" prefWidth="960.0" spacing="5.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label prefHeight="97.0" prefWidth="960.0" text="Thành viên của hộ">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets left="16.0" />
-                           </padding>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label prefHeight="29.0" text="Nhập số CMT/CCCD">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="cccd" prefHeight="29.0" prefWidth="597.0">
-                                 <HBox.margin>
-                                    <Insets left="42.0" right="22.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button fx:id="btnThemThanhVien" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" text="Thêm thành viên" />
-                           </children>
-                           <padding>
-                              <Insets left="16.0" right="12.0" />
-                           </padding>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="8.0" />
-                     </padding>
-                  </VBox>
-               </top>
             </BorderPane>
          </children>
       </VBox>

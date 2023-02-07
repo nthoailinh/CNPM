@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.hokhau.tachhokhauController">
+<BorderPane prefHeight="720.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.hokhau.tachhokhauController">
     <bottom>
         <HBox alignment="CENTER" prefHeight="52.0" prefWidth="1024.0" spacing="40.0" BorderPane.alignment="CENTER">
             <children>
@@ -42,14 +42,14 @@
             <Pane prefHeight="23.0" prefWidth="960.0" />
             <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="960.0" spacing="20.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập mã hộ khẩu">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nhập số hộ khẩu">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin></Text>
-                  <TextField fx:id="maHoKhau" prefHeight="32.0" prefWidth="213.0" />
+                  <TextField fx:id="soHoKhau" prefHeight="32.0" prefWidth="213.0" />
                   <Button fx:id="btnTim" mnemonicParsing="false" onAction="#handleClicksBtnTim" prefHeight="28.0" prefWidth="56.0" text="Tìm">
                      <font>
                         <Font size="14.0" />
@@ -78,7 +78,7 @@
                <center>
                   <TableView fx:id="tableHoKhauCanTach" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <columns>
-                      <TableColumn fx:id="tableHoKhauCanTach_MaHoKhau" prefWidth="95.0" text="Mã hộ khẩu" />
+                      <TableColumn fx:id="tableHoKhauCanTach_soHoKhau" prefWidth="95.0" text="Số hộ khẩu" />
                       <TableColumn fx:id="tableHoKhauCanTach_HoTenChuHo" prefWidth="122.0" text="Họ tên chủ hộ" />
                         <TableColumn fx:id="tableHoKhauCanTach_DiaChi" prefWidth="219.0" text="Địa chỉ" />
                     </columns>
@@ -145,7 +145,7 @@
                      </GridPane.margin>
                         </Text>
                   <Label fx:id="chuHoHienTai" prefHeight="36.0" prefWidth="379.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mã hộ khẩu mới (*)" GridPane.rowIndex="2">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số hộ khẩu mới (*)" GridPane.rowIndex="2">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -156,25 +156,25 @@
                                 <Font size="14.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="maHoKhauMoi" prefHeight="32.0" prefWidth="356.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngõ" GridPane.rowIndex="3">
+                        <TextField fx:id="soHoKhauMoi" prefHeight="32.0" prefWidth="356.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Số nhà" GridPane.rowIndex="3">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="ngo" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đường" GridPane.rowIndex="4">
+                        <TextField fx:id="soNha" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngõ" GridPane.rowIndex="4">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="duong" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tổ dân phố" GridPane.rowIndex="5">
+                        <TextField fx:id="ngo" prefHeight="32.0" prefWidth="768.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đường" GridPane.rowIndex="5">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Text>
-                        <TextField fx:id="toDanPho" layoutX="208.0" layoutY="332.0" prefHeight="32.0" prefWidth="321.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="duong" layoutX="208.0" layoutY="332.0" prefHeight="32.0" prefWidth="321.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                     </children>
                     <padding>
                         <Insets bottom="12.0" left="16.0" right="8.0" top="28.0" />
@@ -198,7 +198,6 @@
                   <VBox prefHeight="240.0" prefWidth="56.0" spacing="20.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button fx:id="btnChuyenSang" mnemonicParsing="false" text="&gt;&gt;" />
-                        <Button fx:id="btnQuayLai" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="&lt;&lt;" />
                      </children>
                      <padding>
                         <Insets left="8.0" right="8.0" top="32.0" />
