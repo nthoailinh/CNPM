@@ -155,6 +155,41 @@ public class Controller implements Initializable{
     private TableColumn<CovidTable, String> ngayKhoi;
     @FXML
     private Button capNhatTT;
+
+    // thong ke
+    @FXML
+    private Button showStatisticsButton;
+    @FXML
+    private ChoiceBox<String> genderChoiceBox;
+    @FXML
+    private TableColumn<NhanKhauTable,Integer> IDTK;
+    @FXML
+    private TableColumn<NhanKhauTable,String> hoTenTK;
+    @FXML
+    private TableColumn<NhanKhauTable,LocalDate> ngaySinhTK;
+    @FXML
+    private TableColumn<NhanKhauTable,String> gioiTinhTK;
+    @FXML
+    private TableColumn<NhanKhauTable,String> diaChiTK;
+    @FXML
+    private TableView<NhanKhauTable> tableThongKe;
+    @FXML
+    private Label sumStatisticsLabel;
+    @FXML
+    private TextField ageStartTextField;
+    @FXML
+    private TextField ageEndTextField;
+    @FXML
+    private ChoiceBox<String> tinhTrangChoiceBox;
+    @FXML
+    private DatePicker ngayMacStartDatePicker;
+    @FXML
+    private DatePicker ngayMacEndDatePicker;
+    @FXML
+    private DatePicker ngayKhoiStartDatePicker;
+    @FXML
+    private DatePicker ngayKhoiEndDatePicker;
+
     void resetVisible(){
         contentTrangChu.setVisible(false);
         contentNhanKhau.setVisible(false);
@@ -182,6 +217,17 @@ public class Controller implements Initializable{
         hokhauController.initialize();
         CovidController covidController = new CovidController(IDNguoiMac, hoTenNguoiMac,ngayMac,ngayKhoi, tinhTrangSucKhoe, ketQuaTest, tableNguoiMac);
         covidController.initialize();
+
+        // thong ke
+        genderChoiceBox.setValue("<lựa chọn>");
+        ObservableList<String> listChoice = genderChoiceBox.getItems();
+        listChoice.add("Nam");
+        listChoice.add("Nữ");
+
+        tinhTrangChoiceBox.setValue("<lua chon>");
+        ObservableList<String> listChoice2 = tinhTrangChoiceBox.getItems();
+        listChoice2.add("duong tinh");
+        listChoice2.add("am tinh");
     }
     @FXML
     void handleClicksSidebar(ActionEvent event) {
@@ -254,6 +300,51 @@ public class Controller implements Initializable{
         }
         else if (event.getSource() == capNhatTT) {
             ChildWindows.show("covid/capnhatnguoimac1.fxml");
+        }
+    }
+
+    // thong ke
+    @FXML
+    void handleClicksThongKe(ActionEvent event) throws IOException {
+        if (event.getSource() == showStatisticsButton) {
+            System.out.println(genderChoiceBox.getValue());
+            nhankhauDB nhankhauinDB = new nhankhauDB();
+            ObservableList<NhanKhauTable> listNK = null;
+            String gender = genderChoiceBox.getValue();
+            String ageStart = ageStartTextField.getText();
+            String ageEnd = ageEndTextField.getText();
+            String tinhTrang = tinhTrangChoiceBox.getValue();
+            String ngayMacStart = "";
+            String ngayMacEnd = "";
+            String ngayKhoiStart = "";
+            String ngayKhoiEnd = "";
+            if (ngayMacStartDatePicker.getValue() != null) {
+                ngayMacStart = ngayMacStartDatePicker.getValue().toString();
+            }
+            if (ngayMacEndDatePicker.getValue() != null) {
+                ngayMacEnd = ngayMacEndDatePicker.getValue().toString();
+            }
+            if (ngayKhoiStartDatePicker.getValue() != null) {
+                ngayKhoiStart = ngayKhoiStartDatePicker.getValue().toString();
+            }
+            if (ngayKhoiEndDatePicker.getValue() != null) {
+                ngayKhoiEnd = ngayKhoiEndDatePicker.getValue().toString();
+            }
+            System.out.println(ngayMacStart);
+            try {
+                listNK = nhankhauinDB.getListNhanKhau(gender, ageStart, ageEnd, tinhTrang, ngayMacStart, ngayMacEnd, ngayKhoiStart, ngayKhoiEnd);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            IDTK.setCellValueFactory(new PropertyValueFactory<NhanKhauTable, Integer>("id"));
+            hoTenTK.setCellValueFactory(new PropertyValueFactory<NhanKhauTable, String>("hoTen"));
+            ngaySinhTK.setCellValueFactory(new PropertyValueFactory<NhanKhauTable, LocalDate>("ngaySinh"));
+            gioiTinhTK.setCellValueFactory(new PropertyValueFactory<NhanKhauTable, String>("gioiTinh"));
+            diaChiTK.setCellValueFactory(new PropertyValueFactory<NhanKhauTable, String>("diaChi"));
+            tableThongKe.setItems(listNK);
+
+            sumStatisticsLabel.setText(listNK.size() + " nhân khẩu");
         }
     }
 }

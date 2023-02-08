@@ -61,4 +61,97 @@ public class nhankhauDB {
         connection.close();
         return list;
     }
+
+    // for thong ke
+    public ObservableList<NhanKhauTable> getListNhanKhau(String gioiTinh, String ageStart, String ageEnd, String tinhTrang, String ngayMacStart, String ngayMacEnd, String ngayKhoiStart, String ngayKhoiEnd) throws SQLException {
+        ObservableList<NhanKhauTable> list = FXCollections.observableArrayList();
+        Connection connection = MySQL.getConnection();
+        Statement stmt = connection.createStatement();
+        String defaultQuery = "SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id";
+        if (!(tinhTrang.equals("<lua chon>") && ngayMacStart.equals("") && ngayMacEnd.equals("") && ngayKhoiStart.equals("") && ngayKhoiEnd.equals(""))) {
+            defaultQuery += " JOIN MacCOVID ON NhanKhau.id = MacCOVID.idNhanKhau";
+        }
+        String query = defaultQuery;
+        if (!gioiTinh.equals("<lựa chọn>")) {
+            query = query + " WHERE gioiTinh = '" + gioiTinh + "'";
+        }
+
+        if (!ageStart.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query+ " WHERE ";
+            }
+            LocalDate birthDate = LocalDate.now().minusYears(Long.parseLong(ageStart));
+            query = query + "ngaySinh < '" + birthDate.toString() + "'";
+        }
+
+        if (!ageEnd.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query+ " WHERE ";
+            }
+            LocalDate birthDate = LocalDate.now().minusYears(Long.parseLong(ageEnd));
+            query = query + "ngaySinh > '" + birthDate.toString() + "'";
+        }
+
+        if (!tinhTrang.equals("<lua chon>")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query+ " WHERE ";
+            }
+            query = query + "ketQuaTest = '" + tinhTrang + "'";
+        }
+
+        if (!ngayMacStart.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query + " WHERE ";
+            }
+            query = query + "ngayMac > '" + ngayMacStart + "'";
+        }
+
+        if (!ngayMacEnd.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query + " WHERE ";
+            }
+            query = query + "ngayMac < '" + ngayMacEnd + "'";
+        }
+
+        if (!ngayKhoiStart.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query + " WHERE ";
+            }
+            query = query + "ngayKhoi > '" + ngayKhoiStart + "'";
+        }
+
+        if (!ngayKhoiEnd.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query + " WHERE ";
+            }
+            query = query + "ngayKhoi < '" + ngayKhoiEnd + "'";
+        }
+
+        System.out.println(query);
+        ResultSet rsNhanKhau = stmt.executeQuery(query);
+        while (rsNhanKhau.next()) {
+            NhanKhauTable nhanKhau = new NhanKhauTable(rsNhanKhau.getInt("id"), rsNhanKhau.getString("hoTen"), rsNhanKhau.getString("ngaySinh"),
+                    rsNhanKhau.getString("gioiTinh"),"Số " + rsNhanKhau.getString("soNha") + ", ngõ " + rsNhanKhau.getString("ngo") + ", đường " + rsNhanKhau.getString("duong"));
+            list.add(nhanKhau);
+        }
+
+        rsNhanKhau.close();
+        stmt.close();
+        connection.close();
+        return list;
+    }
 }
