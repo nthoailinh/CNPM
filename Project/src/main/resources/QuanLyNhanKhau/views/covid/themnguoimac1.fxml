@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.covid.ThemNguoiMacController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.covid.ThemNguoiMacController">
    <top>
       <Label maxHeight="-Infinity" prefHeight="100.0" text="Điền thông tin người mắc" BorderPane.alignment="CENTER">
          <font>
@@ -38,8 +38,8 @@
                   <TableColumn fx:id="diaChiNK" prefWidth="335.0" text="Địa chỉ" />
               </columns>
             </TableView>
-            <Pane maxHeight="-Infinity" prefHeight="10.0" prefWidth="200.0" />
-            <GridPane focusTraversable="true" maxHeight="-Infinity" prefHeight="300.0">
+            <Pane maxHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" />
+            <GridPane focusTraversable="true">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="189.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="613.0" minWidth="10.0" prefWidth="611.0" />
@@ -50,13 +50,10 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày mắc (*)" GridPane.rowIndex="3" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tình trạng sức khỏe" GridPane.rowIndex="4" />
-                  <TextField fx:id="themTinhTrangSK" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <DatePicker fx:id="themNgayMac" prefHeight="31.0" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh" GridPane.rowIndex="1" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ tên" />
@@ -64,10 +61,7 @@
                   <Label fx:id="hoTenNguoiMac" GridPane.columnIndex="1" />
                   <Label fx:id="ngaySinhNguoiMac" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="gioiTinhNguoiMac" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hình thức test" GridPane.rowIndex="5" />
-                  <TextField fx:id="themHinhThucTest" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày khai báo" GridPane.rowIndex="6" />
-                  <DatePicker fx:id="themNgayKhaiBao" prefHeight="31.0" prefWidth="240.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <ChoiceBox fx:id="themTinhTrangSK" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </children>

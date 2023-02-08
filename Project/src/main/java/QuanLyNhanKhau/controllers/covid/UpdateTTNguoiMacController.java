@@ -49,7 +49,7 @@ public class UpdateTTNguoiMacController implements Initializable {
     private TableColumn<MacCOVID, String> ketQuaTest;
 
     @FXML
-    private TextField updateTinhTrangSK;
+    private ChoiceBox<String> updateTinhTrangSK;
     @FXML
     private TextField updateKetQuaTest;
 
@@ -77,6 +77,11 @@ public class UpdateTTNguoiMacController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        updateTinhTrangSK.setValue("");
+        ObservableList<String> listChoice = updateTinhTrangSK.getItems();
+        listChoice.add("duong tinh");
+        listChoice.add("am tinh");
+
         CovidDB covidinDB = new CovidDB();
         ObservableList<MacCOVID> listCovid = null;
         try {
@@ -106,7 +111,7 @@ public class UpdateTTNguoiMacController implements Initializable {
                     if(tmp.getNgayKhoi().equals("Chưa khỏi") == false) {
                         updateNgayKhoi.setValue(LocalDate.parse(tmp.getNgayKhoi()));
                     }
-                    updateTinhTrangSK.setText(tmp.getTinhTrangSK());
+                    updateTinhTrangSK.setValue(tmp.getTinhTrangSK());
                     updateKetQuaTest.setText(tmp.getKetQuaTest());
                     updateNgayTest.setValue(LocalDate.parse(tmp.getNgayTest()));
                     updateHinhThucTest.setText(tmp.getHinhThucTest());
@@ -116,7 +121,7 @@ public class UpdateTTNguoiMacController implements Initializable {
                                 //UPdate database
                                 Update update = new Update();
                                 try {
-                                    update.updateInfoMacCovid( tmp.getId(), updateNgayMac.getValue(),updateNgayKhoi.getValue(), updateTinhTrangSK.getText(), updateKetQuaTest.getText(), updateHinhThucTest.getText(), updateNgayTest.getValue(), updateNgayKhaiBao.getValue() );
+                                    update.updateInfoMacCovid( tmp.getId(), updateNgayMac.getValue(),updateNgayKhoi.getValue(), updateTinhTrangSK.getValue(), updateKetQuaTest.getText(), updateHinhThucTest.getText(), updateNgayTest.getValue(), updateNgayKhaiBao.getValue() );
                                 } catch (SQLException e) {
                                     throw new RuntimeException(e);
                                 }

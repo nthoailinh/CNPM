@@ -48,7 +48,7 @@ public class ThemNguoiMacController implements Initializable {
     private Button btnXacNhanNguoiMac;
 
     @FXML
-    private TextField themTinhTrangSK;
+    private ChoiceBox<String> themTinhTrangSK;
     @FXML
     private TextField themHinhThucTest;
 
@@ -68,6 +68,11 @@ public class ThemNguoiMacController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        themTinhTrangSK.setValue("");
+        ObservableList<String> listChoice = themTinhTrangSK.getItems();
+        listChoice.add("duong tinh");
+        listChoice.add("am tinh");
+
         nhankhauDB nhankhauinDB = new nhankhauDB();
         ObservableList<NhanKhauTable> listNK = null;
         try {
@@ -106,7 +111,7 @@ public class ThemNguoiMacController implements Initializable {
                                 //UPdate database
                                     Update update = new Update();
                                 try {
-                                    update.addMacCovid( tmp.getId(), themTinhTrangSK.getText(),"Dương tính", themNgayMac.getValue(),null, themHinhThucTest.getText(), themNgayMac.getValue(), themNgayKhaiBao.getValue() );
+                                    update.addMacCovid( tmp.getId(), themTinhTrangSK.getValue(),"Dương tính", themNgayMac.getValue(),null, themHinhThucTest.getText(), themNgayMac.getValue(), themNgayKhaiBao.getValue() );
                                 } catch (SQLException e) {
                                     throw new RuntimeException(e);
                                 }
