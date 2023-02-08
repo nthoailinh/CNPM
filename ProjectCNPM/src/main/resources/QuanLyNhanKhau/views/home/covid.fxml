@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.COVIDController">
+   <children>
+      <BorderPane fx:id="contentCovid" focusTraversable="true" prefHeight="710.0" prefWidth="780.0">
+         <top>
+            <HBox prefHeight="45.0" prefWidth="786.0" visible="false" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="45.0" prefWidth="23.0" />
+                  <TextField fx:id="nguoiMacInput" />
+                  <Button fx:id="NguoiMacTimKiem" mnemonicParsing="false" text="Tìm kiếm" />
+               </children>
+            </HBox>
+         </top>
+         <bottom>
+            <Pane prefHeight="10.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <TableView fx:id="tableNguoiMac" prefHeight="600.0" prefWidth="646.0" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="IDNguoiMac" prefWidth="35.0" text="ID" />
+                  <TableColumn fx:id="hoTenNguoiMac" prefWidth="146.0" text="Họ tên" />
+                  <TableColumn fx:id="ngayMac" prefWidth="79.0" text="Ngày Mắc" />
+                  <TableColumn fx:id="ngayKhoi" prefWidth="85.0" text="Ngày Khỏi" />
+                  <TableColumn fx:id="tinhTrangSucKhoe" prefWidth="198.0" text="Tình trạng sức khỏe" />
+                  <TableColumn fx:id="ketQuaTest" minWidth="0.0" prefWidth="95.0" text="Kết quả test" />
+               </columns>
+            </TableView>
+         </center>
+         <left>
+            <Pane prefHeight="585.0" prefWidth="13.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <VBox alignment="TOP_CENTER" prefHeight="512.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="ThemNguoiMac" mnemonicParsing="false" onAction="#handleClicksCovid" prefHeight="50.0" prefWidth="108.0" text="Thêm mới" />
+                  <Pane prefHeight="24.0" prefWidth="140.0" />
+                  <Button fx:id="XoaNguoiMac" mnemonicParsing="false" onAction="#handleClicksCovid" prefHeight="50.0" prefWidth="108.0" text="Xóa " />
+                  <Pane prefHeight="24.0" prefWidth="140.0" />
+                  <Button fx:id="capNhatTT" mnemonicParsing="false" onAction="#handleClicksCovid" prefHeight="50.0" prefWidth="108.0" text="Cập nhật" />
+                  <Pane prefHeight="24.0" prefWidth="140.0" />
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
