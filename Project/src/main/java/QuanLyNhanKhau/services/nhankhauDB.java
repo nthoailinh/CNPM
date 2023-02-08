@@ -102,7 +102,7 @@ public class nhankhauDB {
             } else {
                 query = query+ " WHERE ";
             }
-            query = query + "ketQuaTest = '" + tinhTrang + "'";
+            query = query + "tinhTrangSucKhoe = '" + tinhTrang + "'";
         }
 
         if (!ngayMacStart.equals("")) {
