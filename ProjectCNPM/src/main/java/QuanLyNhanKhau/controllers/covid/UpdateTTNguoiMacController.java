@@ -200,7 +200,6 @@ public class UpdateTTNguoiMacController implements Initializable {
             }
             ((Node) event.getSource()).getScene().getWindow().hide();
         } else if (event.getSource() == btnXemLichSu) {
-            setVisibleUpdate(false);
             labelPrompt1.setVisible(false);
             labelPrompt2.setText("Xem lịch sử khai báo của " + tmp.getHoTen());
             labelPrompt2.setVisible(true);
@@ -217,7 +216,6 @@ public class UpdateTTNguoiMacController implements Initializable {
             tableNguoiMac.setItems(list_history);
 
         } else if (event.getSource() == btnThoatXemLichSu) {
-            setVisibleUpdate(true);
             btnThoatXemLichSu.setVisible(false);
             labelPrompt2.setVisible(false);
             labelPrompt1.setVisible(true);
@@ -228,15 +226,5 @@ public class UpdateTTNguoiMacController implements Initializable {
             ((Node) event.getSource()).getScene().getWindow().hide();
         }
 
-    }
-
-    public  void setVisibleUpdate(boolean t) {
-        updateNgayKhoi.setVisible(t);
-        updateThoiDiemTest.setVisible(t);
-        updateTinhTrangSK.setVisible(t);
-        updateNgayKhaiBao.setVisible(t);
-        btnDuongTinh.setVisible(t);
-        btnAmTinh.setVisible(t);
-        updateHinhThucTest.setVisible(t);
     }
 }
