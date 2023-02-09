@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -22,12 +23,12 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <TextField prefHeight="32.0" prefWidth="688.0">
+                  <TextField fx:id="hoTenTimKiem" prefHeight="32.0" prefWidth="688.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="timKiemNguoiMac" mnemonicParsing="false" prefHeight="32.0" prefWidth="96.0" text="Tìm kiếm">
+                  <Button fx:id="btnTimKiem" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="96.0" text="Tìm kiếm">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -102,7 +103,7 @@
                         <Font size="14.0" />
                      </font></Text>
                   <Label fx:id="hoTenNguoiMac" GridPane.columnIndex="1" />
-                  <Label GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="cccdNguoiMac" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <DatePicker fx:id="updateNgayKhaiBao" prefHeight="31.0" prefWidth="898.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <DatePicker fx:id="updateThoiDiemTest" prefHeight="31.0" prefWidth="983.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <TextField fx:id="updateHinhThucTest" GridPane.columnIndex="1" GridPane.rowIndex="4">

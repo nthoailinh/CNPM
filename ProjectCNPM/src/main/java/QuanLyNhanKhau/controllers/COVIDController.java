@@ -1,9 +1,11 @@
 package QuanLyNhanKhau.controllers;
 
 import QuanLyNhanKhau.controllers.tables.CovidTable;
+import QuanLyNhanKhau.models.MacCOVID;
 import QuanLyNhanKhau.services.CovidDB;
 import QuanLyNhanKhau.services.Query;
 import QuanLyNhanKhau.views.ChildWindows;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +31,7 @@ public class COVIDController implements Initializable {
     private TableColumn<CovidTable, Integer> ID;
 
     @FXML
-    private Button NguoiMacTimKiem;
+    private Button btnTimKiem;
 
     @FXML
     private Button capNhatTT;
@@ -50,7 +52,7 @@ public class COVIDController implements Initializable {
     private TableColumn<CovidTable, String> ngayMac;
 
     @FXML
-    private TextField nguoiMacInput;
+    private TextField hoTenInput;
 
     @FXML
     private TableView<CovidTable> table;
@@ -93,6 +95,15 @@ public class COVIDController implements Initializable {
             stage.setScene(scene);
             stage.setOnHidden((e) -> populateTable());
             stage.show();
+        } else if (event.getSource() == btnTimKiem) {
+            ObservableList<CovidTable> list_search = FXCollections.observableArrayList();
+            String inputHoTen = hoTenInput.getText();
+            for(CovidTable covidTable : listCovid){
+                if(covidTable.getHoTen().contains(inputHoTen)){
+                    list_search.add(covidTable);
+                }
+            }
+            table.setItems(list_search);
         }
     }
 
