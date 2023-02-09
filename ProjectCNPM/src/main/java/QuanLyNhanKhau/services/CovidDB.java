@@ -59,4 +59,26 @@ public class CovidDB {
         return list;
     }
 
+    public ObservableList<MacCOVID> getListAllHistoryMacCOVID() throws SQLException {
+        ObservableList<MacCOVID> list = FXCollections.observableArrayList();
+        Connection connection = MySQL.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT MacCOVID.id, NhanKhau.hoTen, MacCOVID.ngayMac, MacCOVID.ngayKhoi, KhaiBao.tinhTrangSucKhoe, KhaiBao.ketQuaTest, KhaiBao.ngayKhaiBao, KhaiBao.thoiDiemTest, KhaiBao.ngayKhaiBao, KhaiBao.hinhThucTest FROM (MacCOVID INNER JOIN KhaiBao on KhaiBao.idMacCOVID = MacCOVID.id) INNER JOIN NhanKhau on NhanKhau.id = MacCOVID.idNhanKhau");
+        while(rs.next()) {
+            if(rs.getDate("ngayKhoi") != null) {
+                MacCOVID covid = new MacCOVID(rs.getInt("id"), rs.getString("hoTen"), rs.getDate("ngayMac").toString(), rs.getDate("ngayKhoi").toString(), rs.getString("tinhTrangSucKhoe"),
+                        rs.getString("ketQuaTest"), rs.getString("hinhThucTest"), rs.getDate("thoiDiemTest").toString(), rs.getDate("ngayKhaiBao").toString());
+                list.add(covid);
+            } else {
+                MacCOVID covid = new MacCOVID(rs.getInt("id"), rs.getString("hoTen"), rs.getDate("ngayMac").toString(), "Chưa khỏi", rs.getString("tinhTrangSucKhoe"),
+                        rs.getString("ketQuaTest"), rs.getString("hinhThucTest"), rs.getDate("thoiDiemTest").toString(), rs.getDate("ngayKhaiBao").toString());
+                list.add(covid);
+            }
+        }
+        rs.close();
+        stmt.close();
+        connection.close();
+        return list;
+    }
+
 }

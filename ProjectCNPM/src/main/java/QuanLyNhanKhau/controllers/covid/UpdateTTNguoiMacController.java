@@ -62,7 +62,10 @@ public class UpdateTTNguoiMacController implements Initializable {
     private Button btnCapNhat;
     @FXML
     private Button btnHuy;
-
+    @FXML
+    private Button btnXemLichSu;
+    @FXML
+    private Button btnThoatXemLichSu;
     @FXML
     private TableColumn<MacCOVID, String> hoTen;
 
@@ -80,7 +83,10 @@ public class UpdateTTNguoiMacController implements Initializable {
     private RadioButton btnAmTinh;
 
     private MacCOVID tmp;
-
+    @FXML
+    private Label labelPrompt1;
+    @FXML
+    private Label labelPrompt2;
     private   ObservableList<MacCOVID> listCovid = null;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -124,6 +130,7 @@ public class UpdateTTNguoiMacController implements Initializable {
                     }
                     btnCapNhat.setVisible(true);
                     btnHuy.setVisible(true);
+                    btnXemLichSu.setVisible(true);
                 }
             }
         });
@@ -192,9 +199,44 @@ public class UpdateTTNguoiMacController implements Initializable {
                 query.addKhaiBao(tmp.getId(), updateTinhTrangSK.getText(), btnDuongTinh.getText(), updateHinhThucTest.getText(), updateThoiDiemTest.getValue(), updateNgayKhaiBao.getValue());
             }
             ((Node) event.getSource()).getScene().getWindow().hide();
+        } else if (event.getSource() == btnXemLichSu) {
+            setVisibleUpdate(false);
+            labelPrompt1.setVisible(false);
+            labelPrompt2.setText("Xem lịch sử khai báo của " + tmp.getHoTen());
+            labelPrompt2.setVisible(true);
+            btnThoatXemLichSu.setVisible(true);
+            CovidDB covidDB = new CovidDB();
+            ObservableList<MacCOVID> list_all_history = FXCollections.observableArrayList();
+            ObservableList<MacCOVID> list_history = FXCollections.observableArrayList();
+            list_all_history = covidDB.getListAllHistoryMacCOVID();
+            for(MacCOVID macCOVID : list_all_history){
+                if(macCOVID.getId() == tmp.getId() ){
+                    list_history.add(macCOVID);
+                }
+            }
+            tableNguoiMac.setItems(list_history);
+
+        } else if (event.getSource() == btnThoatXemLichSu) {
+            setVisibleUpdate(true);
+            btnThoatXemLichSu.setVisible(false);
+            labelPrompt2.setVisible(false);
+            labelPrompt1.setVisible(true);
+            btnXemLichSu.setVisible(false);
+            tableNguoiMac.setItems(listCovid);
+
         } else if (event.getSource() == btnHuy) {
             ((Node) event.getSource()).getScene().getWindow().hide();
         }
 
+    }
+
+    public  void setVisibleUpdate(boolean t) {
+        updateNgayKhoi.setVisible(t);
+        updateThoiDiemTest.setVisible(t);
+        updateTinhTrangSK.setVisible(t);
+        updateNgayKhaiBao.setVisible(t);
+        btnDuongTinh.setVisible(t);
+        btnAmTinh.setVisible(t);
+        updateHinhThucTest.setVisible(t);
     }
 }
