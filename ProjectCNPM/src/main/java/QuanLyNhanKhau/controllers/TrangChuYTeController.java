@@ -11,19 +11,13 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class TrangChuController implements Initializable {
+public class TrangChuYTeController implements Initializable {
 
     @FXML
-    private Label SoLuongHoKhau;
+    private Label SoCaKhoi;
 
     @FXML
-    private Label SoLuongNhanKhau;
-
-    @FXML
-    private Label SoLuongTamTru;
-
-    @FXML
-    private Label SoLuongTamVang;
+    private Label SoCaMac;
 
     @FXML
     private GridPane contentTrangChu;
@@ -31,11 +25,10 @@ public class TrangChuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Map<String, Integer> map = TrangChuDB.getQuantity();
-            SoLuongNhanKhau.setText(map.get("NhanKhau").toString());
-            SoLuongHoKhau.setText(map.get("HoKhau").toString());
-            SoLuongTamTru.setText(map.get("TamTru").toString());
-            SoLuongTamVang.setText(map.get("TamVang").toString());
+            TrangChuDB trangchuDB = new TrangChuDB();
+            Map<String, Integer> map = trangchuDB.getQuantityYTe();
+            SoCaKhoi.setText(map.get("SoCaKhoi").toString());
+            SoCaMac.setText(map.get("SoCaMac").toString());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

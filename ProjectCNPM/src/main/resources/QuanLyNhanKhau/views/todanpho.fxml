@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.ToDanPhoController">
    <children>
       <VBox prefHeight="768.0" prefWidth="244.0" style="-fx-background-color: #EBE8F9;" stylesheets="@sidebar_style.css">
          <children>
@@ -61,24 +61,6 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button id="btnThongKe" fx:id="COVID" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleClicksSidebar" prefHeight="87.0" prefWidth="265.0" stylesheets="@sidebar_style.css" text="COVID">
-               <font>
-                  <Font size="17.0" />
-               </font>
-               <padding>
-                  <Insets left="40.0" />
-               </padding>
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/virus.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
             <Button id="btnThongKe" fx:id="thongKe" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleClicksSidebar" prefHeight="87.0" prefWidth="265.0" stylesheets="@sidebar_style.css" text="Thống kê">
                <font>
                   <Font size="17.0" />
@@ -97,7 +79,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Pane prefHeight="171.0" prefWidth="244.0" />
+            <Pane prefHeight="261.0" prefWidth="244.0" />
             <Button id="btnThongKe" fx:id="dangXuat" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="10.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleClicksSidebar" prefHeight="89.0" prefWidth="244.0" stylesheets="@sidebar_style.css" text="Đăng xuất">
                <font>
                   <Font size="17.0" />

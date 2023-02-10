@@ -33,7 +33,13 @@ public class LoginController {
         } else {
             LoginDB login = new LoginDB();
             if (login.validate(userName.getText(), password.getText())) {
-                Windows.show("home.fxml");
+                if(userName.getText().equals("totruong")){
+                    Windows.show("todanpho.fxml");
+                }
+                else if(userName.getText().equals("canboyte")){
+                    Windows.show("yte.fxml");
+                }
+
                 Stage stage = (Stage) btnLogin.getScene().getWindow();
                 stage.close();
             }

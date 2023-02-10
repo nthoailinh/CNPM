@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 
 public class TrangChuDB {
-    public static HashMap<String, Integer> getQuantity() throws SQLException {
+    public HashMap<String, Integer> getQuantityToDanPho() throws SQLException {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
@@ -23,6 +23,23 @@ public class TrangChuDB {
 
         rs = stmt.executeQuery("select COUNT(*) from TamVang");
         while(rs.next()) map.put("TamVang", rs.getInt(1));
+
+        rs.close();
+        stmt.close();
+        connection.close();
+        return map;
+    }
+
+    public HashMap<String, Integer> getQuantityYTe() throws SQLException {
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        Connection connection = MySQL.getConnection();
+        Statement stmt = connection.createStatement();
+
+        ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM MacCOVID WHERE ngayKhoi IS NOT NULL");
+        while(rs.next()) map.put("SoCaKhoi", rs.getInt(1));
+
+        rs = stmt.executeQuery("SELECT COUNT(*) FROM MacCOVID WHERE ngayKhoi IS NULL");
+        while(rs.next()) map.put("SoCaMac", rs.getInt(1));
 
         rs.close();
         stmt.close();

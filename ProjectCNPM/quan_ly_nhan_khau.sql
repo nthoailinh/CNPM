@@ -249,4 +249,4 @@ ALTER TABLE TamVang ADD CONSTRAINT TamVang_NhanKhau FOREIGN KEY TamVang_NhanKhau
 
 -- End of file.
 
-SELECT * FROM MacCOVID;
+show tables
