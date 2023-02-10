@@ -7,8 +7,8 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 
 public class HoKhauDB {
-    Connection connection = MySQL.getConnection();
     public ObservableList<HoKhauTable> getListHoKhauTable() throws SQLException {
+        Connection connection = MySQL.getConnection();
         ObservableList<HoKhauTable> list = FXCollections.observableArrayList();
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("select * from HoKhau JOIN NhanKhau ON NhanKhau.idHoKhau = HoKhau.id WHERE NhanKhau.quanHeVoiChuHo = 'Chủ hộ' ");
@@ -24,6 +24,7 @@ public class HoKhauDB {
     }
 
     public void deleteHoKhau(String soHoKhau) throws SQLException {
+        Connection connection = MySQL.getConnection();
         String deleteCCCD = "DELETE FROM CCCD WHERE idNhanKhau IN (SELECT id FROM NhanKhau WHERE idHoKhau = (SELECT id FROM HoKhau WHERE soHoKhau = ?))";
         String deleteNhanKhau = "DELETE FROM NhanKhau WHERE idHoKhau = (SELECT id FROM HoKhau WHERE soHoKhau = ?)";
         String deleteHoKhau = "DELETE FROM HoKhau WHERE soHoKhau = ?";
@@ -42,6 +43,7 @@ public class HoKhauDB {
     }
 
     public int getIDHoKhauBySoHoKhau(String soHoKhau) throws SQLException {
+        Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("SELECT id FROM HoKhau WHERE soHoKhau = ?");
         pstmt.setString(1, soHoKhau);
         ResultSet rs = pstmt.executeQuery();
@@ -53,6 +55,7 @@ public class HoKhauDB {
     }
 
     public PreparedStatement insertHoKhau(String soHoKhau, int idChuHo, int soNha, String ngo, String duong) throws SQLException {
+        Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO HoKhau (`soHoKhau`, `idChuHo`,  "
                 + "`soNha`, `ngo`, `duong`) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
         pstmt.setString(1, soHoKhau);
