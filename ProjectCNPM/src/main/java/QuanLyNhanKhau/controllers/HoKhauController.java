@@ -2,7 +2,7 @@ package QuanLyNhanKhau.controllers;
 
 import QuanLyNhanKhau.controllers.tables.HoKhauTable;
 import QuanLyNhanKhau.services.hokhauDB;
-import QuanLyNhanKhau.views.ChildWindows;
+import QuanLyNhanKhau.views.Windows;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -88,7 +88,7 @@ public class HoKhauController implements Initializable {
                 height = 720;
             }
 
-            root = ChildWindows.getRoot(fxmlFile);
+            root = Windows.getRoot(fxmlFile);
             Scene scene = new Scene(root, width, height);
             Stage stage = new Stage();
             stage.setTitle(windowTitle);
