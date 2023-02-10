@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
-public class trangchuDB {
+public class TrangChuDB {
     public static HashMap<String, Integer> getQuantity() throws SQLException {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         Connection connection = MySQL.getConnection();

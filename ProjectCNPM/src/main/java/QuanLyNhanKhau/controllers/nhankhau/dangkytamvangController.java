@@ -1,7 +1,7 @@
 package QuanLyNhanKhau.controllers.nhankhau;
 
 import QuanLyNhanKhau.services.MySQL;
-import QuanLyNhanKhau.services.Query;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class dangkytamvangController {
+
+    private NhanKhauDB nhankhauDB = new NhanKhauDB();
 
     @FXML
     private Button btnHuy;
@@ -102,8 +104,7 @@ public class dangkytamvangController {
                     idNhanKhau = checkCCCD();
                 }
                 if (idNhanKhau != -1) {
-                    Query query = new Query();
-                    query.TamVang(idNhanKhau, maGiayTamVang.getText(), tuNgay.getValue(),
+                    nhankhauDB.addTamVang(idNhanKhau, maGiayTamVang.getText(), tuNgay.getValue(),
                             denNgay.getValue(), noiTamTru.getText(), lyDo.getText());
                     // Tắt cửa sổ
                     ((Node) event.getSource()).getScene().getWindow().hide();

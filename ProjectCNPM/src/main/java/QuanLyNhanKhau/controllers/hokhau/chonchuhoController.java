@@ -1,7 +1,7 @@
 package QuanLyNhanKhau.controllers.hokhau;
 
 import QuanLyNhanKhau.models.NhanKhau;
-import QuanLyNhanKhau.services.nhankhauDB;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +20,7 @@ public class chonchuhoController extends chonnhankhauController implements Initi
 
     private NhanKhau selectedNhanKhau;
 
-    private final nhankhauDB nhankhaudb = new nhankhauDB();
+    private final NhanKhauDB nhankhaudb = new NhanKhauDB();
 
     public NhanKhau getSelectedNhanKhau() {
         return selectedNhanKhau;
@@ -53,7 +53,7 @@ public class chonchuhoController extends chonnhankhauController implements Initi
     }
 
     private ObservableList<NhanKhau> getNhanKhauList() {
-        nhankhauDB nhankhauinDB = new nhankhauDB();
+        NhanKhauDB nhankhauinDB = new NhanKhauDB();
         try {
             return nhankhauinDB.getListNhanKhau();
         } catch (SQLException e) {

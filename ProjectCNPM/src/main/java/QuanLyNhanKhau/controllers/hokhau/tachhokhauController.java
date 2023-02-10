@@ -3,9 +3,8 @@ package QuanLyNhanKhau.controllers.hokhau;
 import QuanLyNhanKhau.controllers.tables.HoKhauTable;
 import QuanLyNhanKhau.models.NhanKhau;
 import QuanLyNhanKhau.services.MySQL;
-import QuanLyNhanKhau.services.Query;
-import QuanLyNhanKhau.services.hokhauDB;
-import QuanLyNhanKhau.services.nhankhauDB;
+import QuanLyNhanKhau.services.HoKhauDB;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +24,8 @@ import java.util.ResourceBundle;
 
 public class tachhokhauController implements Initializable {
     private final ObservableList<NhanKhau> listNKMoi = FXCollections.observableArrayList();
+    private NhanKhauDB nhankhauDB = new NhanKhauDB();
+    private HoKhauDB hokhauDB = new HoKhauDB();
     @FXML
     private Button btnChuyenSang;
     @FXML
@@ -74,26 +75,23 @@ public class tachhokhauController implements Initializable {
     private ObservableList<NhanKhau> listNKCu = FXCollections.observableArrayList();
 
     private ObservableList<HoKhauTable> getHoKhauList() {
-        hokhauDB hokhauinDB = new hokhauDB();
         try {
-            return hokhauinDB.getListHoKhauTable();
+            return hokhauDB.getListHoKhauTable();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     private ObservableList<NhanKhau> getNhanKhauListWithSoHoKhau(String soHoKhau) {
-        nhankhauDB nhankhauinDB = new nhankhauDB();
         try {
-            return nhankhauinDB.getListNhanKhauWithSoHoKhau(soHoKhau);
+            return nhankhauDB.getListNhanKhauWithSoHoKhau(soHoKhau);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     private PreparedStatement updateHoKhau(String soHoKhauMoi, int idChuHo, int soNha, String ngo, String duong) throws SQLException {
-        Query query = new Query();
-        return query.HoKhau(soHoKhauMoi, idChuHo, soNha, ngo, duong);
+        return hokhauDB.insertHoKhau(soHoKhauMoi, idChuHo, soNha, ngo, duong);
     }
 
     @FXML

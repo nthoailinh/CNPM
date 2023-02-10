@@ -1,7 +1,7 @@
 package QuanLyNhanKhau.controllers.nhankhau;
 
 import QuanLyNhanKhau.services.MySQL;
-import QuanLyNhanKhau.services.Query;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class dangkytamtruController {
+
+    private NhanKhauDB nhankhauDB = new NhanKhauDB();
 
     @FXML
     private Button btnHuy;
@@ -97,8 +99,7 @@ public class dangkytamtruController {
                 idNhanKhau = checkCCCD();
             }
             if (idNhanKhau != -1) {
-                Query query = new Query();
-                query.TamTru(idNhanKhau, maGiayTamTru.getText(), tuNgay.getValue(),
+                nhankhauDB.addTamTru(idNhanKhau, maGiayTamTru.getText(), tuNgay.getValue(),
                         denNgay.getValue(), lyDo.getText());
                 // Close window
                 ((Node) event.getSource()).getScene().getWindow().hide();

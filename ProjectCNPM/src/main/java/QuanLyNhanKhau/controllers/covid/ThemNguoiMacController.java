@@ -1,9 +1,10 @@
 package QuanLyNhanKhau.controllers.covid;
+
 import QuanLyNhanKhau.controllers.tables.NhanKhauTable;
 import QuanLyNhanKhau.models.NhanKhau;
+import QuanLyNhanKhau.services.CovidDB;
 import QuanLyNhanKhau.services.MySQL;
-import QuanLyNhanKhau.services.Query;
-import QuanLyNhanKhau.services.nhankhauDB;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,8 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ThemNguoiMacController implements Initializable {
+    private final NhanKhauDB nhankhauDB = new NhanKhauDB();
+    private final CovidDB covidDB = new CovidDB();
     @FXML
     private TableView<NhanKhauTable> tableNhanKhau;
     @FXML
@@ -57,13 +60,12 @@ public class ThemNguoiMacController implements Initializable {
     @FXML
     private Button btnXacNhan;
     private ObservableList<NhanKhauTable> listNK = FXCollections.observableArrayList();
-    private final nhankhauDB nhankhauinDB = new nhankhauDB();
     private int idNguoiMac;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            listNK = nhankhauinDB.getListNhanKhauTable();
+            listNK = nhankhauDB.getListNhanKhauTable();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -104,8 +106,8 @@ public class ThemNguoiMacController implements Initializable {
         if (event.getSource() == btnTimKiem) {
             ObservableList<NhanKhauTable> listNK_search = FXCollections.observableArrayList();
             String inputHoTen = hoTenTimKiem.getText();
-            for(NhanKhauTable nk : listNK){
-                if(nk.getHoTen().contains(inputHoTen)){
+            for (NhanKhauTable nk : listNK) {
+                if (nk.getHoTen().contains(inputHoTen)) {
                     listNK_search.add(nk);
                 }
             }
@@ -137,24 +139,24 @@ public class ThemNguoiMacController implements Initializable {
                 alert.showAndWait();
                 return;
             } else {
-                Query query = new Query();
-                query.MacCOVID(idNguoiMac, String.valueOf(thoiDiemTest.getValue()));
+                covidDB.addMacCOVID(idNguoiMac, String.valueOf(thoiDiemTest.getValue()));
 
                 connection = MySQL.getConnection();
                 // Liên kết khóa ngoài giữa MacCOVID với KhaiBao
                 PreparedStatement pstmt_nguoiMacMoiThem = null;
                 pstmt_nguoiMacMoiThem = connection.prepareStatement("SELECT * FROM MacCOVID WHERE idNhanKhau = ? AND ngayMac = ? AND ngayKhoi IS NULL");
                 pstmt_nguoiMacMoiThem.setString(1, String.valueOf(idNguoiMac));
-                System.out.println(String.valueOf(thoiDiemTest.getValue()));
+                System.out.println(thoiDiemTest.getValue());
                 pstmt_nguoiMacMoiThem.setString(2, String.valueOf(thoiDiemTest.getValue()));
                 rs = pstmt_nguoiMacMoiThem.executeQuery();
                 if (rs.next()) {
                     int idMacCOVID = rs.getInt("id");
-                    query.KhaiBao(idMacCOVID, String.valueOf(ngayKhaiBao.getValue()),
+                    covidDB.addKhaiBao(idMacCOVID, String.valueOf(ngayKhaiBao.getValue()),
                             String.valueOf(thoiDiemTest.getValue()), hinhThucTest.getText(),
                             "Dương tính", tinhTrangSK.getText());
                 }
-            }System.out.println("String.valueOf(thoiDiemTest.getValue())");
+            }
+            System.out.println("String.valueOf(thoiDiemTest.getValue())");
             // Tắt cửa sổ
             ((Node) event.getSource()).getScene().getWindow().hide();
         } else if (event.getSource() == btnHuy) {

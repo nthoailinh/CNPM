@@ -1,7 +1,7 @@
 package QuanLyNhanKhau.controllers.nhankhau;
 
 import QuanLyNhanKhau.services.MySQL;
-import QuanLyNhanKhau.services.Query;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class khaituController {
+
+    private NhanKhauDB nhankhauDB = new NhanKhauDB();
 
     @FXML
     private Button btnHuy;
@@ -75,8 +77,7 @@ public class khaituController {
                     idNguoiMat = checkCCCD(cccdNguoiMat);
                 }
                 if (idNguoiKhai != -1 && idNguoiMat != -1) {
-                    Query query = new Query();
-                    query.KhaiTu(idNguoiMat, maGiayKhaiTu.getText(), nguyenNhan.getText(),
+                    nhankhauDB.addKhaiTu(idNguoiMat, maGiayKhaiTu.getText(), nguyenNhan.getText(),
                             ngayQuaDoi.getValue(), ngayKhaiTu.getValue(), idNguoiKhai);
                     // Tắt cửa sổ
                     ((Node) event.getSource()).getScene().getWindow().hide();
