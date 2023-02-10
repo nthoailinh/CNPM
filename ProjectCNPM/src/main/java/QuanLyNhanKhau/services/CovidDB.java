@@ -8,9 +8,9 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 
 public class CovidDB {
-    private final Connection connection = MySQL.getConnection();
 
     public ObservableList<CovidTable> getListCovidTable() throws SQLException {
+        Connection connection = MySQL.getConnection();
         ObservableList<CovidTable> list = FXCollections.observableArrayList();
         Statement stmt = connection.createStatement();
         String createTmpTable = "CREATE TEMPORARY TABLE tmpTable AS SELECT * FROM KhaiBao WHERE KhaiBao.id IN (SELECT max(id) as id from KhaiBao GROUP BY KhaiBao.idMacCOVID) ";
@@ -34,6 +34,7 @@ public class CovidDB {
     }
 
     public ObservableList<MacCOVID> getListMacCovid() throws SQLException {
+        Connection connection = MySQL.getConnection();
         ObservableList<MacCOVID> list = FXCollections.observableArrayList();
         Statement stmt = connection.createStatement();
         String createTmpTable = "CREATE TEMPORARY TABLE tmpTable AS SELECT * FROM KhaiBao WHERE KhaiBao.id IN (SELECT max(id) as id from KhaiBao GROUP BY KhaiBao.idMacCOVID) ";
@@ -57,6 +58,7 @@ public class CovidDB {
     }
 
     public ObservableList<MacCOVID> getListAllHistoryMacCOVID() throws SQLException {
+        Connection connection = MySQL.getConnection();
         ObservableList<MacCOVID> list = FXCollections.observableArrayList();
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT MacCOVID.id, NhanKhau.hoTen, MacCOVID.ngayMac, MacCOVID.ngayKhoi, KhaiBao.tinhTrangSucKhoe, KhaiBao.ketQuaTest, KhaiBao.ngayKhaiBao, KhaiBao.thoiDiemTest, KhaiBao.ngayKhaiBao, KhaiBao.hinhThucTest FROM (MacCOVID INNER JOIN KhaiBao on KhaiBao.idMacCOVID = MacCOVID.id) INNER JOIN NhanKhau on NhanKhau.id = MacCOVID.idNhanKhau");
@@ -78,6 +80,7 @@ public class CovidDB {
     }
 
     public PreparedStatement deleteMacCovid(int id) throws SQLException {
+        Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("DELETE FROM KhaiBao where idMacCOVID = ?",
                 Statement.RETURN_GENERATED_KEYS);
         pstmt.setInt(1, id);
@@ -91,6 +94,7 @@ public class CovidDB {
     }
 
     public PreparedStatement addMacCOVID(int idNguoiMac, String ngayMac) throws SQLException {
+        Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO MacCOVID (`idNhanKhau`, `ngayMac`)" +
                 " VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
         pstmt.setInt(1, idNguoiMac);
@@ -101,6 +105,7 @@ public class CovidDB {
 
     public PreparedStatement addKhaiBao(int idMacCOVID, String ngayKhaiBao, String thoiDiemTest, String hinhThucTest,
                                      String ketQuaTest, String tinhTrangSucKhoe) throws SQLException {
+        Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO KhaiBao (`idMacCOVID`, `ngayKhaiBao`,  "
                 + "`thoiDiemTest`, `hinhThucTest`, `ketQuaTest`, `tinhTrangSucKhoe`) VALUES (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
         pstmt.setInt(1, idMacCOVID);
@@ -114,6 +119,7 @@ public class CovidDB {
     }
 
     public PreparedStatement addKhaiBao(int idMacCovid, String tinhTrangSK, String ketQuaTest, String hinhThucTest, Object thoiDiemTest, Object ngayKhaiBao) throws SQLException {
+        Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement(" INSERT INTO KhaiBao (`idMacCOVID`, `ngayKhaiBao`, `thoiDiemTest`, `hinhThucTest`, `ketQuaTest`, `tinhTrangSucKhoe`) VALUES (?, ?, ?, ?, ?, ?) ",
                 Statement.RETURN_GENERATED_KEYS);
         pstmt.setInt(1, idMacCovid);
@@ -127,6 +133,7 @@ public class CovidDB {
     }
 
     public PreparedStatement updateMacCOVID(int idNguoiMac, String ngayMac, String ngayKhoi) throws SQLException {
+        Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("Update MacCOVID set ngayMac = ?, ngayKhoi = ? where id = ?"
                 , Statement.RETURN_GENERATED_KEYS);
         pstmt.setString(1, ngayMac);
