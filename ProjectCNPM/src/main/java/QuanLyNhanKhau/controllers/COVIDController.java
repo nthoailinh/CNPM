@@ -1,10 +1,9 @@
 package QuanLyNhanKhau.controllers;
 
 import QuanLyNhanKhau.controllers.tables.CovidTable;
-import QuanLyNhanKhau.models.MacCOVID;
 import QuanLyNhanKhau.services.CovidDB;
 import QuanLyNhanKhau.services.Query;
-import QuanLyNhanKhau.views.ChildWindows;
+import QuanLyNhanKhau.views.Windows;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -71,7 +70,7 @@ public class COVIDController implements Initializable {
     @FXML
     void handleClicks(ActionEvent event) throws IOException, SQLException {
         if(event.getSource() == themNguoiMac) {
-            Parent root = ChildWindows.getRoot("covid/themnguoimac.fxml");
+            Parent root = Windows.getRoot("covid/themnguoimac.fxml");
             Scene scene = new Scene(root, 860, 740);
             Stage stage = new Stage();
             stage.setTitle("Thêm người mắc");
@@ -88,7 +87,7 @@ public class COVIDController implements Initializable {
             }
         }
         else if (event.getSource() == capNhatTT) {
-            Parent root = ChildWindows.getRoot("covid/capnhatnguoimac.fxml");
+            Parent root = Windows.getRoot("covid/capnhatnguoimac.fxml");
             Scene scene = new Scene(root, 1150, 800);
             Stage stage = new Stage();
             stage.setTitle("Thêm người mắc");

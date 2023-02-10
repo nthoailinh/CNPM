@@ -2,7 +2,7 @@ package QuanLyNhanKhau.controllers;
 
 import QuanLyNhanKhau.controllers.tables.NhanKhauTable;
 import QuanLyNhanKhau.services.nhankhauDB;
-import QuanLyNhanKhau.views.ChildWindows;
+import QuanLyNhanKhau.views.Windows;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -96,7 +96,7 @@ public class NhanKhauController implements Initializable {
                 height = 512;
             }
 
-            root = ChildWindows.getRoot(fxmlFile);
+            root = Windows.getRoot(fxmlFile);
             Scene scene = new Scene(root, width, height);
             Stage stage = new Stage();
             stage.setTitle(windowTitle);

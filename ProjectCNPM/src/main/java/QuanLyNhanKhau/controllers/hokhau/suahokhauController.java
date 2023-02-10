@@ -3,7 +3,7 @@ package QuanLyNhanKhau.controllers.hokhau;
 import QuanLyNhanKhau.models.NhanKhau;
 import QuanLyNhanKhau.services.Query;
 import QuanLyNhanKhau.services.nhankhauDB;
-import QuanLyNhanKhau.views.ChildWindows;
+import QuanLyNhanKhau.views.Windows;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -117,7 +117,7 @@ public class suahokhauController implements Initializable {
                 cccdChuHo.setText(nhankhaudb.getCCCD(nhanKhauChuHo.getId()));
             }
         } else if (event.getSource() == btnChon) {
-            FXMLLoader loader = ChildWindows.getLoader("hokhau/chonnhankhau.fxml");
+            FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
             suachuhoController suachuhoController = new suachuhoController();
             int idHoKhau = getIDHoKhau(soHoKhau.getText());
             if (idHoKhau != -1) {
@@ -153,7 +153,7 @@ public class suahokhauController implements Initializable {
                 alert.showAndWait();
             }
         } else if (event.getSource() == btnThemThanhVien) {
-            FXMLLoader loader = ChildWindows.getLoader("hokhau/chonnhankhau.fxml");
+            FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
             suathanhvienController suathanhvien_controller = new suathanhvienController();
             int idHoKhau = getIDHoKhau(soHoKhau.getText());
             if (idHoKhau != -1) {

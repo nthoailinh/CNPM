@@ -1,6 +1,6 @@
-drop database quan_ly_nhan_khau_1;
-create database quan_ly_nhan_khau_1;
-use quan_ly_nhan_khau_1;
+drop database quan_ly_nhan_khau;
+create database quan_ly_nhan_khau;
+use quan_ly_nhan_khau;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -17,6 +17,23 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
+
+-- Cấu trúc bảng cho bảng `User`
+CREATE TABLE User(
+    id int AUTO_INCREMENT NOT NULL,
+    user char(40) NOT NULL,
+    password char(40) NOT NULL,
+    CONSTRAINT User_pk PRIMARY KEY (id)
+);
+
+--
+-- Dữ liệu cho bảng `User`
+--
+
+INSERT INTO `User` (`user`, `password`) VALUES
+('totruong', 'totruong'),
+('canboyte', 'canboyte');
+
 
 --
 -- Cấu trúc bảng cho bảng `CCCD`
@@ -231,5 +248,3 @@ ALTER TABLE TamVang ADD CONSTRAINT TamVang_NhanKhau FOREIGN KEY TamVang_NhanKhau
     REFERENCES NhanKhau (id);
 
 -- End of file.
-
-SELECT * FROM HoKhau;

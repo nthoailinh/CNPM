@@ -6,7 +6,7 @@ import QuanLyNhanKhau.services.Query;
 import java.net.URL;
 
 import QuanLyNhanKhau.services.nhankhauDB;
-import QuanLyNhanKhau.views.ChildWindows;
+import QuanLyNhanKhau.views.Windows;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -70,7 +70,7 @@ public class themmoihokhauController implements Initializable {
     @FXML
     void handleClicks(ActionEvent event) throws IOException, SQLException {
         if (event.getSource() == btnChon) {
-            FXMLLoader loader = ChildWindows.getLoader("hokhau/chonnhankhau.fxml");
+            FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
             chonchuhoController chonchuhoController = new chonchuhoController();
             loader.setController(chonchuhoController);
             Parent root = loader.load();
@@ -96,7 +96,7 @@ public class themmoihokhauController implements Initializable {
             });
             stage.show();
         } else if (event.getSource() == btnThemThanhVien) {
-            FXMLLoader loader = ChildWindows.getLoader("hokhau/chonnhankhau.fxml");
+            FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
             chonthanhvienController chonthanhvien_controller = new chonthanhvienController();
             loader.setController(chonthanhvien_controller);
             Parent root = loader.load();

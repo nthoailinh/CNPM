@@ -1,6 +1,6 @@
 package QuanLyNhanKhau.controllers;
 
-import QuanLyNhanKhau.views.ChildWindows;
+import QuanLyNhanKhau.views.Windows;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,7 +39,7 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Parent root = null;
         try {
-            root = ChildWindows.getRoot("home/trangchu.fxml");
+            root = Windows.getRoot("home/trangchu.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -49,22 +49,22 @@ public class Controller implements Initializable {
     @FXML
     void handleClicksSidebar(ActionEvent event) throws IOException {
         if (event.getSource() == trangChu) {
-            Parent root = ChildWindows.getRoot("home/trangchu.fxml");
+            Parent root = Windows.getRoot("home/trangchu.fxml");
             content.getChildren().setAll(root);
         } else if (event.getSource() == nhanKhau){
-            Parent root = ChildWindows.getRoot("home/nhankhau.fxml");
+            Parent root = Windows.getRoot("home/nhankhau.fxml");
             content.getChildren().setAll(root);
         }
         else if (event.getSource() == hoKhau) {
-            Parent root = ChildWindows.getRoot("home/hokhau.fxml");
+            Parent root = Windows.getRoot("home/hokhau.fxml");
             content.getChildren().setAll(root);
         }
         else if (event.getSource() == COVID){
-            Parent root = ChildWindows.getRoot("home/covid.fxml");
+            Parent root = Windows.getRoot("home/covid.fxml");
             content.getChildren().setAll(root);
         }
         else if (event.getSource() == thongKe) {
-            Parent root = ChildWindows.getRoot("home/thongke.fxml");
+            Parent root = Windows.getRoot("home/thongke.fxml");
             content.getChildren().setAll(root);
         }
         else if (event.getSource() == dangXuat) {
