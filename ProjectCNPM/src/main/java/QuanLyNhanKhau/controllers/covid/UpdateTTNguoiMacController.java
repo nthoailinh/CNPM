@@ -1,7 +1,9 @@
 package QuanLyNhanKhau.controllers.covid;
 import QuanLyNhanKhau.models.MacCOVID;
 import QuanLyNhanKhau.services.CovidDB;
+import QuanLyNhanKhau.services.MySQL;
 import QuanLyNhanKhau.services.Query;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +16,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -37,9 +42,6 @@ public class UpdateTTNguoiMacController implements Initializable {
     private TableColumn<MacCOVID, String> tinhTrangSK;
 
     @FXML
-    private Button timKiemnguoiCapNhat;
-
-    @FXML
     private TableColumn<MacCOVID, String> ketQuaTest;
 
     @FXML
@@ -49,12 +51,21 @@ public class UpdateTTNguoiMacController implements Initializable {
 
     @FXML
     private Label hoTenNguoiMac;
+    @FXML
+    private Label cccdNguoiMac;
+    @FXML
+    private TextField hoTenTimKiem;
+    @FXML
+    private Button btnTimKiem;
 
     @FXML
     private Button btnCapNhat;
     @FXML
     private Button btnHuy;
-
+    @FXML
+    private Button btnXemLichSu;
+    @FXML
+    private Button btnThoatXemLichSu;
     @FXML
     private TableColumn<MacCOVID, String> hoTen;
 
@@ -72,11 +83,15 @@ public class UpdateTTNguoiMacController implements Initializable {
     private RadioButton btnAmTinh;
 
     private MacCOVID tmp;
-
+    @FXML
+    private Label labelPrompt1;
+    @FXML
+    private Label labelPrompt2;
+    private   ObservableList<MacCOVID> listCovid = null;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         CovidDB covidinDB = new CovidDB();
-        ObservableList<MacCOVID> listCovid = null;
+
         try {
             listCovid = covidinDB.getListMacCovid();
         } catch (SQLException e) {
@@ -99,8 +114,23 @@ public class UpdateTTNguoiMacController implements Initializable {
                 if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                      tmp = tableNguoiMac.getSelectionModel().getSelectedItem();
                     hoTenNguoiMac.setText(tmp.getHoTen());
+                    Connection connection = MySQL.getConnection();
+                    PreparedStatement pstmt_nhankhau = null;
+                    try {
+                        pstmt_nhankhau = connection.prepareStatement("SELECT cccd FROM CCCD WHERE idNhanKhau = ?");
+                        pstmt_nhankhau.setString(1, String.valueOf(tmp.getId()));
+                        ResultSet rs = pstmt_nhankhau.executeQuery();
+                        if (rs.next()) {
+                            cccdNguoiMac.setText(rs.getString("cccd"));
+                        } else {
+                            cccdNguoiMac.setText("");
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
                     btnCapNhat.setVisible(true);
                     btnHuy.setVisible(true);
+                    btnXemLichSu.setVisible(true);
                 }
             }
         });
@@ -118,6 +148,16 @@ public class UpdateTTNguoiMacController implements Initializable {
 
     @FXML
     public void handleClicks(ActionEvent event) throws  SQLException {
+        if (event.getSource() == btnTimKiem) {
+            ObservableList<MacCOVID> list_search = FXCollections.observableArrayList();
+            String inputHoTen = hoTenTimKiem.getText();
+            for(MacCOVID macCOVID : listCovid){
+                if(macCOVID.getHoTen().contains(inputHoTen)){
+                    list_search.add(macCOVID);
+                }
+            }
+            tableNguoiMac.setItems(list_search);
+        }
         if (event.getSource() == btnCapNhat) {
             if(btnAmTinh.isSelected()) {
                 if (updateNgayKhaiBao.getValue() == null ||
@@ -159,6 +199,29 @@ public class UpdateTTNguoiMacController implements Initializable {
                 query.addKhaiBao(tmp.getId(), updateTinhTrangSK.getText(), btnDuongTinh.getText(), updateHinhThucTest.getText(), updateThoiDiemTest.getValue(), updateNgayKhaiBao.getValue());
             }
             ((Node) event.getSource()).getScene().getWindow().hide();
+        } else if (event.getSource() == btnXemLichSu) {
+            labelPrompt1.setVisible(false);
+            labelPrompt2.setText("Xem lịch sử khai báo của " + tmp.getHoTen());
+            labelPrompt2.setVisible(true);
+            btnThoatXemLichSu.setVisible(true);
+            CovidDB covidDB = new CovidDB();
+            ObservableList<MacCOVID> list_all_history = FXCollections.observableArrayList();
+            ObservableList<MacCOVID> list_history = FXCollections.observableArrayList();
+            list_all_history = covidDB.getListAllHistoryMacCOVID();
+            for(MacCOVID macCOVID : list_all_history){
+                if(macCOVID.getId() == tmp.getId() ){
+                    list_history.add(macCOVID);
+                }
+            }
+            tableNguoiMac.setItems(list_history);
+
+        } else if (event.getSource() == btnThoatXemLichSu) {
+            btnThoatXemLichSu.setVisible(false);
+            labelPrompt2.setVisible(false);
+            labelPrompt1.setVisible(true);
+            btnXemLichSu.setVisible(false);
+            tableNguoiMac.setItems(listCovid);
+
         } else if (event.getSource() == btnHuy) {
             ((Node) event.getSource()).getScene().getWindow().hide();
         }
