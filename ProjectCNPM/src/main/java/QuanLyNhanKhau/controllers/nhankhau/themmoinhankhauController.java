@@ -1,7 +1,7 @@
 package QuanLyNhanKhau.controllers.nhankhau;
 
 import QuanLyNhanKhau.services.MySQL;
-import QuanLyNhanKhau.services.Query;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class themmoinhankhauController {
+
+    private NhanKhauDB nhankhauDB = new NhanKhauDB();
 
     @FXML
     private Button btnHuy;
@@ -74,8 +76,7 @@ public class themmoinhankhauController {
             String gioiTinh = gioiTinhNam.isSelected() ? "Nam" : (gioiTinhNu.isSelected() ? "Nữ" : "Không rõ");
 
             Connection connection = MySQL.getConnection();
-            Query query = new Query();
-            PreparedStatement pstmt_nhankhau = query.NhanKhau(hoTen.getText(), ngaySinh.getValue(), gioiTinh, noiSinh.getText(),
+            PreparedStatement pstmt_nhankhau = nhankhauDB.addNhanKhau(hoTen.getText(), ngaySinh.getValue(), gioiTinh, noiSinh.getText(),
                     nguyenQuan.getText(), danToc.getText(), ngheNghiep.getText(), noiLamViec.getText());
             // Tìm ID nhân khẩu
             ResultSet rs = pstmt_nhankhau.getGeneratedKeys();
@@ -84,7 +85,7 @@ public class themmoinhankhauController {
                 idNhanKhau = rs.getInt(1);
             }
             if (cccd.getText() != null && ngayCap.getValue() != null && noiCap.getText() != null) {
-                query.CCCD(cccd.getText(), idNhanKhau, ngayCap.getValue(), noiCap.getText());
+                nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, ngayCap.getValue(), noiCap.getText());
             }
 
         }

@@ -1,8 +1,7 @@
 package QuanLyNhanKhau.controllers.hokhau;
 
 import QuanLyNhanKhau.controllers.tables.HoKhauTable;
-import QuanLyNhanKhau.services.Query;
-import QuanLyNhanKhau.services.hokhauDB;
+import QuanLyNhanKhau.services.HoKhauDB;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,7 +38,6 @@ public class chuyenhokhauController implements Initializable {
     @FXML
     private TextField input;
 
-
     @FXML
     private Label soHoKhau;
 
@@ -52,8 +50,10 @@ public class chuyenhokhauController implements Initializable {
     @FXML
     private Label tenChuHo;
 
+    private HoKhauDB hokhauDB = new HoKhauDB();
+
     private ObservableList<HoKhauTable> getHoKhauList() {
-        hokhauDB hokhauinDB = new hokhauDB();
+        HoKhauDB hokhauinDB = new HoKhauDB();
         try {
             return hokhauinDB.getListHoKhauTable();
         } catch (SQLException e) {
@@ -78,8 +78,7 @@ public class chuyenhokhauController implements Initializable {
                     Optional<ButtonType> result = alert.showAndWait();
 
                     if (result.get() == ButtonType.OK) {
-                        Query query = new Query();
-                        query.deleteHoKhau(selectedHoKhauTable.getSoHoKhau());
+                        hokhauDB.deleteHoKhau(selectedHoKhauTable.getSoHoKhau());
                         ((Node) event.getSource()).getScene().getWindow().hide();
                     }
                 }

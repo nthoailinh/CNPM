@@ -1,8 +1,8 @@
 package QuanLyNhanKhau.controllers.covid;
+
 import QuanLyNhanKhau.models.MacCOVID;
 import QuanLyNhanKhau.services.CovidDB;
 import QuanLyNhanKhau.services.MySQL;
-import QuanLyNhanKhau.services.Query;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class UpdateTTNguoiMacController implements Initializable {
+    private final CovidDB covidDB = new CovidDB();
     @FXML
     private TableColumn<MacCOVID, String> ngayMac;
     @FXML
@@ -87,13 +88,12 @@ public class UpdateTTNguoiMacController implements Initializable {
     private Label labelPrompt1;
     @FXML
     private Label labelPrompt2;
-    private   ObservableList<MacCOVID> listCovid = null;
+    private ObservableList<MacCOVID> listCovid = null;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CovidDB covidinDB = new CovidDB();
-
         try {
-            listCovid = covidinDB.getListMacCovid();
+            listCovid = covidDB.getListMacCovid();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -112,7 +112,7 @@ public class UpdateTTNguoiMacController implements Initializable {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                     tmp = tableNguoiMac.getSelectionModel().getSelectedItem();
+                    tmp = tableNguoiMac.getSelectionModel().getSelectedItem();
                     hoTenNguoiMac.setText(tmp.getHoTen());
                     Connection connection = MySQL.getConnection();
                     PreparedStatement pstmt_nhankhau = null;
@@ -135,34 +135,34 @@ public class UpdateTTNguoiMacController implements Initializable {
             }
         });
     }
+
     @FXML
     public void selectedKetQuaTest(ActionEvent event) {
-        if(btnDuongTinh.isSelected()) {
+        if (btnDuongTinh.isSelected()) {
             btnAmTinh.setSelected(false);
             updateNgayKhoi.setVisible(false);
-        }
-        else {
+        } else {
             updateNgayKhoi.setVisible(true);
         }
     }
 
     @FXML
-    public void handleClicks(ActionEvent event) throws  SQLException {
+    public void handleClicks(ActionEvent event) throws SQLException {
         if (event.getSource() == btnTimKiem) {
             ObservableList<MacCOVID> list_search = FXCollections.observableArrayList();
             String inputHoTen = hoTenTimKiem.getText();
-            for(MacCOVID macCOVID : listCovid){
-                if(macCOVID.getHoTen().contains(inputHoTen)){
+            for (MacCOVID macCOVID : listCovid) {
+                if (macCOVID.getHoTen().contains(inputHoTen)) {
                     list_search.add(macCOVID);
                 }
             }
             tableNguoiMac.setItems(list_search);
         }
         if (event.getSource() == btnCapNhat) {
-            if(btnAmTinh.isSelected()) {
+            if (btnAmTinh.isSelected()) {
                 if (updateNgayKhaiBao.getValue() == null ||
                         updateHinhThucTest.getText().isEmpty() || updateThoiDiemTest.getValue() == null ||
-                        updateTinhTrangSK.getText().isEmpty() || updateNgayKhoi.getValue() ==null) {
+                        updateTinhTrangSK.getText().isEmpty() || updateNgayKhoi.getValue() == null) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Không thể lưu");
                     alert.setHeaderText("Thiếu thông tin");
@@ -170,9 +170,8 @@ public class UpdateTTNguoiMacController implements Initializable {
                     alert.showAndWait();
                     return;
                 }
-            }
-            else if(btnDuongTinh.isSelected()) {
-                    updateNgayKhoi.setVisible(false);
+            } else if (btnDuongTinh.isSelected()) {
+                updateNgayKhoi.setVisible(false);
                 if (updateNgayKhaiBao.getValue() == null ||
                         updateHinhThucTest.getText().isEmpty() || updateThoiDiemTest.getValue() == null ||
                         updateTinhTrangSK.getText().isEmpty()) {
@@ -191,12 +190,11 @@ public class UpdateTTNguoiMacController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            Query query = new Query();
-            if(btnAmTinh.isSelected()) {
-                query.addKhaiBao(tmp.getId(), updateTinhTrangSK.getText(), btnAmTinh.getText(), updateHinhThucTest.getText(), updateThoiDiemTest.getValue(), updateNgayKhaiBao.getValue());
-                query.updateMacCOVID(tmp.getId(), tmp.getNgayMac(), updateNgayKhoi.getValue().toString());
+            if (btnAmTinh.isSelected()) {
+                covidDB.addKhaiBao(tmp.getId(), updateTinhTrangSK.getText(), btnAmTinh.getText(), updateHinhThucTest.getText(), updateThoiDiemTest.getValue(), updateNgayKhaiBao.getValue());
+                covidDB.updateMacCOVID(tmp.getId(), tmp.getNgayMac(), updateNgayKhoi.getValue().toString());
             } else {
-                query.addKhaiBao(tmp.getId(), updateTinhTrangSK.getText(), btnDuongTinh.getText(), updateHinhThucTest.getText(), updateThoiDiemTest.getValue(), updateNgayKhaiBao.getValue());
+                covidDB.addKhaiBao(tmp.getId(), updateTinhTrangSK.getText(), btnDuongTinh.getText(), updateHinhThucTest.getText(), updateThoiDiemTest.getValue(), updateNgayKhaiBao.getValue());
             }
             ((Node) event.getSource()).getScene().getWindow().hide();
         } else if (event.getSource() == btnXemLichSu) {
@@ -208,8 +206,8 @@ public class UpdateTTNguoiMacController implements Initializable {
             ObservableList<MacCOVID> list_all_history = FXCollections.observableArrayList();
             ObservableList<MacCOVID> list_history = FXCollections.observableArrayList();
             list_all_history = covidDB.getListAllHistoryMacCOVID();
-            for(MacCOVID macCOVID : list_all_history){
-                if(macCOVID.getId() == tmp.getId() ){
+            for (MacCOVID macCOVID : list_all_history) {
+                if (macCOVID.getId() == tmp.getId()) {
                     list_history.add(macCOVID);
                 }
             }

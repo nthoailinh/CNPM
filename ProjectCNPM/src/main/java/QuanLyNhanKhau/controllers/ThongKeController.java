@@ -1,8 +1,7 @@
 package QuanLyNhanKhau.controllers;
 
 import QuanLyNhanKhau.controllers.tables.NhanKhauTable;
-import QuanLyNhanKhau.models.NhanKhau;
-import QuanLyNhanKhau.services.nhankhauDB;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -79,7 +78,7 @@ public class ThongKeController implements Initializable {
     void handleClicks(ActionEvent event) {
         if (event.getSource() == showStatisticsButton) {
             System.out.println(genderChoiceBox.getValue());
-            nhankhauDB nhankhauinDB = new nhankhauDB();
+            NhanKhauDB nhankhauinDB = new NhanKhauDB();
             ObservableList<NhanKhauTable> listNK = null;
             String gender = genderChoiceBox.getValue();
             String ageStart = ageStartTextField.getText();
@@ -133,7 +132,7 @@ public class ThongKeController implements Initializable {
         listChoice2.add("Dương tính");
         listChoice2.add("Âm tính");
 
-        nhankhauDB nhankhauinDB = new nhankhauDB();
+        NhanKhauDB nhankhauinDB = new NhanKhauDB();
         ObservableList<NhanKhauTable> listNK = null;
         try {
             listNK = nhankhauinDB.getListNhanKhauTable();

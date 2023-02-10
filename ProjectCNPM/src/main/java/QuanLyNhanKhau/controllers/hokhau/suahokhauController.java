@@ -1,8 +1,8 @@
 package QuanLyNhanKhau.controllers.hokhau;
 
 import QuanLyNhanKhau.models.NhanKhau;
-import QuanLyNhanKhau.services.Query;
-import QuanLyNhanKhau.services.nhankhauDB;
+import QuanLyNhanKhau.services.HoKhauDB;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import QuanLyNhanKhau.views.Windows;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +28,10 @@ import java.util.ResourceBundle;
 public class suahokhauController implements Initializable {
 
     private ObservableList<NhanKhau> listNK = FXCollections.observableArrayList();
-    nhankhauDB nhankhaudb = new nhankhauDB();
+
+    private NhanKhauDB nhankhauDB = new NhanKhauDB();
+
+    private HoKhauDB hokhauDB = new HoKhauDB();
 
     @FXML
     private Button btnChon;
@@ -87,13 +90,11 @@ public class suahokhauController implements Initializable {
     private NhanKhau nhanKhau, nhanKhauChuHo;
 
     public int getIDHoKhau(String soHoKhau) throws SQLException {
-        Query query = new Query();
-        return query.getIDHoKhauBySoHoKhau(soHoKhau);
+        return hokhauDB.getIDHoKhauBySoHoKhau(soHoKhau);
     }
 
     public ObservableList<NhanKhau> getNhanKhauList(String soHoKhau) throws SQLException {
-        Query query = new Query();
-        return query.getListNhanKhauBySoHoKhau(soHoKhau);
+        return nhankhauDB.getListNhanKhauBySoHoKhau(soHoKhau);
     }
 
     @FXML
@@ -114,7 +115,7 @@ public class suahokhauController implements Initializable {
                         .orElse(null);
                 setTableData(listNK);
                 chuHo.setText(nhanKhauChuHo.getHoTen());
-                cccdChuHo.setText(nhankhaudb.getCCCD(nhanKhauChuHo.getId()));
+                cccdChuHo.setText(nhankhauDB.getCCCD(nhanKhauChuHo.getId()));
             }
         } else if (event.getSource() == btnChon) {
             FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
@@ -136,7 +137,7 @@ public class suahokhauController implements Initializable {
                     if (nhanKhauChuHo != null) {
                         chuHo.setText(nhanKhauChuHo.getHoTen());
                         try {
-                            cccdChuHo.setText(nhankhaudb.getCCCD(nhanKhauChuHo.getId()));
+                            cccdChuHo.setText(nhankhauDB.getCCCD(nhanKhauChuHo.getId()));
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
@@ -206,8 +207,7 @@ public class suahokhauController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            Query query = new Query();
-            PreparedStatement pstmt = query.HoKhau(soHoKhau.getText(), nhanKhauChuHo.getId(), Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
+            PreparedStatement pstmt = hokhauDB.insertHoKhau(soHoKhau.getText(), nhanKhauChuHo.getId(), Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
             int idHoKhau = -1;
             ResultSet rs = pstmt.getGeneratedKeys();
             if (rs.next()) {
@@ -218,7 +218,7 @@ public class suahokhauController implements Initializable {
             pstmt.close();
             for (NhanKhau n : listNK) {
                 n.setIdHoKhau(idHoKhau);
-                query.updateIDHoKhauCuaNhanKhau(n.getId(), idHoKhau, n.getQuanHeVoiChuHo());
+                nhankhauDB.updateIDHoKhauCuaNhanKhau(n.getId(), idHoKhau, n.getQuanHeVoiChuHo());
             }
             ((Node) event.getSource()).getScene().getWindow().hide();
         } else if (event.getSource() == btnHuy) {

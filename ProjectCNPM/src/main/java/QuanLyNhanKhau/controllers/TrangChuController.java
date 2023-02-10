@@ -1,6 +1,6 @@
 package QuanLyNhanKhau.controllers;
 
-import QuanLyNhanKhau.services.trangchuDB;
+import QuanLyNhanKhau.services.TrangChuDB;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -31,7 +31,7 @@ public class TrangChuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Map<String, Integer> map = trangchuDB.getQuantity();
+            Map<String, Integer> map = TrangChuDB.getQuantity();
             SoLuongNhanKhau.setText(map.get("NhanKhau").toString());
             SoLuongHoKhau.setText(map.get("HoKhau").toString());
             SoLuongTamTru.setText(map.get("TamTru").toString());

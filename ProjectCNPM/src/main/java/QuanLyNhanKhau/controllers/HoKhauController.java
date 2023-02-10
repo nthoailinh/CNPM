@@ -1,7 +1,7 @@
 package QuanLyNhanKhau.controllers;
 
 import QuanLyNhanKhau.controllers.tables.HoKhauTable;
-import QuanLyNhanKhau.services.hokhauDB;
+import QuanLyNhanKhau.services.HoKhauDB;
 import QuanLyNhanKhau.views.Windows;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -115,7 +115,7 @@ public class HoKhauController implements Initializable {
     }
 
     private ObservableList<HoKhauTable> getHoKhauList() {
-        hokhauDB hokhauinDB = new hokhauDB();
+        HoKhauDB hokhauinDB = new HoKhauDB();
         try {
             return hokhauinDB.getListHoKhauTable();
         } catch (SQLException e) {

@@ -8,10 +8,11 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 import java.time.LocalDate;
 
-public class nhankhauDB {
+public class NhanKhauDB {
+    private final Connection connection = MySQL.getConnection();
+
     public ObservableList<NhanKhau> getListNhanKhauWithSoHoKhau(String soHoKhau) throws SQLException {
         ObservableList<NhanKhau> list = FXCollections.observableArrayList();
-        Connection connection = MySQL.getConnection();
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id WHERE HoKhau.soHoKhau = ?");
         stmt.setString(1, soHoKhau);
         ResultSet rsNhanKhau = stmt.executeQuery();
@@ -29,7 +30,6 @@ public class nhankhauDB {
 
     public ObservableList<NhanKhauTable> getListNhanKhauTable() throws SQLException {
         ObservableList<NhanKhauTable> list = FXCollections.observableArrayList();
-        Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
         ResultSet rsNhanKhau = stmt.executeQuery("SELECT NhanKhau.*, HoKhau.* FROM NhanKhau LEFT JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id");
         while (rsNhanKhau.next()) {
@@ -60,7 +60,6 @@ public class nhankhauDB {
 
     public ObservableList<NhanKhau> getListNhanKhau() throws SQLException {
         ObservableList<NhanKhau> list = FXCollections.observableArrayList();
-        Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
         ResultSet rsNhanKhau = stmt.executeQuery("SELECT * FROM NhanKhau");
         while (rsNhanKhau.next()) {
@@ -85,7 +84,6 @@ public class nhankhauDB {
 
     public ObservableList<NhanKhauTable> getListNhanKhau(String gioiTinh, String ageStart, String ageEnd, String tinhTrang, String ngayMacStart, String ngayMacEnd, String ngayKhoiStart, String ngayKhoiEnd) throws SQLException {
         ObservableList<NhanKhauTable> list = FXCollections.observableArrayList();
-        Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
         String defaultQuery = "SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id";
         if (!(tinhTrang.equals("<lựa chọn>") && ngayMacStart.equals("") && ngayMacEnd.equals("") && ngayKhoiStart.equals("") && ngayKhoiEnd.equals(""))) {
@@ -178,7 +176,6 @@ public class nhankhauDB {
 
     public ObservableList<NhanKhauTable> getListNhanKhauNoCovidTable() throws SQLException {
         ObservableList<NhanKhauTable> list = FXCollections.observableArrayList();
-        Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
         ResultSet rsNhanKhau = stmt.executeQuery("SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id WHERE NhanKhau.id not in (SELECT idNhanKhau from MacCOVID where ngayKhoi is null)");
         while (rsNhanKhau.next()) {
@@ -193,7 +190,6 @@ public class nhankhauDB {
     }
 
     public String getCCCD(int idNhanKhau) throws SQLException {
-        Connection connection = MySQL.getConnection();
         Statement stmt = connection.createStatement();
         ResultSet rsNhanKhau = stmt.executeQuery("SELECT cccd FROM CCCD WHERE idNhanKhau = " + idNhanKhau);
         if (rsNhanKhau.next()) {
@@ -201,5 +197,101 @@ public class nhankhauDB {
         } else {
             return "";
         }
+    }
+
+    public PreparedStatement addNhanKhau(String hoTen, Object ngaySinh, String gioiTinh, String noiSinh, String nguyenQuan,
+                                      String danToc, String ngheNghiep, String noiLamViec) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO NhanKhau (`hoTen`, `ngaySinh`, `gioiTinh`, `noiSinh`, " +
+                "`nguyenQuan`, `danToc`, `ngheNghiep`, `noiLamViec`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+        pstmt.setString(1, hoTen);
+        pstmt.setObject(2, ngaySinh);
+        pstmt.setString(3, gioiTinh);
+        pstmt.setString(4, noiSinh);
+        pstmt.setString(5, nguyenQuan);
+        pstmt.setString(6, danToc);
+        pstmt.setString(7, ngheNghiep);
+        pstmt.setString(8, noiLamViec);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+
+
+    public ObservableList<NhanKhau> getListNhanKhauBySoHoKhau(String soHoKhau) throws SQLException {
+        HoKhauDB hokhauDB = new HoKhauDB();
+        ObservableList<NhanKhau> listNK = FXCollections.observableArrayList();
+        int idHoKhau = hokhauDB.getIDHoKhauBySoHoKhau(soHoKhau);
+        PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM NhanKhau WHERE idHoKhau = ?");
+        pstmt.setInt(1, idHoKhau);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            NhanKhau nk = new NhanKhau(rs.getInt("id"), idHoKhau, rs.getString("hoTen"), rs.getDate("ngaySinh").toLocalDate(),
+                    rs.getString("gioiTinh"), rs.getString("noiSinh"), rs.getString("nguyenQuan"), rs.getString("danToc"),
+                    rs.getString("ngheNghiep"), rs.getString("noiLamViec"), rs.getString("quanHeVoiChuHo"));
+            listNK.add(nk);
+        }
+        return listNK;
+    }
+
+    public PreparedStatement updateIDHoKhauCuaNhanKhau(int idNhanKhau, int idHoKhau, String quanHeVoiChuHo) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("UPDATE NhanKhau SET idHoKhau = ?, quanHeVoiChuHo = ? WHERE id = ?");
+        pstmt.setInt(1, idHoKhau);
+        pstmt.setString(2, quanHeVoiChuHo);
+        pstmt.setInt(3, idNhanKhau);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+
+    public PreparedStatement addTamTru(int idNhanKhau, String maGiayTamTru, Object batDau, Object ketThuc, String lyDo)
+            throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO TamTru (`idNhanKhau`, `maGiayTamTru`, "
+                        + "`batDau`, `ketThuc`, `lyDo`) VALUES (?, ?, ?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, idNhanKhau);
+        pstmt.setString(2, maGiayTamTru);
+        pstmt.setObject(3, batDau);
+        pstmt.setObject(4, ketThuc);
+        pstmt.setString(5, lyDo);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+
+    public PreparedStatement addTamVang(int idNhanKhau, String maGiayTamVang, Object batDau, Object ketThuc,
+                                     String noiTamTru, String lyDo) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO TamVang (`idNhanKhau`, `maGiayTamVang`, "
+                        + "`batDau`, `ketThuc`, `noiTamTru`, `lyDo`) VALUES (?, ?, ?, ?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, idNhanKhau);
+        pstmt.setString(2, maGiayTamVang);
+        pstmt.setObject(3, batDau);
+        pstmt.setObject(4, ketThuc);
+        pstmt.setString(5, noiTamTru);
+        pstmt.setString(6, lyDo);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+
+    public PreparedStatement addKhaiTu(int idNhanKhau, String maGiayKhaiTu, String nguyenNhan, Object ngayQuaDoi, Object ngayKhaiTu,
+                                    int idNguoiKhai) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO KhaiTu (`idNhanKhau`, `maGiayKhaiTu`,  "
+                        + "`nguyenNhan`, `ngayQuaDoi`, `ngayKhaiTu`, `idNguoiKhai`) VALUES (?, ?, ?, ?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, idNhanKhau);
+        pstmt.setString(2, maGiayKhaiTu);
+        pstmt.setObject(3, nguyenNhan);
+        pstmt.setObject(4, ngayQuaDoi);
+        pstmt.setObject(5, ngayKhaiTu);
+        pstmt.setInt(6, idNguoiKhai);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+
+    public PreparedStatement addCCCD(String cccd, int idNhanKhau, Object ngayCap, String noiCap) throws SQLException {
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO CCCD (cccd, idNhanKhau, ngayCap, noiCap) VALUES (?, ?, ?, ?)");
+        pstmt.setString(1, cccd);
+        pstmt.setInt(2, idNhanKhau);
+        pstmt.setObject(3, ngayCap);
+        pstmt.setString(4, noiCap);
+        pstmt.executeUpdate();
+        return pstmt;
     }
 }

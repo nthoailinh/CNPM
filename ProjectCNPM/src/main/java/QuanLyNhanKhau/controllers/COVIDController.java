@@ -2,7 +2,6 @@ package QuanLyNhanKhau.controllers;
 
 import QuanLyNhanKhau.controllers.tables.CovidTable;
 import QuanLyNhanKhau.services.CovidDB;
-import QuanLyNhanKhau.services.Query;
 import QuanLyNhanKhau.views.Windows;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +24,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class COVIDController implements Initializable {
+
+    private final CovidDB covidDB = new CovidDB();
 
     @FXML
     private TableColumn<CovidTable, Integer> ID;
@@ -69,7 +70,7 @@ public class COVIDController implements Initializable {
 
     @FXML
     void handleClicks(ActionEvent event) throws IOException, SQLException {
-        if(event.getSource() == themNguoiMac) {
+        if (event.getSource() == themNguoiMac) {
             Parent root = Windows.getRoot("covid/themnguoimac.fxml");
             Scene scene = new Scene(root, 860, 740);
             Stage stage = new Stage();
@@ -77,16 +78,13 @@ public class COVIDController implements Initializable {
             stage.setScene(scene);
             stage.setOnHidden((e) -> populateTable());
             stage.show();
-        }
-        else if (event.getSource() == xoaNguoiMac) {
+        } else if (event.getSource() == xoaNguoiMac) {
             CovidTable tmp = table.getSelectionModel().getSelectedItem();
             if (tmp != null) {
-                Query query = new Query();
-                query.deleteMacCovid(tmp.getId());
+                covidDB.deleteMacCovid(tmp.getId());
                 table.getItems().remove(tmp);
             }
-        }
-        else if (event.getSource() == capNhatTT) {
+        } else if (event.getSource() == capNhatTT) {
             Parent root = Windows.getRoot("covid/capnhatnguoimac.fxml");
             Scene scene = new Scene(root, 1150, 800);
             Stage stage = new Stage();
@@ -97,8 +95,8 @@ public class COVIDController implements Initializable {
         } else if (event.getSource() == btnTimKiem) {
             ObservableList<CovidTable> list_search = FXCollections.observableArrayList();
             String inputHoTen = hoTenInput.getText();
-            for(CovidTable covidTable : listCovid){
-                if(covidTable.getHoTen().contains(inputHoTen)){
+            for (CovidTable covidTable : listCovid) {
+                if (covidTable.getHoTen().contains(inputHoTen)) {
                     list_search.add(covidTable);
                 }
             }
@@ -111,7 +109,7 @@ public class COVIDController implements Initializable {
         populateTable();
     }
 
-    public void populateTable(){
+    public void populateTable() {
         CovidDB covidinDB = new CovidDB();
         try {
             listCovid = covidinDB.getListCovidTable();
