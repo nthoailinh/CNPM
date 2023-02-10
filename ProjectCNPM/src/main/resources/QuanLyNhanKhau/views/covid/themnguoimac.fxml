@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.covid.ThemNguoiMacController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.covid.ThemNguoiMacController">
    <top>
       <Label maxHeight="-Infinity" prefHeight="80.0" text="Thêm người mắc Covid" BorderPane.alignment="CENTER">
          <font>
@@ -122,9 +123,13 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="56.0" prefWidth="277.0" spacing="24.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnXacNhan" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="80.0" text="Xác nhận" />
-            <Button fx:id="btnHuy" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="80.0" text="Hủy" />
+            <Button fx:id="btnXacNhan" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="95.0" text="Xác nhận" />
+            <Button fx:id="btnHuy" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="95.0" text="Hủy" />
          </children>
       </HBox>
    </bottom>
+   <stylesheets>
+      <URL value="@../table_style.css" />
+      <URL value="@../button_style.css" />
+   </stylesheets>
 </BorderPane>

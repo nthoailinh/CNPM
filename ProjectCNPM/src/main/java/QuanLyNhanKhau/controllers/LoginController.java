@@ -29,7 +29,7 @@ public class LoginController {
         if (userName.getText().isEmpty()) {
             displayDialog("Thiếu tên đăng nhập", "Nhập đủ tên đăng nhập và mật khẩu!");
         } else if (password.getText().isEmpty()) {
-            displayDialog("Thiếu tên mật khẩu", "Nhập đủ tên đăng nhập và mật khẩu!");
+            displayDialog("Thiếu mật khẩu", "Nhập đủ tên đăng nhập và mật khẩu!");
         } else {
             LoginDB login = new LoginDB();
             if (login.validate(userName.getText(), password.getText())) {
