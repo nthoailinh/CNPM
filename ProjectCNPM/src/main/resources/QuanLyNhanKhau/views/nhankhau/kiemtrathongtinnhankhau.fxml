@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="672.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.nhankhau.kiemtrathongtinnhankhauController">
+<BorderPane prefHeight="672.0" prefWidth="896.0" stylesheets="@../button_style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.nhankhau.kiemtrathongtinnhankhauController">
    <center>
       <GridPane prefHeight="624.0" prefWidth="896.0" vgap="4.0" BorderPane.alignment="CENTER">
          <columnConstraints>
@@ -172,12 +172,12 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="49.0" prefWidth="800.0" spacing="40.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnXacNhan" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="89.0" text="Xác nhận">
+            <Button fx:id="btnXacNhan" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="95.0" text="Xác nhận">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnHuy" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="81.0" text="Hủy">
+            <Button fx:id="btnHuy" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="95.0" text="Hủy">
                <font>
                   <Font size="14.0" />
                </font>

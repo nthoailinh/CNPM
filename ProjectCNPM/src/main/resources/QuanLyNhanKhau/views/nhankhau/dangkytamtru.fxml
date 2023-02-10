@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="480.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.nhankhau.dangkytamtruController">
+<BorderPane prefHeight="480.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.nhankhau.dangkytamtruController">
     <center>
         <GridPane prefWidth="768.0" vgap="4.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -35,7 +36,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" spacing="8.0" GridPane.columnIndex="1">
                <children>
                       <TextField fx:id="cccd" prefHeight="32.0" prefWidth="482.0" />
-                  <Button fx:id="btnKiemTra" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="78.0" text="Kiểm tra">
+                  <Button fx:id="btnKiemTra" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="100.0" text="Kiểm tra">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -75,12 +76,12 @@
     <bottom>
         <HBox alignment="CENTER" prefHeight="52.0" prefWidth="1024.0" spacing="40.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="btnXacNhan" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="92.0" text="Xác nhận">
+                <Button fx:id="btnXacNhan" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="100.0" text="Xác nhận">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnHuy" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="92.0" text="Hủy">
+                <Button fx:id="btnHuy" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="100.0" text="Hủy">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -91,4 +92,8 @@
             </padding>
         </HBox>
     </bottom>
+   <stylesheets>
+      <URL value="@../table_style.css" />
+      <URL value="@../button_style.css" />
+   </stylesheets>
 </BorderPane>

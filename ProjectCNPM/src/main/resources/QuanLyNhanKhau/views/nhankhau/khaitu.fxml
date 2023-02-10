@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="512.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.nhankhau.khaituController">
+<BorderPane prefHeight="512.0" prefWidth="784.0" stylesheets="@../button_style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.nhankhau.khaituController">
     <center>
         <GridPane prefWidth="1024.0" vgap="4.0" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -36,7 +36,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" spacing="8.0" GridPane.columnIndex="1">
                <children>
                       <TextField fx:id="cccdNguoiKhai" prefHeight="32.0" prefWidth="482.0" />
-                  <Button fx:id="btnKiemTraNguoiKhai" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" text="Kiểm tra">
+                  <Button fx:id="btnKiemTraNguoiKhai" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="100.0" text="Kiểm tra">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -75,7 +75,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" spacing="8.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                       <TextField fx:id="cccdNguoiMat" prefHeight="32.0" prefWidth="482.0" />
-                  <Button fx:id="btnKiemTraNguoiMat" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" text="Kiểm tra">
+                  <Button fx:id="btnKiemTraNguoiMat" mnemonicParsing="false" onAction="#handleClicks" prefHeight="32.0" prefWidth="100.0" text="Kiểm tra">
                      <font>
                         <Font size="14.0" />
                      </font>
