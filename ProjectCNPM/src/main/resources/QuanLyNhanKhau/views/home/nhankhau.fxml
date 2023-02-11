@@ -16,7 +16,7 @@
    <children>
       <BorderPane fx:id="contentNhanKhau" layoutY="20.0" prefHeight="701.0" prefWidth="780.0">
          <top>
-            <HBox prefHeight="45.0" prefWidth="786.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="45.0" prefWidth="786.0" spacing="8.0" BorderPane.alignment="CENTER">
                <children>
                   <TextField fx:id="input" prefHeight="30.0" prefWidth="624.0" promptText="Họ tên nhân khẩu" />
                   <Button fx:id="btnTimKiem" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="128.0" text="Tìm kiếm" />
@@ -42,6 +42,7 @@
                <children>
                   <Button fx:id="btnXemThongTin" layoutX="19.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Xem thông tin" />
                   <Button fx:id="btnThemMoi" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Thêm mới" />
+                  <Button fx:id="btnSuaThongTin" layoutX="19.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Sửa thông tin" />
                   <Button fx:id="btnDKTamVang" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="ĐK tạm vắng" />
                   <Button fx:id="btnDKTamTru" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="ĐK tạm trú" />
                   <Button fx:id="btnKhaiTu" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Khai tử" />
