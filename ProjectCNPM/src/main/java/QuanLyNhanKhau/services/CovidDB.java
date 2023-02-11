@@ -33,6 +33,102 @@ public class CovidDB {
         return list;
     }
 
+    // thong ke
+    public ObservableList<CovidTable> getListCovidTable(String gioiTinh, String ageStart, String ageEnd, String tinhTrang, String dateStart, String dateEnd) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        ObservableList<CovidTable> list = FXCollections.observableArrayList();
+        Statement stmt = connection.createStatement();
+        String createTmpTable = "CREATE TEMPORARY TABLE tmpTable AS SELECT * FROM KhaiBao WHERE KhaiBao.id IN (SELECT max(id) as id from KhaiBao GROUP BY KhaiBao.idMacCOVID) ";
+        stmt.executeUpdate(createTmpTable);
+        String defaultQuery = "SELECT MacCOVID.id, NhanKhau.hoTen, MacCOVID.ngayMac, MacCOVID.ngayKhoi, tmpTable.tinhTrangSucKhoe, tmpTable.ketQuaTest, tmpTable.ngayKhaiBao FROM (MacCOVID INNER JOIN tmpTable on tmpTable.idMacCOVID = MacCOVID.id) INNER JOIN NhanKhau on NhanKhau.id = MacCOVID.idNhanKhau";
+        String query = defaultQuery;
+
+        if (!gioiTinh.equals("<lựa chọn>")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query + " WHERE ";
+            }
+            query = query + "gioiTinh = '" + gioiTinh + "'";
+        }
+
+        if (!ageStart.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query + " WHERE ";
+            }
+            LocalDate birthDate = LocalDate.now().minusYears(Long.parseLong(ageStart));
+            query = query + "ngaySinh < '" + birthDate + "'";
+        }
+
+        if (!ageEnd.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query + " WHERE ";
+            }
+            LocalDate birthDate = LocalDate.now().minusYears(Long.parseLong(ageEnd));
+            query = query + "ngaySinh > '" + birthDate + "'";
+        }
+
+        if (tinhTrang.equals("Mắc bệnh")) {
+            if (!dateStart.equals("")) {
+                if (!query.equals(defaultQuery)) {
+                    query += " AND ";
+                } else {
+                    query += " WHERE ";
+                }
+                query += "ngayMac > '" + dateStart + "'";
+            }
+
+            if (!dateEnd.equals("")) {
+                if (!query.equals(defaultQuery)) {
+                    query += "AND ";
+                } else {
+                    query += " WHERE ";
+                }
+                query += "ngayMac < '" + dateEnd + "'";
+            }
+        } else if (tinhTrang.equals("Khỏi bệnh")) {
+            if (!dateStart.equals("")) {
+                if (!query.equals(defaultQuery)) {
+                    query += " AND ";
+                } else {
+                    query += " WHERE ";
+                }
+                query += "ngayKhoi > '" + dateStart + "'";
+            }
+
+            if (!dateEnd.equals("")) {
+                if (!query.equals(defaultQuery)) {
+                    query += "AND ";
+                } else {
+                    query += " WHERE ";
+                }
+                query += "ngayKhoi < '" + dateEnd + "'";
+            }
+        }
+
+        System.out.println(query);
+        ResultSet rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            if (rs.getDate("ngayKhoi") != null) {
+                CovidTable covid = new CovidTable(rs.getInt("id"), rs.getString("hoTen"), rs.getDate("ngayMac").toString(), rs.getDate("ngayKhoi").toString(), rs.getString("tinhTrangSucKhoe"),
+                        rs.getString("ketQuaTest"));
+                list.add(covid);
+            } else {
+                CovidTable covid = new CovidTable(rs.getInt("id"), rs.getString("hoTen"), rs.getDate("ngayMac").toString(), "Chưa khỏi", rs.getString("tinhTrangSucKhoe"),
+                        rs.getString("ketQuaTest"));
+                list.add(covid);
+            }
+        }
+        rs.close();
+        stmt.close();
+        connection.close();
+        return list;
+    }
+
     public ObservableList<MacCOVID> getListMacCovid() throws SQLException {
         Connection connection = MySQL.getConnection();
         ObservableList<MacCOVID> list = FXCollections.observableArrayList();

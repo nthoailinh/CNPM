@@ -52,7 +52,7 @@ public class YTeController implements Initializable {
             Parent root = Windows.getRoot("home/covid.fxml");
             content.getChildren().setAll(root);
         } else if (event.getSource() == thongKe) {
-            Parent root = Windows.getRoot("home/thongke.fxml");
+            Parent root = Windows.getRoot("home/thongke_yte.fxml");
             content.getChildren().setAll(root);
         } else if (event.getSource() == dangXuat) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

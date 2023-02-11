@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class ThongKeController implements Initializable {
+public class ThongKeToDanPhoController implements Initializable {
 
     @FXML
     private TableColumn<NhanKhauTable, Integer> ID;
@@ -47,17 +47,12 @@ public class ThongKeController implements Initializable {
     @FXML
     private TableColumn<NhanKhauTable, String> hoTen;
 
-    @FXML
-    private DatePicker ngayKhoiEndDatePicker;
 
     @FXML
-    private DatePicker ngayKhoiStartDatePicker;
+    private DatePicker dateEndPicker;
 
     @FXML
-    private DatePicker ngayMacEndDatePicker;
-
-    @FXML
-    private DatePicker ngayMacStartDatePicker;
+    private DatePicker dateStartPicker;
 
     @FXML
     private TableColumn<NhanKhauTable, LocalDate> ngaySinh;
@@ -84,25 +79,19 @@ public class ThongKeController implements Initializable {
             String ageStart = ageStartTextField.getText();
             String ageEnd = ageEndTextField.getText();
             String tinhTrang = tinhTrangChoiceBox.getValue();
-            String ngayMacStart = "";
-            String ngayMacEnd = "";
-            String ngayKhoiStart = "";
-            String ngayKhoiEnd = "";
-            if (ngayMacStartDatePicker.getValue() != null) {
-                ngayMacStart = ngayMacStartDatePicker.getValue().toString();
+            String dateStart = "";
+            String dateEnd = "";
+            if (dateStartPicker.getValue() != null) {
+                dateStart = dateStartPicker.getValue().toString();
             }
-            if (ngayMacEndDatePicker.getValue() != null) {
-                ngayMacEnd = ngayMacEndDatePicker.getValue().toString();
+            if (dateEndPicker.getValue() != null) {
+                dateEnd = dateEndPicker.getValue().toString();
             }
-            if (ngayKhoiStartDatePicker.getValue() != null) {
-                ngayKhoiStart = ngayKhoiStartDatePicker.getValue().toString();
-            }
-            if (ngayKhoiEndDatePicker.getValue() != null) {
-                ngayKhoiEnd = ngayKhoiEndDatePicker.getValue().toString();
-            }
-            System.out.println(ngayMacStart);
+
+            System.out.println(dateStart);
+
             try {
-                listNK = nhankhauinDB.getListNhanKhau(gender, ageStart, ageEnd, tinhTrang, ngayMacStart, ngayMacEnd, ngayKhoiStart, ngayKhoiEnd);
+                listNK = nhankhauinDB.getListNhanKhau(gender, ageStart, ageEnd, tinhTrang, dateStart, dateEnd);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -126,11 +115,11 @@ public class ThongKeController implements Initializable {
         listChoice.add("Nam");
         listChoice.add("Nữ");
 
-        tinhTrangChoiceBox.setValue("<lựa chọn>");
+        tinhTrangChoiceBox.setValue("Có hộ khẩu trên địa bàn");
         ObservableList<String> listChoice2 = tinhTrangChoiceBox.getItems();
-        listChoice2.add("<lựa chọn>");
-        listChoice2.add("Dương tính");
-        listChoice2.add("Âm tính");
+        listChoice2.add("Có hộ khẩu trên địa bàn");
+        listChoice2.add("Tạm trú");
+        listChoice2.add("Tạm vắng");
 
         NhanKhauDB nhankhauinDB = new NhanKhauDB();
         ObservableList<NhanKhauTable> listNK = null;
