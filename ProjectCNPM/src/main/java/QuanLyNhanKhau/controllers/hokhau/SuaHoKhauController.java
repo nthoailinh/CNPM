@@ -24,6 +24,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SuaHoKhauController implements Initializable {
@@ -201,7 +202,17 @@ public class SuaHoKhauController implements Initializable {
         } else if (event.getSource() == btnXoaThanhVien) {
             nhanKhau = table.getSelectionModel().getSelectedItem();
             if (nhanKhau != null) {
-                listNK.removeIf(nk -> nk.getId() == nhanKhau.getId());
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Xác nhận");
+                alert.setHeaderText(null);
+                alert.setContentText("Bạn có muốn xóa không?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    if(nhanKhau.getId() != nhanKhauChuHo.getId()){
+                        listNK.removeIf(nk -> nk.getId() == nhanKhau.getId());
+                    }
+                }
+                nhankhauDB.removeNhanKhau(nhanKhau.getId());
             }
         } else if (event.getSource() == btnLuu) {
             if (soHoKhau.getText().isEmpty() || cccdChuHo.getText().isEmpty() || chuHo.getText().isEmpty() ||

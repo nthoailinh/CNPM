@@ -314,4 +314,19 @@ public class NhanKhauDB {
         pstmt.executeUpdate();
         return pstmt;
     }
+
+    public void removeNhanKhau(int idNhanKhau) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt_1 = connection.prepareStatement("DELETE FROM CCCD WHERE idNhanKhau = ?");
+        pstmt_1.setInt(1, idNhanKhau);
+        pstmt_1.executeUpdate();
+
+        PreparedStatement pstmt_2 = connection.prepareStatement("UPDATE NhanKhau SET idHoKhau = NULL WHERE id = ?;");
+        pstmt_2.setInt(1, idNhanKhau);
+        pstmt_2.executeUpdate();
+
+        PreparedStatement pstmt_3 = connection.prepareStatement("DELETE FROM NhanKhau WHERE id = ?");
+        pstmt_3.setInt(1, idNhanKhau);
+        pstmt_3.executeUpdate();
+    }
 }
