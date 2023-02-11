@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.HoKhauController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.HoKhauController">
    <children>
       <BorderPane fx:id="contentHoKhau" layoutY="20.0" prefHeight="701.0" prefWidth="780.0">
          <center>
@@ -27,6 +27,7 @@
          <right>
             <VBox alignment="TOP_CENTER" prefHeight="646.0" prefWidth="146.0" spacing="24.0" BorderPane.alignment="CENTER">
                <children>
+                  <Button fx:id="btnXemThongTin" layoutX="19.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Xem thông tin" />
                   <Button fx:id="btnThemMoi" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Thêm mới" />
                   <Button fx:id="btnSuaThongTin" layoutX="20.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Sửa thông tin" />
                   <Button fx:id="btnTachHoKhau" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Tách hộ khẩu" />

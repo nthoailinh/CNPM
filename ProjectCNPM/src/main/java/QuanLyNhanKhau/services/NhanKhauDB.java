@@ -203,6 +203,12 @@ public class NhanKhauDB {
         }
     }
 
+    public PreparedStatement getFullCCCD(int idNhanKhau) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM CCCD WHERE idNhanKhau = " + idNhanKhau);
+        return pstmt;
+    }
+
     public PreparedStatement addNhanKhau(String hoTen, Object ngaySinh, String gioiTinh, String noiSinh, String nguyenQuan,
                                       String danToc, String ngheNghiep, String noiLamViec) throws SQLException {
         Connection connection = MySQL.getConnection();
@@ -328,5 +334,18 @@ public class NhanKhauDB {
         PreparedStatement pstmt_3 = connection.prepareStatement("DELETE FROM NhanKhau WHERE id = ?");
         pstmt_3.setInt(1, idNhanKhau);
         pstmt_3.executeUpdate();
+    }
+
+    public NhanKhau getNhanKhau(int idNhanKhau) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM NhanKhau WHERE id = ?");
+        pstmt.setInt(1, idNhanKhau);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            return new NhanKhau(rs.getInt("id"), rs.getInt("idHoKhau"), rs.getString("hoTen"), rs.getDate("ngaySinh").toLocalDate(),
+                    rs.getString("gioiTinh"), rs.getString("noiSinh"), rs.getString("nguyenQuan"), rs.getString("danToc"),
+                    rs.getString("ngheNghiep"), rs.getString("noiLamViec"), rs.getString("quanHeVoiChuHo"));
+        }
+        return null;
     }
 }
