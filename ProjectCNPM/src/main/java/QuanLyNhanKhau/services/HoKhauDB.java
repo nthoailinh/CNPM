@@ -12,7 +12,7 @@ public class HoKhauDB {
         ObservableList<HoKhauTable> list = FXCollections.observableArrayList();
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("select * from HoKhau JOIN NhanKhau ON NhanKhau.idHoKhau = HoKhau.id WHERE NhanKhau.quanHeVoiChuHo = 'Chủ hộ' ");
-        while(rs.next()) {
+        while (rs.next()) {
             HoKhauTable hoKhau = new HoKhauTable(rs.getString("soHoKhau"), rs.getString("hoTen"),
                     "Số " + rs.getString("soNha") + ", ngõ " + rs.getString("ngo") + ", đường " + rs.getString("duong"));
             list.add(hoKhau);
@@ -66,4 +66,18 @@ public class HoKhauDB {
         pstmt.executeUpdate();
         return pstmt;
     }
+
+    public PreparedStatement updateHoKhau(String soHoKhau, int idChuHo, int soNha, String ngo, String duong) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("UPDATE HoKhau SET `idChuHo` = ?, `soNha` = ?, `ngo` = ?, `duong` = ? WHERE `soHoKhau` = ?", Statement.RETURN_GENERATED_KEYS);
+        pstmt.setInt(1, idChuHo);
+        pstmt.setInt(2, soNha);
+        pstmt.setString(3, ngo);
+        pstmt.setString(4, duong);
+        pstmt.setString(5, soHoKhau);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+
+
 }

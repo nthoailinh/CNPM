@@ -248,6 +248,15 @@ public class NhanKhauDB {
         return pstmt;
     }
 
+    public PreparedStatement updateIDHoKhauCuaNhanKhau(int idNhanKhau, String quanHeVoiChuHo) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("UPDATE NhanKhau SET quanHeVoiChuHo = ? WHERE id = ?");
+        pstmt.setString(1, quanHeVoiChuHo);
+        pstmt.setInt(2, idNhanKhau);
+        pstmt.executeUpdate();
+        return pstmt;
+    }
+
     public PreparedStatement addTamTru(int idNhanKhau, String maGiayTamTru, Object batDau, Object ketThuc, String lyDo)
             throws SQLException {
         Connection connection = MySQL.getConnection();

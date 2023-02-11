@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 
 import java.time.LocalDate;
 
-public class chonnhankhauController {
+public class ChonNhanKhauController {
 
     @FXML
     protected Button btnChon;
