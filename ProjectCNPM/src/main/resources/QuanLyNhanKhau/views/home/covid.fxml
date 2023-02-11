@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.COVIDController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.COVIDController">
    <children>
       <BorderPane fx:id="contentCovid" focusTraversable="true" layoutX="4.0" layoutY="14.0" prefHeight="729.0" prefWidth="780.0">
          <left>
@@ -38,11 +38,11 @@
                   <TableView fx:id="table" prefHeight="650.0" prefWidth="639.0">
                      <columns>
                         <TableColumn fx:id="ID" prefWidth="35.0" text="ID" />
-                        <TableColumn fx:id="hoTen" prefWidth="146.0" text="Họ tên" />
-                        <TableColumn fx:id="ngayMac" prefWidth="79.0" text="Ngày Mắc" />
-                        <TableColumn fx:id="ngayKhoi" prefWidth="85.0" text="Ngày Khỏi" />
-                        <TableColumn fx:id="tinhTrangSucKhoe" prefWidth="198.0" text="Tình trạng sức khỏe" />
-                        <TableColumn fx:id="ketQuaTest" minWidth="0.0" prefWidth="95.0" text="Kết quả test" />
+                        <TableColumn fx:id="hoTen" prefWidth="133.0" text="Họ tên" />
+                        <TableColumn fx:id="ngayMac" prefWidth="91.0" text="Ngày Mắc" />
+                        <TableColumn fx:id="ngayKhoi" prefWidth="86.0" text="Ngày Khỏi" />
+                        <TableColumn fx:id="tinhTrangSucKhoe" prefWidth="171.0" text="Tình trạng sức khỏe" />
+                        <TableColumn fx:id="ketQuaTest" minWidth="0.0" prefWidth="122.0" text="Kết quả test" />
                      </columns>
                   </TableView>
                </children>

@@ -25,13 +25,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ThemMoiHoKhauController implements Initializable {
 
     private final ObservableList<NhanKhau> listNK = FXCollections.observableArrayList();
-    private NhanKhauDB nhankhauDB = new NhanKhauDB();
-    private HoKhauDB hokhauDB = new HoKhauDB();
+    private final NhanKhauDB nhankhauDB = new NhanKhauDB();
+    private final HoKhauDB hokhauDB = new HoKhauDB();
     @FXML
     private Button btnChon;
     @FXML
@@ -124,7 +125,14 @@ public class ThemMoiHoKhauController implements Initializable {
             stage.show();
         } else if (event.getSource() == btnXoaThanhVien) {
             if (nhanKhau != null) {
-                listNK.remove(nhanKhau);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Xác nhận");
+                alert.setHeaderText(null);
+                alert.setContentText("Bạn có muốn xóa không?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    listNK.remove(nhanKhau);
+                }
             }
         } else if (event.getSource() == btnLuu) {
             if (soHoKhau.getText().isEmpty() || cccdChuHo.getText().isEmpty() || chuHo.getText().isEmpty() ||

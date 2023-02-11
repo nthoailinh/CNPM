@@ -5,11 +5,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ToDanPhoController implements Initializable {
@@ -58,7 +61,14 @@ public class ToDanPhoController implements Initializable {
             Parent root = Windows.getRoot("home/thongke.fxml");
             content.getChildren().setAll(root);
         } else if (event.getSource() == dangXuat) {
-            System.exit(0);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Xác nhận");
+            alert.setHeaderText(null);
+            alert.setContentText("Bạn có muốn đăng xuất không?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                System.exit(0);
+            }
         }
     }
 }
