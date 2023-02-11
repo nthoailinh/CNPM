@@ -99,22 +99,24 @@ public class NhanKhauDB {
 
         String query = defaultQuery;
 
-        if (!dateStart.equals("")) {
-            if (!query.equals(defaultQuery)) {
-                query += " AND ";
-            } else {
-                query += " WHERE ";
+        if (tinhTrang.equals("Tạm vắng") || tinhTrang.equals("Tạm trú")) {
+            if (!dateStart.equals("")) {
+                if (!query.equals(defaultQuery)) {
+                    query += " AND ";
+                } else {
+                    query += " WHERE ";
+                }
+                query += "ketThuc > '" + dateStart + "'";
             }
-            query += "ketThuc > '" + dateStart + "'";
-        }
 
-        if (!dateEnd.equals("")) {
-            if (!query.equals(defaultQuery)) {
-                query += "AND ";
-            } else {
-                query += " WHERE ";
+            if (!dateEnd.equals("")) {
+                if (!query.equals(defaultQuery)) {
+                    query += "AND ";
+                } else {
+                    query += " WHERE ";
+                }
+                query += "batDau < '" + dateEnd + "'";
             }
-            query += "batDau < '" + dateEnd + "'";
         }
 
         if (!gioiTinh.equals("<lựa chọn>")) {
