@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,14 +26,11 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class suahokhauController implements Initializable {
+public class SuaHoKhauController implements Initializable {
 
+    private final NhanKhauDB nhankhauDB = new NhanKhauDB();
+    private final HoKhauDB hokhauDB = new HoKhauDB();
     private ObservableList<NhanKhau> listNK = FXCollections.observableArrayList();
-
-    private NhanKhauDB nhankhauDB = new NhanKhauDB();
-
-    private HoKhauDB hokhauDB = new HoKhauDB();
-
     @FXML
     private Button btnChon;
 
@@ -118,8 +116,13 @@ public class suahokhauController implements Initializable {
                 cccdChuHo.setText(nhankhauDB.getCCCD(nhanKhauChuHo.getId()));
             }
         } else if (event.getSource() == btnChon) {
+            // Thay đổi quan hệ với chủ hộ của chủ hộ cũ
+            listNK.removeIf(nhankhau -> nhankhau.getId() == nhanKhauChuHo.getId());
+            nhanKhauChuHo.setQuanHeVoiChuHo("");
+            listNK.add(nhanKhauChuHo);
+
             FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
-            suachuhoController suachuhoController = new suachuhoController();
+            SuaChuHoController suachuhoController = new SuaChuHoController();
             int idHoKhau = getIDHoKhau(soHoKhau.getText());
             if (idHoKhau != -1) {
                 suachuhoController.setIdHoKhau(getIDHoKhau(soHoKhau.getText()));
@@ -142,7 +145,9 @@ public class suahokhauController implements Initializable {
                             throw new RuntimeException(ex);
                         }
                         nhanKhauChuHo.setQuanHeVoiChuHo("Chủ hộ");
+                        listNK.removeIf(nhankhau -> nhankhau.getId() == nhanKhauChuHo.getId());
                         listNK.add(nhanKhauChuHo);
+                        table.setItems(listNK);
                     }
                 });
                 stage.show();
@@ -155,7 +160,7 @@ public class suahokhauController implements Initializable {
             }
         } else if (event.getSource() == btnThemThanhVien) {
             FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
-            suathanhvienController suathanhvien_controller = new suathanhvienController();
+            SuaThanhVienController suathanhvien_controller = new SuaThanhVienController();
             int idHoKhau = getIDHoKhau(soHoKhau.getText());
             if (idHoKhau != -1) {
                 suathanhvien_controller.setIdHoKhau(idHoKhau);
@@ -194,8 +199,9 @@ public class suahokhauController implements Initializable {
             }
 
         } else if (event.getSource() == btnXoaThanhVien) {
+            nhanKhau = table.getSelectionModel().getSelectedItem();
             if (nhanKhau != null) {
-                listNK.remove(nhanKhau);
+                listNK.removeIf(nk -> nk.getId() == nhanKhau.getId());
             }
         } else if (event.getSource() == btnLuu) {
             if (soHoKhau.getText().isEmpty() || cccdChuHo.getText().isEmpty() || chuHo.getText().isEmpty() ||
@@ -207,18 +213,10 @@ public class suahokhauController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            PreparedStatement pstmt = hokhauDB.insertHoKhau(soHoKhau.getText(), nhanKhauChuHo.getId(), Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
-            int idHoKhau = -1;
-            ResultSet rs = pstmt.getGeneratedKeys();
-            if (rs.next()) {
-                idHoKhau = rs.getInt(1);
-                System.out.println(idHoKhau);
-            }
-            rs.close();
+            PreparedStatement pstmt = hokhauDB.updateHoKhau(soHoKhau.getText(), nhanKhauChuHo.getId(), Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
             pstmt.close();
             for (NhanKhau n : listNK) {
-                n.setIdHoKhau(idHoKhau);
-                nhankhauDB.updateIDHoKhauCuaNhanKhau(n.getId(), idHoKhau, n.getQuanHeVoiChuHo());
+                nhankhauDB.updateIDHoKhauCuaNhanKhau(n.getId(), n.getQuanHeVoiChuHo());
             }
             ((Node) event.getSource()).getScene().getWindow().hide();
         } else if (event.getSource() == btnHuy) {
@@ -229,11 +227,17 @@ public class suahokhauController implements Initializable {
     }
 
     private void setTableData(ObservableList<NhanKhau> listNK) {
+        table.setEditable(true);
         table_id.setCellValueFactory(new PropertyValueFactory<NhanKhau, Integer>("id"));
         table_hoTen.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("hoTen"));
         table_ngaySinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, LocalDate>("ngaySinh"));
         table_gioiTinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("gioiTinh"));
         table_quanHeVoiChuHo.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("quanHeVoiChuHo"));
+        table_quanHeVoiChuHo.setCellFactory(TextFieldTableCell.forTableColumn());
+        table_quanHeVoiChuHo.setOnEditCommit(event -> {
+            NhanKhau obj = event.getRowValue();
+            obj.setQuanHeVoiChuHo(event.getNewValue());
+        });
         table.setItems(listNK);
     }
 

@@ -22,10 +22,10 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class tachhokhauController implements Initializable {
+public class TachHoKhauController implements Initializable {
     private final ObservableList<NhanKhau> listNKMoi = FXCollections.observableArrayList();
-    private NhanKhauDB nhankhauDB = new NhanKhauDB();
-    private HoKhauDB hokhauDB = new HoKhauDB();
+    private final NhanKhauDB nhankhauDB = new NhanKhauDB();
+    private final HoKhauDB hokhauDB = new HoKhauDB();
     @FXML
     private Button btnChuyenSang;
     @FXML
@@ -170,8 +170,11 @@ public class tachhokhauController implements Initializable {
                         chuHoMoi.setText(selectedNhanKhau.getHoTen());
                     }
                     selectedNhanKhau.setQuanHeVoiChuHo(quanHeVoiChuHo);
-                    listNKCu.remove(selectedNhanKhau);
-                    listNKMoi.add(selectedNhanKhau);
+                    if (!listNKMoi.stream().anyMatch(obj -> obj.getId() == selectedNhanKhau.getId())) {
+                        listNKMoi.add(selectedNhanKhau);
+                        listNKCu.remove(selectedNhanKhau);
+                    }
+
                 }
             });
         });

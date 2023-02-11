@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class chuyenhokhauController implements Initializable {
+public class ChuyenHoKhauController implements Initializable {
 
     @FXML
     private Button btnHuy;

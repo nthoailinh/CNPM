@@ -15,7 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class khaituController {
+public class KhaiTuController {
 
     private NhanKhauDB nhankhauDB = new NhanKhauDB();
 

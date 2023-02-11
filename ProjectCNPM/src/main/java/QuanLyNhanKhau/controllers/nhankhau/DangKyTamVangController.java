@@ -15,7 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class dangkytamtruController {
+public class DangKyTamVangController {
 
     private NhanKhauDB nhankhauDB = new NhanKhauDB();
 
@@ -38,7 +38,10 @@ public class dangkytamtruController {
     private TextField lyDo;
 
     @FXML
-    private TextField maGiayTamTru;
+    private TextField maGiayTamVang;
+
+    @FXML
+    private TextField noiTamTru;
 
     @FXML
     private DatePicker tuNgay;
@@ -53,7 +56,7 @@ public class dangkytamtruController {
             return -1;
         }
         Connection connection = MySQL.getConnection();
-        // Tìm id nhân khẩu đăng ký tạm trú
+        // Tìm id nhân khẩu đăng ký tạm vắng
         PreparedStatement pstmt_nhankhau = null;
         pstmt_nhankhau = connection.prepareStatement("SELECT * FROM NhanKhau JOIN CCCD ON NhanKhau.id = CCCD.idNhanKhau WHERE cccd = ?");
         pstmt_nhankhau.setString(1, cccd.getText());
@@ -84,31 +87,34 @@ public class dangkytamtruController {
         int idNhanKhau = -2;
         if (event.getSource() == btnKiemTra) {
             idNhanKhau = checkCCCD();
-        } else if (event.getSource() == btnXacNhan) {
-            if (cccd.getText().isEmpty() || maGiayTamTru.getText().isEmpty() ||
-                    tuNgay.getValue() == null || denNgay.getValue() == null || lyDo.getText().isEmpty()) {
+        } else {
+            if (event.getSource() == btnXacNhan) {
+                if (cccd.getText().isEmpty() || maGiayTamVang.getText().isEmpty() ||
+                        tuNgay.getValue() == null || denNgay.getValue() == null ||
+                        lyDo.getText().isEmpty() || noiTamTru.getText().isEmpty()) {
 
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Không thể lưu");
-                alert.setHeaderText("Thiếu thông tin");
-                alert.setContentText("Vui lòng điền tất cả các trường bắt buộc.\\nCác trường có dấu (*) là các trường bắt buộc.");
-                alert.showAndWait();
-                return;
-            }
-            if (idNhanKhau == -2) {
-                idNhanKhau = checkCCCD();
-            }
-            if (idNhanKhau != -1) {
-                nhankhauDB.addTamTru(idNhanKhau, maGiayTamTru.getText(), tuNgay.getValue(),
-                        denNgay.getValue(), lyDo.getText());
-                // Close window
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Không thể lưu");
+                    alert.setHeaderText("Thiếu thông tin");
+                    alert.setContentText("Vui lòng điền tất cả các trường bắt buộc.\nCác trường có dấu (*) là các trường bắt buộc.");
+                    alert.showAndWait();
+                    return;
+                }
+                if (idNhanKhau == -2) {
+                    idNhanKhau = checkCCCD();
+                }
+                if (idNhanKhau != -1) {
+                    nhankhauDB.addTamVang(idNhanKhau, maGiayTamVang.getText(), tuNgay.getValue(),
+                            denNgay.getValue(), noiTamTru.getText(), lyDo.getText());
+                    // Tắt cửa sổ
+                    ((Node) event.getSource()).getScene().getWindow().hide();
+                }
+            } else if (event.getSource() == btnHuy) {
+                // Tắt cửa sổ
                 ((Node) event.getSource()).getScene().getWindow().hide();
             }
-        } else if (event.getSource() == btnHuy) {
-            // Close window
-            ((Node) event.getSource()).getScene().getWindow().hide();
         }
     }
 
-}
 
+}

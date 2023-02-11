@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class themmoinhankhauController {
+public class ThemMoiNhanKhauController {
 
     private NhanKhauDB nhankhauDB = new NhanKhauDB();
 

@@ -8,22 +8,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class suachuhoController extends chonnhankhauController implements Initializable {
+public class ChonThanhVienController extends ChonNhanKhauController implements Initializable {
     private final NhanKhauDB nhankhaudb = new NhanKhauDB();
-    protected int idHoKhau;
     private ObservableList<NhanKhau> listNK;
     private NhanKhau selectedNhanKhau;
-
-    public void setIdHoKhau(int idHoKhau) {
-        this.idHoKhau = idHoKhau;
-    }
 
     public NhanKhau getSelectedNhanKhau() {
         return selectedNhanKhau;
@@ -34,13 +31,26 @@ public class suachuhoController extends chonnhankhauController implements Initia
         if (event.getSource() == btnTim) {
             filterTable(input.getText());
         } else if (event.getSource() == btnChon) {
-            if (selectedNhanKhau != null && !nhankhaudb.getCCCD(selectedNhanKhau.getId()).equals("")) {
-                ((Node) event.getSource()).getScene().getWindow().hide();
+            if (selectedNhanKhau != null) {
+                TextInputDialog dialog = new TextInputDialog();
+                dialog.setTitle("Quan hệ với chủ hộ");
+                dialog.setHeaderText("Nhập quan hệ với chủ hộ");
+                Optional<String> result = dialog.showAndWait();
+                result.ifPresent(value -> {
+                    if (!value.trim().equals("Chủ hộ")) {
+                        selectedNhanKhau.setQuanHeVoiChuHo(value);
+                        ((Node) event.getSource()).getScene().getWindow().hide();
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Không thể lưu");
+                        alert.setHeaderText("Không thể thêm thành viên là chủ hộ.");
+                        alert.showAndWait();
+                    }
+                });
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Không thể lưu");
-                alert.setHeaderText("Vui lòng chọn lại chủ hộ");
-                alert.setContentText("Lưu ý: Chủ hộ cần phải có CCCD.");
+                alert.setHeaderText("Vui lòng chọn lại thành viên");
                 alert.showAndWait();
             }
         } else if (event.getSource() == btnHuy) {
@@ -50,7 +60,7 @@ public class suachuhoController extends chonnhankhauController implements Initia
     }
 
     private void filterTable(String input) {
-        ObservableList<NhanKhau> listNK1 = getNhanKhauListByIdHoKhau();
+        ObservableList<NhanKhau> listNK1 = getNhanKhauListKhongHoKhau();
         listNK1.removeIf(nhanKhau -> !nhanKhau.getHoTen().toLowerCase().contains(input.toLowerCase()));
         setTableData(listNK1);
     }
@@ -64,9 +74,9 @@ public class suachuhoController extends chonnhankhauController implements Initia
         }
     }
 
-    private ObservableList<NhanKhau> getNhanKhauListByIdHoKhau() {
+    private ObservableList<NhanKhau> getNhanKhauListKhongHoKhau() {
         ObservableList<NhanKhau> listNKKhongHoKhau = getNhanKhauList();
-        listNKKhongHoKhau.removeIf(nhanKhau -> nhanKhau.getIdHoKhau() != idHoKhau);
+        listNKKhongHoKhau.removeIf(nhanKhau -> nhanKhau.getIdHoKhau() != 0);
         return listNKKhongHoKhau;
     }
 
@@ -80,7 +90,7 @@ public class suachuhoController extends chonnhankhauController implements Initia
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listNK = getNhanKhauListByIdHoKhau();
+        listNK = getNhanKhauListKhongHoKhau();
         setTableData(listNK);
 
         table.setOnMouseClicked(event -> {

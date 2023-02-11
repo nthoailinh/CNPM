@@ -27,7 +27,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class themmoihokhauController implements Initializable {
+public class ThemMoiHoKhauController implements Initializable {
 
     private final ObservableList<NhanKhau> listNK = FXCollections.observableArrayList();
     private NhanKhauDB nhankhauDB = new NhanKhauDB();
@@ -72,7 +72,7 @@ public class themmoihokhauController implements Initializable {
     void handleClicks(ActionEvent event) throws IOException, SQLException {
         if (event.getSource() == btnChon) {
             FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
-            chonchuhoController chonchuhoController = new chonchuhoController();
+            ChonChuHoController chonchuhoController = new ChonChuHoController();
             loader.setController(chonchuhoController);
             Parent root = loader.load();
             int width = 768;
@@ -98,7 +98,7 @@ public class themmoihokhauController implements Initializable {
             stage.show();
         } else if (event.getSource() == btnThemThanhVien) {
             FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
-            chonthanhvienController chonthanhvien_controller = new chonthanhvienController();
+            ChonThanhVienController chonthanhvien_controller = new ChonThanhVienController();
             loader.setController(chonthanhvien_controller);
             Parent root = loader.load();
             int width = 768;
