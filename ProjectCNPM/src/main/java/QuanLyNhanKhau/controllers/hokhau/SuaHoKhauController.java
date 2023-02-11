@@ -158,6 +158,11 @@ public class SuaHoKhauController implements Initializable {
                         nhanKhauChuHo.setQuanHeVoiChuHo("Chủ hộ");
                         listNK.removeIf(nhankhau -> nhankhau.getId() == nhanKhauChuHo.getId());
                         listNK.add(nhanKhauChuHo);
+                        try {
+                            hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhau.getText(), nhanKhauChuHo.getHoTen(), "Trở thành chủ hộ");
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
                         table.setItems(listNK);
                     }
                 });
@@ -188,9 +193,7 @@ public class SuaHoKhauController implements Initializable {
                     nhanKhau = suathanhvien_controller.getSelectedNhanKhau();
                     if (nhanKhau != null) {
                         if (listNK.stream().noneMatch(nk -> nk.getId() == nhanKhau.getId())) {
-                            System.out.println(listNK.size());
                             listNK.add(nhanKhau);
-                            System.out.println(listNK.size());
                             setTableData(listNK);
                         } else {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -199,6 +202,12 @@ public class SuaHoKhauController implements Initializable {
                             alert.showAndWait();
                         }
                     }
+                    try {
+                        hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhau.getText(), nhanKhau.getHoTen(), "Chuyển đến hộ khẩu mới");
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
                 });
                 stage.show();
             } else {
@@ -223,6 +232,7 @@ public class SuaHoKhauController implements Initializable {
                     }
                 }
                 nhankhauDB.removeNhanKhau(nhanKhau.getId());
+                hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhau.getText(), nhanKhau.getHoTen(), "Bị xóa khỏi hộ khẩu");
             }
         } else if (event.getSource() == btnLuu) {
             if (soHoKhau.getText().isEmpty() || cccdChuHo.getText().isEmpty() || chuHo.getText().isEmpty() ||
@@ -237,7 +247,7 @@ public class SuaHoKhauController implements Initializable {
             PreparedStatement pstmt = hokhauDB.updateHoKhau(soHoKhau.getText(), nhanKhauChuHo.getId(), Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
             pstmt.close();
             for (NhanKhau n : listNK) {
-                nhankhauDB.updateIDHoKhauCuaNhanKhau(n.getId(), n.getQuanHeVoiChuHo());
+                nhankhauDB.updateIDHoKhauCuaNhanKhau(n.getId(), nhanKhauChuHo.getIdHoKhau(), n.getQuanHeVoiChuHo());
             }
             ((Node) event.getSource()).getScene().getWindow().hide();
         } else if (event.getSource() == btnHuy) {

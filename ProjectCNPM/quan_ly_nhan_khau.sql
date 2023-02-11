@@ -123,14 +123,10 @@ CREATE TABLE KhaiTu (
 -- Table: LichSuThayDoi
 CREATE TABLE LichSuThayDoi (
     id int AUTO_INCREMENT NOT NULL,
-    idHoKhau int  NOT NULL,
-    ngayThayDoi date  NOT NULL,
-    bangThayDoi varchar(30)  NOT NULL,
-    idBangThayDoi int  NOT NULL,
-    thongTinThayDoi varchar(200)  NOT NULL,
-    thayDoiTu varchar(200)  NOT NULL,
-    thayDoiThanh varchar(200)  NOT NULL,
-    idNguoiThucHien int  NOT NULL,
+    soHoKhau varchar(20) DEFAULT NULL,
+    tenNhanKhau varchar(200) DEFAULT NULL,
+    ngayThayDoi date DEFAULT NULL,
+    noiDungThayDoi varchar(200) DEFAULT NULL,
     CONSTRAINT LichSuThayDoi_pk PRIMARY KEY (id)
 );
 
@@ -226,10 +222,6 @@ ALTER TABLE KhaiBao ADD CONSTRAINT KhaiBaoMacCOVID_MacCOVID FOREIGN KEY KhaiBaoM
 -- Reference: KhaiTu_NhanKhau (table: KhaiTu)
 ALTER TABLE KhaiTu ADD CONSTRAINT KhaiTu_NhanKhau FOREIGN KEY KhaiTu_NhanKhau (idNhanKhau)
     REFERENCES NhanKhau (id);
-
--- Reference: LichSuThayDoi_HoKhau (table: LichSuThayDoi)
-ALTER TABLE LichSuThayDoi ADD CONSTRAINT LichSuThayDoi_HoKhau FOREIGN KEY LichSuThayDoi_HoKhau (idHoKhau)
-    REFERENCES HoKhau (id);
 
 -- Reference: MacCOVID_NhanKhau (table: MacCOVID)
 ALTER TABLE MacCOVID ADD CONSTRAINT MacCOVID_NhanKhau FOREIGN KEY MacCOVID_NhanKhau (idNhanKhau)

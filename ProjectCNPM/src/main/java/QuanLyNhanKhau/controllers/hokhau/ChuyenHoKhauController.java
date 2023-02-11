@@ -1,7 +1,10 @@
 package QuanLyNhanKhau.controllers.hokhau;
 
 import QuanLyNhanKhau.controllers.tables.HoKhauTable;
+import QuanLyNhanKhau.models.HoKhau;
+import QuanLyNhanKhau.models.NhanKhau;
 import QuanLyNhanKhau.services.HoKhauDB;
+import QuanLyNhanKhau.services.NhanKhauDB;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,6 +55,10 @@ public class ChuyenHoKhauController implements Initializable {
 
     private HoKhauDB hokhauDB = new HoKhauDB();
 
+    private NhanKhauDB nhankhauDB = new NhanKhauDB();
+
+    private ObservableList<HoKhauTable> listHK;
+
     private ObservableList<HoKhauTable> getHoKhauList() {
         HoKhauDB hokhauinDB = new HoKhauDB();
         try {
@@ -64,7 +71,7 @@ public class ChuyenHoKhauController implements Initializable {
     @FXML
     void handleClicks(ActionEvent event) throws SQLException {
         if (event.getSource() == btnTim) {
-            ObservableList<HoKhauTable> listHK = getHoKhauList();
+            listHK = getHoKhauList();
             listHK.removeIf(HoKhauTable -> !HoKhauTable.getSoHoKhau().toLowerCase().contains(input.getText().toLowerCase()));
             table.setItems(listHK);
         } else {
@@ -77,6 +84,10 @@ public class ChuyenHoKhauController implements Initializable {
 
                     Optional<ButtonType> result = alert.showAndWait();
 
+                    for(NhanKhau n : nhankhauDB.getListNhanKhauWithSoHoKhau(selectedHoKhauTable.getSoHoKhau())){
+                        hokhauDB.addThayDoiNhanKhauTrongHoKhau(selectedHoKhauTable.getSoHoKhau(), n.getHoTen(), "Bị xóa khỏi hộ khẩu");
+                    }
+                    
                     if (result.get() == ButtonType.OK) {
                         hokhauDB.deleteHoKhau(selectedHoKhauTable.getSoHoKhau());
                         ((Node) event.getSource()).getScene().getWindow().hide();
@@ -91,6 +102,7 @@ public class ChuyenHoKhauController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         table.setOnMouseClicked(event -> {
             HoKhauTable selectedHoKhauTable = table.getSelectionModel().getSelectedItem();
             soHoKhau.setText(selectedHoKhauTable.getSoHoKhau());

@@ -259,10 +259,11 @@ public class NhanKhauDB {
 
     public PreparedStatement updateIDHoKhauCuaNhanKhau(int idNhanKhau, int idHoKhau, String quanHeVoiChuHo) throws SQLException {
         Connection connection = MySQL.getConnection();
-        PreparedStatement pstmt = connection.prepareStatement("UPDATE NhanKhau SET idHoKhau = ?, quanHeVoiChuHo = ? WHERE id = ?");
+        PreparedStatement pstmt = connection.prepareStatement("UPDATE NhanKhau SET idHoKhau = ?, quanHeVoiChuHo = ? WHERE id = ? AND ? IN (SELECT id FROM HoKhau)");
         pstmt.setInt(1, idHoKhau);
         pstmt.setString(2, quanHeVoiChuHo);
         pstmt.setInt(3, idNhanKhau);
+        pstmt.setInt(4, idHoKhau);
         pstmt.executeUpdate();
         return pstmt;
     }

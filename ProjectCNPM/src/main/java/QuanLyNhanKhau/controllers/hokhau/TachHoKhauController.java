@@ -24,8 +24,10 @@ import java.util.ResourceBundle;
 
 public class TachHoKhauController implements Initializable {
     private final ObservableList<NhanKhau> listNKMoi = FXCollections.observableArrayList();
+    private ObservableList<NhanKhau> listNKCu = FXCollections.observableArrayList();
     private final NhanKhauDB nhankhauDB = new NhanKhauDB();
     private final HoKhauDB hokhauDB = new HoKhauDB();
+    private String soHoKhauCu = "";
     @FXML
     private Button btnChuyenSang;
     @FXML
@@ -72,7 +74,6 @@ public class TachHoKhauController implements Initializable {
     private TableColumn<NhanKhau, String> tableNhungNguoiOHoMoi_NgaySinh;
     @FXML
     private TableColumn<NhanKhau, String> tableNhungNguoiOHoMoi_QuanHeVoiChuHo;
-    private ObservableList<NhanKhau> listNKCu = FXCollections.observableArrayList();
 
     private ObservableList<HoKhauTable> getHoKhauList() {
         try {
@@ -115,14 +116,23 @@ public class TachHoKhauController implements Initializable {
                         .findFirst()
                         .map(NhanKhau::getId)
                         .orElse(-1);
+                String hoTenChuHo = listNKMoi.stream()
+                        .filter(nk -> nk.getQuanHeVoiChuHo().equals("Chủ hộ"))
+                        .findFirst()
+                        .map(NhanKhau::getHoTen)
+                        .orElse(null);
                 PreparedStatement psmt = updateHoKhau(soHoKhauMoi.getText(), idNhanKhauChuHo, Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
-
+                hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhauMoi.getText(), hoTenChuHo, "Trở thành chủ hộ");
                 ResultSet rs = psmt.getGeneratedKeys();
                 int idHoKhau = 0;
                 if (rs.next()) {
                     idHoKhau = rs.getInt(1);
                 }
                 for (NhanKhau n : listNKMoi) {
+                    if (!n.getHoTen().equals(hoTenChuHo)){
+                        hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhauMoi.getText(), n.getHoTen(), "Chuyển đến hộ khẩu mới");
+                    }
+                    hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhauCu, n.getHoTen(), "Bị xóa khỏi hộ khẩu");
                     n.setIdHoKhau(idHoKhau);
                 }
 
@@ -147,6 +157,7 @@ public class TachHoKhauController implements Initializable {
         tableHoKhauCanTach.setOnMouseClicked(event -> {
             HoKhauTable selectedHoKhauTable = tableHoKhauCanTach.getSelectionModel().getSelectedItem();
             if (selectedHoKhauTable != null) {
+                soHoKhauCu = selectedHoKhauTable.getSoHoKhau();
                 chuHoHienTai.setText(selectedHoKhauTable.getHoTen());
 
                 listNKCu = getNhanKhauListWithSoHoKhau(selectedHoKhauTable.getSoHoKhau());
