@@ -58,7 +58,7 @@ public class ToDanPhoController implements Initializable {
             Parent root = Windows.getRoot("home/hokhau.fxml");
             content.getChildren().setAll(root);
         } else if (event.getSource() == thongKe) {
-            Parent root = Windows.getRoot("home/thongke.fxml");
+            Parent root = Windows.getRoot("home/thongke_todanpho.fxml");
             content.getChildren().setAll(root);
         } else if (event.getSource() == dangXuat) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

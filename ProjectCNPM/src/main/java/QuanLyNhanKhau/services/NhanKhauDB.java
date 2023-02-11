@@ -83,17 +83,47 @@ public class NhanKhauDB {
         return list;
     }
 
-    public ObservableList<NhanKhauTable> getListNhanKhau(String gioiTinh, String ageStart, String ageEnd, String tinhTrang, String ngayMacStart, String ngayMacEnd, String ngayKhoiStart, String ngayKhoiEnd) throws SQLException {
+    public ObservableList<NhanKhauTable> getListNhanKhau(String gioiTinh, String ageStart, String ageEnd, String tinhTrang, String dateStart, String dateEnd) throws SQLException {
         Connection connection = MySQL.getConnection();
         ObservableList<NhanKhauTable> list = FXCollections.observableArrayList();
         Statement stmt = connection.createStatement();
-        String defaultQuery = "SELECT * FROM NhanKhau JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id";
-        if (!(tinhTrang.equals("<lựa chọn>") && ngayMacStart.equals("") && ngayMacEnd.equals("") && ngayKhoiStart.equals("") && ngayKhoiEnd.equals(""))) {
-            defaultQuery += " JOIN MacCOVID ON NhanKhau.id = MacCOVID.idNhanKhau JOIN KhaiBao ON KhaiBao.idMacCOVID = MacCOVID.id";
+        String defaultQuery = "SELECT * FROM NhanKhau";
+        if (tinhTrang.equals("Có hộ khẩu trên địa bàn") || tinhTrang.equals("Tạm vắng")) {
+            defaultQuery += " JOIN HoKhau ON NhanKhau.idHoKhau = HoKhau.id";
+            if (tinhTrang.equals("Tạm vắng")) {
+                defaultQuery += " JOIN TamVang ON NhanKhau.id = TamVang.idNhanKhau";
+            }
+        } else if (tinhTrang.equals("Tạm trú")) {
+            defaultQuery += " JOIN TamTru ON NhanKhau.id = TamTru.idNhanKhau";
         }
+
         String query = defaultQuery;
+
+        if (!dateStart.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query += " AND ";
+            } else {
+                query += " WHERE ";
+            }
+            query += "ketThuc > '" + dateStart + "'";
+        }
+
+        if (!dateEnd.equals("")) {
+            if (!query.equals(defaultQuery)) {
+                query += "AND ";
+            } else {
+                query += " WHERE ";
+            }
+            query += "batDau < '" + dateEnd + "'";
+        }
+
         if (!gioiTinh.equals("<lựa chọn>")) {
-            query = query + " WHERE gioiTinh = '" + gioiTinh + "'";
+            if (!query.equals(defaultQuery)) {
+                query = query + " AND ";
+            } else {
+                query = query + " WHERE ";
+            }
+            query = query + "gioiTinh = '" + gioiTinh + "'";
         }
 
         if (!ageStart.equals("")) {
@@ -116,65 +146,28 @@ public class NhanKhauDB {
             query = query + "ngaySinh > '" + birthDate + "'";
         }
 
-        if (!tinhTrang.equals("<lựa chọn>")) {
-            if (!query.equals(defaultQuery)) {
-                query = query + " AND ";
-            } else {
-                query = query + " WHERE ";
-            }
-            query = query + "ketQuaTest = '" + tinhTrang + "'";
-        }
-
-        if (!ngayMacStart.equals("")) {
-            if (!query.equals(defaultQuery)) {
-                query = query + " AND ";
-            } else {
-                query = query + " WHERE ";
-            }
-            query = query + "ngayMac > '" + ngayMacStart + "'";
-        }
-
-        if (!ngayMacEnd.equals("")) {
-            if (!query.equals(defaultQuery)) {
-                query = query + " AND ";
-            } else {
-                query = query + " WHERE ";
-            }
-            query = query + "ngayMac < '" + ngayMacEnd + "'";
-        }
-
-        if (!ngayKhoiStart.equals("")) {
-            if (!query.equals(defaultQuery)) {
-                query = query + " AND ";
-            } else {
-                query = query + " WHERE ";
-            }
-            query = query + "ngayKhoi > '" + ngayKhoiStart + "'";
-        }
-
-        if (!ngayKhoiEnd.equals("")) {
-            if (!query.equals(defaultQuery)) {
-                query = query + " AND ";
-            } else {
-                query = query + " WHERE ";
-            }
-            query = query + "ngayKhoi < '" + ngayKhoiEnd + "'";
-        }
-
         System.out.println(query);
         ResultSet rsNhanKhau = stmt.executeQuery(query);
-        while (rsNhanKhau.next()) {
-            NhanKhauTable nhanKhau = new NhanKhauTable(rsNhanKhau.getInt("id"), rsNhanKhau.getString("hoTen"), rsNhanKhau.getString("ngaySinh"),
-                    rsNhanKhau.getString("gioiTinh"), "Số " + rsNhanKhau.getString("soNha") + ", ngõ " + rsNhanKhau.getString("ngo") + ", đường " + rsNhanKhau.getString("duong"));
-            list.add(nhanKhau);
+        if (tinhTrang.equals("Tạm trú")) {
+            while (rsNhanKhau.next()) {
+                NhanKhauTable nhanKhau = new NhanKhauTable(rsNhanKhau.getInt("id"), rsNhanKhau.getString("hoTen"), rsNhanKhau.getString("ngaySinh"),
+                        rsNhanKhau.getString("gioiTinh"), "");
+                list.add(nhanKhau);
+            }
+        } else {
+            while (rsNhanKhau.next()) {
+                NhanKhauTable nhanKhau = new NhanKhauTable(rsNhanKhau.getInt("id"), rsNhanKhau.getString("hoTen"), rsNhanKhau.getString("ngaySinh"),
+                        rsNhanKhau.getString("gioiTinh"), "Số " + rsNhanKhau.getString("soNha") + ", ngõ " + rsNhanKhau.getString("ngo") + ", đường " + rsNhanKhau.getString("duong"));
+                list.add(nhanKhau);
+            }
         }
 
         rsNhanKhau.close();
         stmt.close();
         connection.close();
+
         return list;
     }
-
 
     public ObservableList<NhanKhauTable> getListNhanKhauNoCovidTable() throws SQLException {
         Connection connection = MySQL.getConnection();
