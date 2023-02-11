@@ -4,6 +4,7 @@ import QuanLyNhanKhau.controllers.tables.CovidTable;
 import QuanLyNhanKhau.models.MacCOVID;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import java.time.LocalDate;
 
 import java.sql.*;
 
