@@ -1,11 +1,14 @@
 package QuanLyNhanKhau.controllers;
 
+import QuanLyNhanKhau.controllers.hokhau.XemThongTinController;
 import QuanLyNhanKhau.controllers.tables.HoKhauTable;
+import QuanLyNhanKhau.models.HoKhau;
 import QuanLyNhanKhau.services.HoKhauDB;
 import QuanLyNhanKhau.views.Windows;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,6 +27,8 @@ import java.util.ResourceBundle;
 
 public class HoKhauController implements Initializable {
 
+    private final HoKhauDB hokhauDB = new HoKhauDB();
+
     @FXML
     private Button btnChuyenDi;
 
@@ -38,6 +43,9 @@ public class HoKhauController implements Initializable {
 
     @FXML
     private Button btnTimKiem;
+
+    @FXML
+    private Button btnXemThongTin;
 
     @FXML
     private BorderPane contentHoKhau;
@@ -56,46 +64,74 @@ public class HoKhauController implements Initializable {
 
     @FXML
     private TableView<HoKhauTable> table;
+
     @FXML
-    void handleClicks(ActionEvent event) throws IOException {
+    void handleClicks(ActionEvent event) throws IOException, SQLException {
         if (event.getSource() == btnTimKiem) {
             filterTable(input.getText());
-        } else {
-            Parent root = null;
-            String fxmlFile = "";
-            String windowTitle = "";
-            int width = 0, height = 0;
-
-            if (event.getSource() == btnThemMoi) {
-                fxmlFile = "hokhau/themmoihokhau.fxml";
-                windowTitle = "Thêm mới hộ khẩu";
-                width = 960;
-                height = 720;
-            } else if(event.getSource() == btnSuaThongTin){
-                fxmlFile = "hokhau/suahokhau.fxml";
-                windowTitle = "Sửa thông tin hộ khẩu";
-                width = 960;
-                height = 720;
-            } else if (event.getSource() == btnTachHoKhau) {
-                fxmlFile = "hokhau/tachhokhau.fxml";
-                windowTitle = "Tách hộ khẩu";
-                width = 960;
-                height = 720;
-            } else if (event.getSource() == btnChuyenDi) {
-                fxmlFile = "hokhau/chuyenhokhau.fxml";
-                windowTitle = "Chuyển hộ khẩu";
-                width = 960;
-                height = 720;
-            }
-
-            root = Windows.getRoot(fxmlFile);
-            Scene scene = new Scene(root, width, height);
-            Stage stage = new Stage();
-            stage.setTitle(windowTitle);
-            stage.setScene(scene);
-            stage.setOnHidden((e) -> populateTable());
-            stage.show();
+            return;
         }
+
+        String fxmlFile = "";
+        String windowTitle = "";
+        int width = 0, height = 0;
+        String soHoKhau = "";
+        XemThongTinController xemThongTinController = null;
+
+
+        if (event.getSource() == btnXemThongTin){
+            HoKhauTable selected = table.getSelectionModel().getSelectedItem();
+            if (selected == null) return;
+
+            fxmlFile = "hokhau/xemthongtin.fxml";
+            windowTitle = "Xem thông tin";
+            width = 960;
+            height = 720;
+
+            soHoKhau = selected.getSoHoKhau();
+            xemThongTinController = new XemThongTinController();
+            xemThongTinController.setSoHoKhau(soHoKhau);
+        }
+        else if (event.getSource() == btnThemMoi) {
+            fxmlFile = "hokhau/themmoihokhau.fxml";
+            windowTitle = "Thêm mới hộ khẩu";
+            width = 960;
+            height = 720;
+        } else if (event.getSource() == btnSuaThongTin) {
+            fxmlFile = "hokhau/suahokhau.fxml";
+            windowTitle = "Sửa thông tin hộ khẩu";
+            width = 960;
+            height = 720;
+        } else if (event.getSource() == btnTachHoKhau) {
+            fxmlFile = "hokhau/tachhokhau.fxml";
+            windowTitle = "Tách hộ khẩu";
+            width = 960;
+            height = 720;
+        } else if (event.getSource() == btnChuyenDi) {
+            fxmlFile = "hokhau/chuyenhokhau.fxml";
+            windowTitle = "Chuyển hộ khẩu";
+            width = 960;
+            height = 720;
+        } else if (event.getSource() == btnXemThongTin) {
+            fxmlFile = "hokhau/xemthongtin.fxml";
+            windowTitle = "Xem thông tin";
+            width = 960;
+            height = 720;
+        }
+
+        Parent root = Windows.getRoot(fxmlFile);
+        if (xemThongTinController != null) {
+            FXMLLoader loader = Windows.getLoader(fxmlFile);
+            loader.setController(xemThongTinController);
+            root = loader.load();
+        }
+
+        Scene scene = new Scene(root, width, height);
+        Stage stage = new Stage();
+        stage.setTitle(windowTitle);
+        stage.setScene(scene);
+        stage.setOnHidden((e) -> populateTable());
+        stage.show();
     }
 
 

@@ -1,6 +1,8 @@
 package QuanLyNhanKhau.services;
 
 import QuanLyNhanKhau.controllers.tables.HoKhauTable;
+import QuanLyNhanKhau.models.HoKhau;
+import QuanLyNhanKhau.models.NhanKhau;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -77,6 +79,18 @@ public class HoKhauDB {
         pstmt.setString(5, soHoKhau);
         pstmt.executeUpdate();
         return pstmt;
+    }
+
+    public HoKhau getHoKhau(String soHoKhau) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM HoKhau WHERE soHoKhau = ?");
+        pstmt.setString(1, soHoKhau);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            return new HoKhau(rs.getInt("id"), rs.getString("soHoKhau"), rs.getInt("idChuHo"),
+                    rs.getInt("soNha"), rs.getString("ngo"), rs.getString("duong"));
+        }
+        return null;
     }
 
 

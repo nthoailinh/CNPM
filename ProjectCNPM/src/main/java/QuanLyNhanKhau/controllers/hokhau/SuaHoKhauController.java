@@ -1,5 +1,6 @@
 package QuanLyNhanKhau.controllers.hokhau;
 
+import QuanLyNhanKhau.models.HoKhau;
 import QuanLyNhanKhau.models.NhanKhau;
 import QuanLyNhanKhau.services.HoKhauDB;
 import QuanLyNhanKhau.services.NhanKhauDB;
@@ -115,6 +116,15 @@ public class SuaHoKhauController implements Initializable {
                 setTableData(listNK);
                 chuHo.setText(nhanKhauChuHo.getHoTen());
                 cccdChuHo.setText(nhankhauDB.getCCCD(nhanKhauChuHo.getId()));
+                HoKhau hoKhau = null;
+                try {
+                    hoKhau = hokhauDB.getHoKhau(soHoKhau.getText());
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                soNha.setText(Integer.toString(hoKhau.getSoNha()));
+                ngo.setText(hoKhau.getNgo());
+                duong.setText(hoKhau.getDuong());
             }
         } else if (event.getSource() == btnChon) {
             // Thay đổi quan hệ với chủ hộ của chủ hộ cũ
@@ -208,7 +218,7 @@ public class SuaHoKhauController implements Initializable {
                 alert.setContentText("Bạn có muốn xóa không?");
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == ButtonType.OK) {
-                    if(nhanKhau.getId() != nhanKhauChuHo.getId()){
+                    if (nhanKhau.getId() != nhanKhauChuHo.getId()) {
                         listNK.removeIf(nk -> nk.getId() == nhanKhau.getId());
                     }
                 }
