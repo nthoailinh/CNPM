@@ -53,7 +53,6 @@ public class XemThongTinController implements Initializable {
         this.nhankhau = nhankhau;
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         NhanKhauDB nhankhauDB = new NhanKhauDB();

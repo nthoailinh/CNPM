@@ -1,5 +1,6 @@
 package QuanLyNhanKhau.controllers;
 
+import QuanLyNhanKhau.controllers.nhankhau.SuaNhanKhauController;
 import QuanLyNhanKhau.controllers.nhankhau.XemThongTinController;
 import QuanLyNhanKhau.controllers.tables.NhanKhauTable;
 import QuanLyNhanKhau.models.NhanKhau;
@@ -42,6 +43,8 @@ public class NhanKhauController implements Initializable {
     @FXML
     private Button btnXemThongTin;
     @FXML
+    private Button btnSuaThongTin;
+    @FXML
     private BorderPane contentNhanKhau;
     @FXML
     private TableColumn<NhanKhauTable, Integer> ID;
@@ -71,6 +74,7 @@ public class NhanKhauController implements Initializable {
         int height;
         NhanKhau selectedNhanKhau = null;
         XemThongTinController xemThongTinController = null;
+        SuaNhanKhauController suaNhanKhauController = null;
 
         if (event.getSource() == btnXemThongTin) {
             NhanKhauTable selected = table.getSelectionModel().getSelectedItem();
@@ -84,6 +88,18 @@ public class NhanKhauController implements Initializable {
             selectedNhanKhau = nhankhauDB.getNhanKhau(selected.getId());
             xemThongTinController = new XemThongTinController();
             xemThongTinController.setNhankhau(selectedNhanKhau);
+        } else if (event.getSource() == btnSuaThongTin) {
+            NhanKhauTable selected = table.getSelectionModel().getSelectedItem();
+            if (selected == null) return;
+
+            fxmlFile = "nhankhau/suanhankhau.fxml";
+            windowTitle = "Sửa nhân khẩu";
+            width = 896;
+            height = 672;
+
+            selectedNhanKhau = nhankhauDB.getNhanKhau(selected.getId());
+            suaNhanKhauController = new SuaNhanKhauController();
+            suaNhanKhauController.setNhankhau(selectedNhanKhau);
         } else if (event.getSource() == btnThemMoi) {
             fxmlFile = "nhankhau/themmoinhankhau.fxml";
             windowTitle = "Thêm mới nhân khẩu";
@@ -108,13 +124,13 @@ public class NhanKhauController implements Initializable {
             return;
         }
 
-        Parent root = Windows.getRoot(fxmlFile);
+        FXMLLoader loader = Windows.getLoader(fxmlFile);
         if (xemThongTinController != null) {
-            FXMLLoader loader = Windows.getLoader(fxmlFile);
             loader.setController(xemThongTinController);
-            root = loader.load();
+        } else if (suaNhanKhauController != null) {
+            loader.setController(suaNhanKhauController);
         }
-
+        Parent root = loader.load();
         Scene scene = new Scene(root, width, height);
         Stage stage = new Stage();
         stage.setTitle(windowTitle);

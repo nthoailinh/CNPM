@@ -203,7 +203,7 @@ public class NhanKhauDB {
     }
 
     public PreparedStatement addNhanKhau(String hoTen, Object ngaySinh, String gioiTinh, String noiSinh, String nguyenQuan,
-                                      String danToc, String ngheNghiep, String noiLamViec) throws SQLException {
+                                         String danToc, String ngheNghiep, String noiLamViec) throws SQLException {
         Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO NhanKhau (`hoTen`, `ngaySinh`, `gioiTinh`, `noiSinh`, " +
                 "`nguyenQuan`, `danToc`, `ngheNghiep`, `noiLamViec`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
@@ -217,6 +217,24 @@ public class NhanKhauDB {
         pstmt.setString(8, noiLamViec);
         pstmt.executeUpdate();
         return pstmt;
+    }
+
+    public PreparedStatement updateNhanKhau(int id, String hoTen, Object ngaySinh, String gioiTinh, String noiSinh, String nguyenQuan,
+                                            String danToc, String ngheNghiep, String noiLamViec) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        String sql = "UPDATE NhanKhau SET hoTen = ?, ngaySinh = ?, gioiTinh = ?, noiSinh = ?, nguyenQuan = ?, danToc = ?, ngheNghiep = ?, noiLamViec = ? WHERE id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, hoTen);
+        statement.setObject(2, ngaySinh);
+        statement.setString(3, gioiTinh);
+        statement.setString(4, noiSinh);
+        statement.setString(5, nguyenQuan);
+        statement.setString(6, danToc);
+        statement.setString(7, ngheNghiep);
+        statement.setString(8, noiLamViec);
+        statement.setInt(9, id);
+        statement.executeUpdate();
+        return statement;
     }
 
 
@@ -272,7 +290,7 @@ public class NhanKhauDB {
     }
 
     public PreparedStatement addTamVang(int idNhanKhau, String maGiayTamVang, Object batDau, Object ketThuc,
-                                     String noiTamTru, String lyDo) throws SQLException {
+                                        String noiTamTru, String lyDo) throws SQLException {
         Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO TamVang (`idNhanKhau`, `maGiayTamVang`, "
                         + "`batDau`, `ketThuc`, `noiTamTru`, `lyDo`) VALUES (?, ?, ?, ?, ?, ?)",
@@ -288,7 +306,7 @@ public class NhanKhauDB {
     }
 
     public PreparedStatement addKhaiTu(int idNhanKhau, String maGiayKhaiTu, String nguyenNhan, Object ngayQuaDoi, Object ngayKhaiTu,
-                                    int idNguoiKhai) throws SQLException {
+                                       int idNguoiKhai) throws SQLException {
         Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO KhaiTu (`idNhanKhau`, `maGiayKhaiTu`,  "
                         + "`nguyenNhan`, `ngayQuaDoi`, `ngayKhaiTu`, `idNguoiKhai`) VALUES (?, ?, ?, ?, ?, ?)",
@@ -312,6 +330,13 @@ public class NhanKhauDB {
         pstmt.setString(4, noiCap);
         pstmt.executeUpdate();
         return pstmt;
+    }
+
+    public void deleteCCCD(String cccd) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("DELETE FROM CCCD WHERE cccd = ?");
+        pstmt.setString(1, cccd);
+        pstmt.executeUpdate();
     }
 
     public void removeNhanKhau(int idNhanKhau) throws SQLException {
