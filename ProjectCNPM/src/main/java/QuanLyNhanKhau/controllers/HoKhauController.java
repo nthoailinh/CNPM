@@ -33,6 +33,9 @@ public class HoKhauController implements Initializable {
     private Button btnChuyenDi;
 
     @FXML
+    private Button btnCacThayDoi;
+
+    @FXML
     private Button btnSuaThongTin;
 
     @FXML
@@ -116,6 +119,11 @@ public class HoKhauController implements Initializable {
             fxmlFile = "hokhau/xemthongtin.fxml";
             windowTitle = "Xem thông tin";
             width = 960;
+            height = 720;
+        } else if (event.getSource() == btnCacThayDoi) {
+            fxmlFile = "hokhau/lichsuthaydoi.fxml";
+            windowTitle = "Các thay đổi";
+            width = 783 ;
             height = 720;
         }
 

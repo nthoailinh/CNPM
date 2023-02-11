@@ -18,4 +18,5 @@ module com.example.projectcnpm {
     exports QuanLyNhanKhau.controllers.hokhau;
     exports QuanLyNhanKhau.controllers.tables;
     exports QuanLyNhanKhau.views;
+    exports QuanLyNhanKhau.models;
 }

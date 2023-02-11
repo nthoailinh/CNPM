@@ -1,12 +1,13 @@
 package QuanLyNhanKhau.services;
 
 import QuanLyNhanKhau.controllers.tables.HoKhauTable;
+import QuanLyNhanKhau.models.LichSuThayDoi;
 import QuanLyNhanKhau.models.HoKhau;
-import QuanLyNhanKhau.models.NhanKhau;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class HoKhauDB {
     public ObservableList<HoKhauTable> getListHoKhauTable() throws SQLException {
@@ -56,6 +57,17 @@ public class HoKhauDB {
         return idHoKhau;
     }
 
+    public String getSoHoKhauByID(int id) throws SQLException{
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("SELECT soHoKhau FROM HoKhau WHERE id = ?");
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            return rs.getString("soHoKhau");
+        }
+        return null;
+    }
+
     public PreparedStatement insertHoKhau(String soHoKhau, int idChuHo, int soNha, String ngo, String duong) throws SQLException {
         Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO HoKhau (`soHoKhau`, `idChuHo`,  "
@@ -93,5 +105,35 @@ public class HoKhauDB {
         return null;
     }
 
+    public void addThayDoiNhanKhauTrongHoKhau(String soHoKhau, String tenNhanKhau, String noiDungThayDoi) throws SQLException{
+        LocalDate today = java.time.LocalDate.now();
 
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("INSERT INTO LichSuThayDoi (`soHoKhau`,  "
+                + "`tenNhanKhau`, `ngayThayDoi`, `noiDungThayDOi`) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+        pstmt.setString(1, soHoKhau);
+        pstmt.setString(2, tenNhanKhau);
+        pstmt.setDate(3, java.sql.Date.valueOf(today));
+        pstmt.setString(4, noiDungThayDoi);
+        pstmt.executeUpdate();
+    }
+
+    public ObservableList<LichSuThayDoi> getLichSuThayDoiTableList() throws SQLException{
+        NhanKhauDB nhankhauDB = new NhanKhauDB();
+        Connection connection = MySQL.getConnection();
+        ObservableList<LichSuThayDoi> list = FXCollections.observableArrayList();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM LichSuThayDoi");
+        while (rs.next()) {
+            String soHoKhau = rs.getString("soHoKhau");
+            String tenNhanKhau = rs.getString("tenNhanKhau");
+            LocalDate ngayThayDoi = rs.getDate("ngayThayDoi").toLocalDate();
+            String noiDungThayDoi = rs.getString("noiDungThayDoi");
+            list.add(new LichSuThayDoi(soHoKhau, tenNhanKhau, ngayThayDoi, noiDungThayDoi));
+        }
+        rs.close();
+        stmt.close();
+        connection.close();
+        return list;
+    }
 }

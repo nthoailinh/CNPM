@@ -3,42 +3,36 @@ package QuanLyNhanKhau.models;
 import java.time.LocalDate;
 
 public class LichSuThayDoi {
-    private int id;
-    private int idHoKhau;
+    private String soHoKhau;
+    private String tenNhanKhau;
     private LocalDate ngayThayDoi;
-    private String bangThayDoi;
-    private int idBangThayDoi;
-    private String thongTinThayDoi;
-    private String thayDoiTu;
-    private String thayDoiThanh;
-    private int idNguoiThucHien;
+    private String noiDungThayDoi;
 
-    public LichSuThayDoi(int id, int idHoKhau, LocalDate ngayThayDoi, String bangThayDoi, int idBangThayDoi, String thongTinThayDoi, String thayDoiTu, String thayDoiThanh, int idNguoiThucHien) {
-        this.id = id;
-        this.idHoKhau = idHoKhau;
+    public LichSuThayDoi(){
+
+    }
+
+    public LichSuThayDoi(String soHoKhau, String tenNhanKhau, LocalDate ngayThayDoi, String noiDungThayDoi) {
+        this.soHoKhau = soHoKhau;
+        this.tenNhanKhau = tenNhanKhau;
         this.ngayThayDoi = ngayThayDoi;
-        this.bangThayDoi = bangThayDoi;
-        this.idBangThayDoi = idBangThayDoi;
-        this.thongTinThayDoi = thongTinThayDoi;
-        this.thayDoiTu = thayDoiTu;
-        this.thayDoiThanh = thayDoiThanh;
-        this.idNguoiThucHien = idNguoiThucHien;
+        this.noiDungThayDoi = noiDungThayDoi;
     }
 
-    public int getId() {
-        return id;
+    public String getSoHoKhau() {
+        return soHoKhau;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMaHoKhau(String maHoKhau) {
+        this.soHoKhau = maHoKhau;
     }
 
-    public int getIdHoKhau() {
-        return idHoKhau;
+    public String getTenNhanKhau() {
+        return tenNhanKhau;
     }
 
-    public void setIdHoKhau(int idHoKhau) {
-        this.idHoKhau = idHoKhau;
+    public void setTenNhanKhau(String tenNhanKhau) {
+        this.tenNhanKhau = tenNhanKhau;
     }
 
     public LocalDate getNgayThayDoi() {
@@ -49,51 +43,11 @@ public class LichSuThayDoi {
         this.ngayThayDoi = ngayThayDoi;
     }
 
-    public String getBangThayDoi() {
-        return bangThayDoi;
+    public String getNoiDungThayDoi() {
+        return noiDungThayDoi;
     }
 
-    public void setBangThayDoi(String bangThayDoi) {
-        this.bangThayDoi = bangThayDoi;
-    }
-
-    public int getIdBangThayDoi() {
-        return idBangThayDoi;
-    }
-
-    public void setIdBangThayDoi(int idBangThayDoi) {
-        this.idBangThayDoi = idBangThayDoi;
-    }
-
-    public String getThongTinThayDoi() {
-        return thongTinThayDoi;
-    }
-
-    public void setThongTinThayDoi(String thongTinThayDoi) {
-        this.thongTinThayDoi = thongTinThayDoi;
-    }
-
-    public String getThayDoiTu() {
-        return thayDoiTu;
-    }
-
-    public void setThayDoiTu(String thayDoiTu) {
-        this.thayDoiTu = thayDoiTu;
-    }
-
-    public String getThayDoiThanh() {
-        return thayDoiThanh;
-    }
-
-    public void setThayDoiThanh(String thayDoiThanh) {
-        this.thayDoiThanh = thayDoiThanh;
-    }
-
-    public int getIDNguoiThucHien() {
-        return idNguoiThucHien;
-    }
-
-    public void setIDNguoiThucHien(int idNguoiThucHien) {
-        this.idNguoiThucHien = idNguoiThucHien;
+    public void setNoiDungThayDoi(String noiDungThayDoi) {
+        this.noiDungThayDoi = noiDungThayDoi;
     }
 }

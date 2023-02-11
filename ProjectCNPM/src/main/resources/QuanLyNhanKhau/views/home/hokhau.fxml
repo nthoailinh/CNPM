@@ -32,6 +32,7 @@
                   <Button fx:id="btnSuaThongTin" layoutX="20.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Sửa thông tin" />
                   <Button fx:id="btnTachHoKhau" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Tách hộ khẩu" />
                   <Button fx:id="btnChuyenDi" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Chuyển đi" />
+                  <Button fx:id="btnCacThayDoi" layoutX="19.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Các thay đổi" />
                </children>
             </VBox>
          </right>

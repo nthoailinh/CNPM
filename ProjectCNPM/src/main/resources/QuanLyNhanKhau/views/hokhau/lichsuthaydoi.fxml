@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.hokhau.LichSuThayDoiController">
+   <children>
+      <TableView fx:id="table" layoutX="19.0" layoutY="20.0" prefHeight="677.0" prefWidth="747.0">
+         <columns>
+            <TableColumn fx:id="soHoKhau" prefWidth="144.0" text="Số hộ khẩu" />
+            <TableColumn fx:id="tenNhanKhau" prefWidth="206.0" text="Tên nhân khẩu" />
+            <TableColumn fx:id="ngayThayDoi" prefWidth="182.0" text="Ngày thay đổi" />
+            <TableColumn fx:id="noiDungThayDoi" prefWidth="213.0" text="Nội dung thay đổi" />
+         </columns>
+      </TableView>
+   </children>
+   <stylesheets>
+      <URL value="@../table_style.css" />
+      <URL value="@../button_style.css" />
+   </stylesheets>
+</AnchorPane>
