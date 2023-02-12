@@ -122,7 +122,7 @@ public class SuaHoKhauController implements Initializable {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-                soNha.setText(Integer.toString(hoKhau.getSoNha()));
+                soNha.setText(hoKhau.getSoNha());
                 ngo.setText(hoKhau.getNgo());
                 duong.setText(hoKhau.getDuong());
             }
@@ -244,7 +244,7 @@ public class SuaHoKhauController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            PreparedStatement pstmt = hokhauDB.updateHoKhau(soHoKhau.getText(), nhanKhauChuHo.getId(), Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
+            PreparedStatement pstmt = hokhauDB.updateHoKhau(soHoKhau.getText(), nhanKhauChuHo.getId(), soNha.getText(), ngo.getText(), duong.getText());
             pstmt.close();
             for (NhanKhau n : listNK) {
                 nhankhauDB.updateIDHoKhauCuaNhanKhau(n.getId(), nhanKhauChuHo.getIdHoKhau(), n.getQuanHeVoiChuHo());

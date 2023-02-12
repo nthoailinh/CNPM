@@ -99,7 +99,7 @@ public class XemThongTinController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        soNha.setText(Integer.toString(hoKhau.getSoNha()));
+        soNha.setText(hoKhau.getSoNha());
         ngo.setText(hoKhau.getNgo());
         duong.setText(hoKhau.getDuong());
     }

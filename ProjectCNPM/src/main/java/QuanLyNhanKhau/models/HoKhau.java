@@ -4,11 +4,11 @@ public class HoKhau {
     private int id;
     private String soHoKhau;
     private int idChuHo;
-    private int soNha;
+    private String soNha;
     private String ngo;
     private String duong;
 
-    public HoKhau(int id, String soHoKhau, int idChuHo, int soNha, String ngo, String duong) {
+    public HoKhau(int id, String soHoKhau, int idChuHo, String soNha, String ngo, String duong) {
         this.id = id;
         this.soHoKhau = soHoKhau;
         this.idChuHo = idChuHo;
@@ -41,11 +41,11 @@ public class HoKhau {
         this.idChuHo = idChuHo;
     }
 
-    public int getSoNha() {
+    public String getSoNha() {
         return soNha;
     }
 
-    public void setSoNha(int soNha) {
+    public void setSoNha(String soNha) {
         this.soNha = soNha;
     }
 

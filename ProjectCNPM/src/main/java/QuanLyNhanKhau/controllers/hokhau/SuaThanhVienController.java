@@ -42,14 +42,23 @@ public class SuaThanhVienController extends ChonNhanKhauController implements In
                 dialog.setHeaderText("Nhập quan hệ với chủ hộ");
                 Optional<String> result = dialog.showAndWait();
                 result.ifPresent(value -> {
+                    if (value.trim().equals("")){
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Không thể lưu");
+                        alert.setHeaderText("Vui lòng nhập quan hệ với chủ hộ.");
+                        alert.showAndWait();
+                        return;
+                    }
                     if (!value.trim().equals("Chủ hộ")) {
                         selectedNhanKhau.setQuanHeVoiChuHo(value);
                         ((Node) event.getSource()).getScene().getWindow().hide();
-                    } else {
+                    }
+                    else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Không thể lưu");
                         alert.setHeaderText("Không thể thêm thành viên là chủ hộ.");
                         alert.showAndWait();
+                        return;
                     }
                 });
             } else {

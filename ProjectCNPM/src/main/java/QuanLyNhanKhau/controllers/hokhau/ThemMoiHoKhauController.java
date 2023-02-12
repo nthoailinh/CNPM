@@ -144,7 +144,15 @@ public class ThemMoiHoKhauController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            PreparedStatement pstmt = hokhauDB.insertHoKhau(soHoKhau.getText(), nhanKhauChuHo.getId(), Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
+            if (soHoKhau.getText().length() > 9){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Không thể lưu");
+                alert.setHeaderText("Độ dài số hộ khẩu không được vượt quá 9");
+                alert.setContentText("Vui lòng điền lại số hộ khẩu.");
+                alert.showAndWait();
+                return;
+            }
+            PreparedStatement pstmt = hokhauDB.insertHoKhau(soHoKhau.getText(), nhanKhauChuHo.getId(), soNha.getText(), ngo.getText(), duong.getText());
             int idHoKhau = -1;
             ResultSet rs = pstmt.getGeneratedKeys();
             if (rs.next()) {

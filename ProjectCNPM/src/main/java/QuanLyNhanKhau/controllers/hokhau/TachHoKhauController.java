@@ -91,7 +91,7 @@ public class TachHoKhauController implements Initializable {
         }
     }
 
-    private PreparedStatement updateHoKhau(String soHoKhauMoi, int idChuHo, int soNha, String ngo, String duong) throws SQLException {
+    private PreparedStatement updateHoKhau(String soHoKhauMoi, int idChuHo, String soNha, String ngo, String duong) throws SQLException {
         return hokhauDB.insertHoKhau(soHoKhauMoi, idChuHo, soNha, ngo, duong);
     }
 
@@ -121,7 +121,7 @@ public class TachHoKhauController implements Initializable {
                         .findFirst()
                         .map(NhanKhau::getHoTen)
                         .orElse(null);
-                PreparedStatement psmt = updateHoKhau(soHoKhauMoi.getText(), idNhanKhauChuHo, Integer.parseInt(soNha.getText()), ngo.getText(), duong.getText());
+                PreparedStatement psmt = updateHoKhau(soHoKhauMoi.getText(), idNhanKhauChuHo, soNha.getText(), ngo.getText(), duong.getText());
                 hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhauMoi.getText(), hoTenChuHo, "Trở thành chủ hộ");
                 ResultSet rs = psmt.getGeneratedKeys();
                 int idHoKhau = 0;

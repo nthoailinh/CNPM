@@ -369,4 +369,12 @@ public class NhanKhauDB {
         }
         return null;
     }
+
+    public boolean checkExistsCCCD(String cccd) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM CCCD WHERE cccd = ?");
+        pstmt.setString(1, cccd);
+        ResultSet rs = pstmt.executeQuery();
+        return rs.next();
+    }
 }

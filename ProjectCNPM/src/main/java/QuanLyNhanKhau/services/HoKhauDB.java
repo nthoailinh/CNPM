@@ -68,24 +68,24 @@ public class HoKhauDB {
         return null;
     }
 
-    public PreparedStatement insertHoKhau(String soHoKhau, int idChuHo, int soNha, String ngo, String duong) throws SQLException {
+    public PreparedStatement insertHoKhau(String soHoKhau, int idChuHo, String soNha, String ngo, String duong) throws SQLException {
         Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("INSERT INTO HoKhau (`soHoKhau`, `idChuHo`,  "
                 + "`soNha`, `ngo`, `duong`) VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
         pstmt.setString(1, soHoKhau);
         pstmt.setInt(2, idChuHo);
-        pstmt.setInt(3, soNha);
+        pstmt.setString(3, soNha);
         pstmt.setString(4, ngo);
         pstmt.setString(5, duong);
         pstmt.executeUpdate();
         return pstmt;
     }
 
-    public PreparedStatement updateHoKhau(String soHoKhau, int idChuHo, int soNha, String ngo, String duong) throws SQLException {
+    public PreparedStatement updateHoKhau(String soHoKhau, int idChuHo, String soNha, String ngo, String duong) throws SQLException {
         Connection connection = MySQL.getConnection();
         PreparedStatement pstmt = connection.prepareStatement("UPDATE HoKhau SET `idChuHo` = ?, `soNha` = ?, `ngo` = ?, `duong` = ? WHERE `soHoKhau` = ?", Statement.RETURN_GENERATED_KEYS);
         pstmt.setInt(1, idChuHo);
-        pstmt.setInt(2, soNha);
+        pstmt.setString(2, soNha);
         pstmt.setString(3, ngo);
         pstmt.setString(4, duong);
         pstmt.setString(5, soHoKhau);
@@ -100,7 +100,7 @@ public class HoKhauDB {
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
             return new HoKhau(rs.getInt("id"), rs.getString("soHoKhau"), rs.getInt("idChuHo"),
-                    rs.getInt("soNha"), rs.getString("ngo"), rs.getString("duong"));
+                    rs.getString("soNha"), rs.getString("ngo"), rs.getString("duong"));
         }
         return null;
     }

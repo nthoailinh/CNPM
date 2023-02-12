@@ -78,7 +78,7 @@ CREATE TABLE HoKhau (
     id int AUTO_INCREMENT NOT NULL,
     soHoKhau char(9)  NOT NULL,
     idChuHo varchar(100)  NOT NULL,
-    soNha int DEFAULT NULL,
+    soNha varchar(100) DEFAULT NULL,
     ngo varchar(100) DEFAULT NULL,
     duong varchar(100) DEFAULT NULL,
     CONSTRAINT HoKhau_pk PRIMARY KEY (id)
