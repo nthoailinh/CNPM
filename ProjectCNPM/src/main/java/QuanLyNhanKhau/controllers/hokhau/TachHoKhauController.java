@@ -132,7 +132,7 @@ public class TachHoKhauController implements Initializable {
                     if (!n.getHoTen().equals(hoTenChuHo)){
                         hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhauMoi.getText(), n.getHoTen(), "Chuyển đến hộ khẩu mới");
                     }
-                    hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhauCu, n.getHoTen(), "Bị xóa khỏi hộ khẩu");
+                    hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhauCu, n.getHoTen(), "Bị xóa khỏi hộ khẩu cũ");
                     n.setIdHoKhau(idHoKhau);
                 }
 

@@ -85,7 +85,7 @@ public class ChuyenHoKhauController implements Initializable {
                     Optional<ButtonType> result = alert.showAndWait();
 
                     for(NhanKhau n : nhankhauDB.getListNhanKhauWithSoHoKhau(selectedHoKhauTable.getSoHoKhau())){
-                        hokhauDB.addThayDoiNhanKhauTrongHoKhau(selectedHoKhauTable.getSoHoKhau(), n.getHoTen(), "Bị xóa khỏi hộ khẩu");
+                        hokhauDB.addThayDoiNhanKhauTrongHoKhau(selectedHoKhauTable.getSoHoKhau(), n.getHoTen(), "Chuyển đi");
                     }
                     
                     if (result.get() == ButtonType.OK) {
