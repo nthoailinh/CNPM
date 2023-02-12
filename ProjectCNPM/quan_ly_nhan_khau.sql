@@ -111,7 +111,7 @@ CREATE TABLE KhaiBao (
 
 -- Table: KhaiTu
 CREATE TABLE KhaiTu (
-    idNhanKhau int AUTO_INCREMENT NOT NULL,
+    idNhanKhau int NOT NULL,
     maGiayKhaiTu char(12) NOT NULL,
     nguyenNhan varchar(300)  NULL,
     ngayQuaDoi date  NULL,
