@@ -144,7 +144,15 @@ public class ThemMoiHoKhauController implements Initializable {
                 alert.showAndWait();
                 return;
             }
-            if (soHoKhau.getText().length() > 9){
+            if (hokhauDB.checkExistsSoHoKhau(soHoKhau.getText())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Không thể lưu");
+                alert.setHeaderText("Đã tồn tại số hộ khẩu này trong hệ thống.");
+                alert.setContentText("Vui lòng điền lại số hộ khẩu.");
+                alert.showAndWait();
+                return;
+            }
+            if (soHoKhau.getText().length() > 9) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Không thể lưu");
                 alert.setHeaderText("Độ dài số hộ khẩu không được vượt quá 9");

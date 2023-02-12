@@ -82,10 +82,15 @@ public class ThemMoiNhanKhauController {
             if (rs.next()) {
                 idNhanKhau = rs.getInt(1);
             }
-//            if (cccd.getText() != null && ngayCap.getValue() != null && noiCap.getText() != null) {
-//                nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, ngayCap.getValue(), noiCap.getText());
-//            }
             if (cccd.getText() != null) {
+                if (nhankhauDB.checkExistsCCCD(cccd.getText())){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Không thể lưu");
+                    alert.setHeaderText("Đã tồn tại số CCCD này trong hệ thống.");
+                    alert.setContentText("Vui lòng điền lại số CCCD.");
+                    alert.showAndWait();
+                    return;
+                }
                 if (cccd.getText().length() < 12) {
                     if (ngayCap != null && noiCap != null) {
                         nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, ngayCap.getValue(), noiCap.getText());
@@ -96,12 +101,10 @@ public class ThemMoiNhanKhauController {
                     } else {
                         nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, null, null);
                     }
-
-
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Không thể lưu");
-                    alert.setHeaderText("Độ dài số CCCD không được vượt quá 12");
+                    alert.setHeaderText("Độ dài số CCCD không được vượt quá 12.");
                     alert.setContentText("Vui lòng điền lại số CCCD.");
                     alert.showAndWait();
                     return;

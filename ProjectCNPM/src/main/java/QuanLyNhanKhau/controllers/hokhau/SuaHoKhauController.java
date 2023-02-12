@@ -128,9 +128,12 @@ public class SuaHoKhauController implements Initializable {
             }
         } else if (event.getSource() == btnChon) {
             // Thay đổi quan hệ với chủ hộ của chủ hộ cũ
+            int idChuHoCu = nhanKhauChuHo.getId();
             listNK.removeIf(nhankhau -> nhankhau.getId() == nhanKhauChuHo.getId());
-            nhanKhauChuHo.setQuanHeVoiChuHo("");
-            listNK.add(nhanKhauChuHo);
+            NhanKhau nhanKhauChuHoCu = new NhanKhau(nhanKhauChuHo.getId(), nhanKhauChuHo.getIdHoKhau(), nhanKhauChuHo.getHoTen(),
+                    nhanKhauChuHo.getNgaySinh(), nhanKhauChuHo.getGioiTinh(), nhanKhauChuHo.getNoiSinh(),
+                    nhanKhauChuHo.getNguyenQuan(), nhanKhauChuHo.getDanToc(), nhanKhauChuHo.getNgheNghiep(),
+                    nhanKhauChuHo.getNoiLamViec(), "");
 
             FXMLLoader loader = Windows.getLoader("hokhau/chonnhankhau.fxml");
             SuaChuHoController suachuhoController = new SuaChuHoController();
@@ -163,6 +166,32 @@ public class SuaHoKhauController implements Initializable {
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
+                        if (nhanKhauChuHo.getId() != idChuHoCu) {
+                            TextInputDialog dialog = new TextInputDialog();
+                            dialog.setTitle("Quan hệ với chủ hộ của chủ hộ cũ");
+                            dialog.setHeaderText("Nhập quan hệ với chủ hộ mới");
+                            Optional<String> result = dialog.showAndWait();
+                            result.ifPresent(value -> {
+                                if (value.trim().equals("")) {
+                                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                                    alert.setTitle("Không thể lưu");
+                                    alert.setHeaderText("Vui lòng nhập quan hệ với chủ hộ.");
+                                    alert.showAndWait();
+                                    return;
+                                }
+                                if (!value.trim().equals("Chủ hộ")) {
+                                    nhanKhauChuHoCu.setQuanHeVoiChuHo(value);
+                                } else {
+                                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                                    alert.setTitle("Không thể lưu");
+                                    alert.setHeaderText("Không thể thêm thành viên là chủ hộ.");
+                                    alert.showAndWait();
+                                    return;
+                                }
+                            });
+                        }
+                        listNK.add(nhanKhauChuHoCu);
+
                         table.setItems(listNK);
                     }
                 });

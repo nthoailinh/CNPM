@@ -136,4 +136,12 @@ public class HoKhauDB {
         connection.close();
         return list;
     }
+
+    public boolean checkExistsSoHoKhau(String soHoKhau) throws SQLException {
+        Connection connection = MySQL.getConnection();
+        PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM HoKhau WHERE soHoKhau = ?");
+        pstmt.setString(1, soHoKhau);
+        ResultSet rs = pstmt.executeQuery();
+        return rs.next();
+    }
 }
