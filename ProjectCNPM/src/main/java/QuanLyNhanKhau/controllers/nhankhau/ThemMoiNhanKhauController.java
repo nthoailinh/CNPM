@@ -74,8 +74,6 @@ public class ThemMoiNhanKhauController {
                 return;
             }
             String gioiTinh = gioiTinhNam.isSelected() ? "Nam" : (gioiTinhNu.isSelected() ? "Nữ" : "Không rõ");
-
-            Connection connection = MySQL.getConnection();
             PreparedStatement pstmt_nhankhau = nhankhauDB.addNhanKhau(hoTen.getText(), ngaySinh.getValue(), gioiTinh, noiSinh.getText(),
                     nguyenQuan.getText(), danToc.getText(), ngheNghiep.getText(), noiLamViec.getText());
             // Tìm ID nhân khẩu
@@ -84,8 +82,30 @@ public class ThemMoiNhanKhauController {
             if (rs.next()) {
                 idNhanKhau = rs.getInt(1);
             }
-            if (cccd.getText() != null && ngayCap.getValue() != null && noiCap.getText() != null) {
-                nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, ngayCap.getValue(), noiCap.getText());
+//            if (cccd.getText() != null && ngayCap.getValue() != null && noiCap.getText() != null) {
+//                nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, ngayCap.getValue(), noiCap.getText());
+//            }
+            if (cccd.getText() != null) {
+                if (cccd.getText().length() < 12) {
+                    if (ngayCap != null && noiCap != null) {
+                        nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, ngayCap.getValue(), noiCap.getText());
+                    } else if (ngayCap != null) {
+                        nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, ngayCap.getValue(), null);
+                    } else if (noiCap != null) {
+                        nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, null, noiCap.getText());
+                    } else {
+                        nhankhauDB.addCCCD(cccd.getText(), idNhanKhau, null, null);
+                    }
+
+
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Không thể lưu");
+                    alert.setHeaderText("Độ dài số CCCD không được vượt quá 12");
+                    alert.setContentText("Vui lòng điền lại số CCCD.");
+                    alert.showAndWait();
+                    return;
+                }
             }
 
         }

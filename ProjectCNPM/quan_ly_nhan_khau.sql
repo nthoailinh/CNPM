@@ -40,8 +40,8 @@ INSERT INTO `User` (`user`, `password`) VALUES
 CREATE TABLE CCCD (
     cccd char(12)  NOT NULL,
     idNhanKhau int  DEFAULT NULL,
-    ngayCap date  NOT NULL,
-    noiCap varchar(100)  NOT NULL,
+    ngayCap date DEFAULT NULL,
+    noiCap varchar(100) DEFAULT NULL,
     CONSTRAINT CCCD_pk PRIMARY KEY (cccd)
 );
 
