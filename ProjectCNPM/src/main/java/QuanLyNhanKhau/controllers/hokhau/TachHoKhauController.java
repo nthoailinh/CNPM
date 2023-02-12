@@ -129,7 +129,7 @@ public class TachHoKhauController implements Initializable {
                     idHoKhau = rs.getInt(1);
                 }
                 for (NhanKhau n : listNKMoi) {
-                    if (!n.getHoTen().equals(hoTenChuHo)){
+                    if (!n.getHoTen().equals(hoTenChuHo)) {
                         hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhauMoi.getText(), n.getHoTen(), "Chuyển đến hộ khẩu mới");
                     }
                     hokhauDB.addThayDoiNhanKhauTrongHoKhau(soHoKhauCu, n.getHoTen(), "Bị xóa khỏi hộ khẩu cũ");
@@ -170,6 +170,14 @@ public class TachHoKhauController implements Initializable {
         tableChonNguoiSangHoMoi.setOnMouseClicked(event -> {
             NhanKhau selectedNhanKhau = tableChonNguoiSangHoMoi.getSelectionModel().getSelectedItem();
             btnChuyenSang.setOnMouseClicked(click_event -> {
+                if (selectedNhanKhau.getQuanHeVoiChuHo().equals("Chủ hộ")) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Thông báo");
+                    alert.setHeaderText("Chuyển thất bại");
+                    alert.setContentText("Không thể chuyển chủ hộ sang hộ khẩu mới");
+                    alert.showAndWait();
+                    return;
+                }
                 TextInputDialog dialog = new TextInputDialog();
                 dialog.setTitle("Quan hệ với chủ hộ");
                 dialog.setHeaderText("Nhập quan hệ với chủ hộ:");
