@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="672.0" prefWidth="896.0" stylesheets="@../button_style.css" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane prefHeight="624.0" prefWidth="896.0" vgap="4.0" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="505.0" minWidth="10.0" prefWidth="175.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="969.0" minWidth="10.0" prefWidth="585.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Họ và tên (*)">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày sinh (*)" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giới tính (*)" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi sinh (*)" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguyên quán (*)" GridPane.rowIndex="4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dân tộc (*)" GridPane.rowIndex="5">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nghề nghiệp" GridPane.rowIndex="9">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi làm việc" GridPane.rowIndex="10">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="26.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số CMT/CCCD" GridPane.rowIndex="6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="26.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nơi cấp" GridPane.rowIndex="8">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="26.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày cấp" GridPane.rowIndex="7">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Label fx:id="hoTen" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" />
+            <Label fx:id="noiSinh" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="nguyenQuan" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="danToc" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="cccd" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="noiCap" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label fx:id="ngheNghiep" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label fx:id="noiLamViec" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label fx:id="gioiTinh" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="ngaySinh" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="ngayCap" prefHeight="36.0" prefWidth="742.0" style="-fx-background-color: #EAEAEA; -fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+         </children>
+         <padding>
+            <Insets bottom="12.0" left="16.0" right="24.0" top="12.0" />
+         </padding>
+      </GridPane>
+   </center>
+</BorderPane>

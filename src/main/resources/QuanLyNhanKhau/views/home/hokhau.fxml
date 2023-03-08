@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/18.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="QuanLyNhanKhau.controllers.HoKhauController">
+   <children>
+      <BorderPane fx:id="contentHoKhau" layoutY="20.0" prefHeight="701.0" prefWidth="780.0">
+         <center>
+            <TableView fx:id="table" prefHeight="646.0" prefWidth="596.0" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="soHoKhau" prefWidth="144.0" text="Số hộ khẩu" />
+                  <TableColumn fx:id="hoTenChuHo" prefWidth="206.0" text="Họ tên chủ hộ" />
+                  <TableColumn fx:id="diaChi" prefWidth="288.0" text="Địa chỉ" />
+               </columns>
+            </TableView>
+         </center>
+         <right>
+            <VBox alignment="TOP_CENTER" prefHeight="646.0" prefWidth="146.0" spacing="24.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnXemThongTin" layoutX="19.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Xem thông tin" />
+                  <Button fx:id="btnThemMoi" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Thêm mới" />
+                  <Button fx:id="btnSuaThongTin" layoutX="20.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Sửa thông tin" />
+                  <Button fx:id="btnTachHoKhau" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Tách hộ khẩu" />
+                  <Button fx:id="btnChuyenDi" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Chuyển đi" />
+                  <Button fx:id="btnCacThayDoi" layoutX="19.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="50.0" prefWidth="128.0" text="Các thay đổi" />
+               </children>
+            </VBox>
+         </right>
+         <left>
+            <Pane prefHeight="585.0" prefWidth="13.0" BorderPane.alignment="CENTER" />
+         </left>
+         <bottom>
+            <Pane prefHeight="10.0" prefWidth="780.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <top>
+            <HBox prefHeight="45.0" prefWidth="786.0" spacing="7.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="input" prefHeight="30.0" prefWidth="623.0" promptText="Số hộ khẩu" />
+                  <Button fx:id="btnTimKiem" mnemonicParsing="false" onAction="#handleClicks" prefHeight="30.0" prefWidth="128.0" text="Tìm kiếm" />
+               </children>
+               <padding>
+                  <Insets left="12.0" />
+               </padding>
+            </HBox>
+         </top>
+         <stylesheets>
+            <URL value="@../table_style.css" />
+            <URL value="@../button_style.css" />
+         </stylesheets>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,34 @@
+.button {
+  -fx-background-color: #fafbfc;
+  -fx-border-color: rgba(27, 31, 35, 0.15);
+  -fx-border-radius: 6px;
+  -fx-box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  -fx-background-insets: 0;
+  -fx-padding: 6px 16px;
+  -fx-text-fill: #24292e;
+  -fx-font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  -fx-font-size: 13px;
+  -fx-font-weight: 500;
+  -fx-cursor: hand;
+  -fx-transition: -fx-background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+}
+
+.button:hover {
+  -fx-background-color: #f3f4f6;
+  -fx-transition-duration: 0.1s;
+}
+
+.button:disabled {
+  -fx-background-color: #fafbfc;
+  -fx-border-color: rgba(27, 31, 35, 0.15);
+  -fx-text-fill: #959da5;
+  -fx-cursor: default;
+}
+
+.button:pressed {
+  -fx-background-color: #edeff2;
+  -fx-box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  -fx-transition: none 0s;
+}
